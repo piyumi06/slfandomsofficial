@@ -543,7 +543,7 @@ color:white;
 }
 
 .group-hero{
-    height:100vh;
+    height:80vh;
     background:url("images/lykn-logo.jpg") center/cover no-repeat;
     display:flex;
     justify-content:center;
@@ -568,7 +568,7 @@ color:white;
 .overlay p{
     font-size:18px;
     line-height:1.8;
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 
 .join-btn{
