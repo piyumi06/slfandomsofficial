@@ -530,4 +530,15 @@ color:white;
 .artist-card a:hover {
     text-decoration: underline;
 }
+.artist-card {
+    color: black;
+}
+
+.artist-card h3 {
+    color: black;
+}
+
+.artist-card p {
+    color: black;
+}
 
