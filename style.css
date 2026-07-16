@@ -485,18 +485,18 @@ color:white;
 
 .news-card h3{
     margin-bottom:15px;
-    color:black;
+    color:white;
 }
 
 .news-card p{
-    color: black;
+    color: white;
     line-height:1.6;
     margin-bottom:20px;
 }
 
 .news-card a{
     text-decoration:none;
-    color: black;
+    color: white;
     font-weight:600;
 }
 
