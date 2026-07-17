@@ -594,4 +594,160 @@ color:white;
     color:#7c4dff;
     margin-bottom:40px;
 }
+/* ========================= */
+/* Extra Smooth Animations */
+/* ========================= */
 
+
+/* Hero entrance */
+
+.hero-content{
+    animation: fadeUp 1s ease;
+}
+
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* Header animation */
+
+header{
+    animation: slideDown 0.8s ease;
+}
+
+
+@keyframes slideDown{
+
+    from{
+        transform:translateY(-100%);
+    }
+
+    to{
+        transform:translateY(0);
+    }
+
+}
+
+
+/* Section headings */
+
+h2{
+    animation: fadeIn 1s ease;
+}
+
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+/* Button glow */
+
+.btn,
+.btn2,
+.join-btn,
+.partner button{
+
+    transition:0.3s;
+}
+
+
+.btn:hover,
+.btn2:hover,
+.join-btn:hover,
+.partner button:hover{
+
+    box-shadow:0 0 20px #7c4dff;
+    transform:scale(1.05);
+
+}
+
+
+/* Cards smoother */
+
+.card,
+.stat-card,
+.featured-card,
+.news-card,
+.artist-card{
+
+    transition:0.4s ease;
+
+}
+
+
+/* Floating effect for logo */
+
+.logo{
+
+    animation: floating 3s infinite ease-in-out;
+
+}
+
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+
+/* Search box glow */
+
+.search-box input:focus{
+
+    box-shadow:0 0 15px #7c4dff;
+
+}
+
+
+/* Page loading fade */
+
+body{
+
+    animation: pageLoad 0.8s ease;
+
+}
+
+
+@keyframes pageLoad{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
