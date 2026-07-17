@@ -323,9 +323,3 @@ function clearSearch(){
     document.getElementById("searchInput").value = "";
 
 }
-
-window.onload = function(){
-
-    document.getElementById("searchResults").innerHTML = "";
-
-};
