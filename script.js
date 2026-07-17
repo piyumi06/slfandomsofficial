@@ -297,7 +297,7 @@ function searchFandom(){
 
             <p>${item.description}</p>
 
-            <a href="${item.page}">
+            <a href="${item.page}" onclick="clearSearch()">
                 Open →
             </a>
 
@@ -315,3 +315,17 @@ function searchFandom(){
     document.getElementById("searchResults").innerHTML = output;
 
 }
+
+function clearSearch(){
+
+    document.getElementById("searchResults").innerHTML = "";
+
+    document.getElementById("searchInput").value = "";
+
+}
+
+window.onload = function(){
+
+    document.getElementById("searchResults").innerHTML = "";
+
+};
