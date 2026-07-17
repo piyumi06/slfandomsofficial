@@ -242,13 +242,14 @@
 
 <p>Own an official fandom in Sri Lanka? Join our organization and let fans find your community.</p>
 
-<form action="https://formspree.io/f/mnjepdna/" method="post">
+<form action="https://formspree.io/f/mnjepdna" method="POST">
 
-<input type="text" placeholder="Community/Artist Name">
+<input type="text" name="community" placeholder="Community/Artist Name" required>
 
-<input type="text" placeholder="Social Media Link">
+<input type="url" name="social" placeholder="Social Media Link" required>
 
-<input type="email" placeholder="Email">
+<input type="email" name="email" placeholder="Email" required>
+
 <textarea name="message" placeholder="Tell us about your community"></textarea>
 
 <button type="submit">Submit</button>
