@@ -57,13 +57,15 @@ const fandoms = [
     {
         name: "Manga",
         page: "manga.html",
-        description: "Manga Lovers Community"
+        description: "Manga Lovers Community",
+        keywords:"yaoi yuri"
     },
 
     {
         name: "Enhypen",
         page: "enhypen.html",
-        description: "Official Sri Lanka ENGENE Community"
+        description: "Official Sri Lanka ENGENE Community",
+        keywords:"engine"
     },
 
     {
