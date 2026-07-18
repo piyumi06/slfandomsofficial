@@ -1,39 +1,45 @@
 const fandoms = [
 
     {
-        name: "BTS, army",
+        name: "BTS",
         page: "bts.html",
-        description: "Official Sri Lanka ARMY Community"
+        description: "Official Sri Lanka ARMY Community",
+        keywords: "army bangtan bangtanboys bts kpop korea korean rm"
     },
 
     {
-        name: "BLACKPINK, blink",
+        name: "BLACKPINK",
         page: "blackpink.html",
-        description: "Official Sri Lanka BLINK Community"
+        description: "Official Sri Lanka BLINK Community",
+        keywords: "blink jisoo rose lisa jennie girl kpop korea korean"
     },
 
     {
-        name: "Stray Kids, stay",
+        name: "Stray Kids",
         page: "straykids.html",
-        description: "Official Sri Lanka STAY Community"
+        description: "Official Sri Lanka STAY Community",
+        keywords:"stay bangchan kpop"
     },
 
     {
-        name: "TXT, Moa",
-        page: "txt.html",""
-        description: "Official Sri Lanka MOA Community"
+        name: "TXT",
+        page: "txt.html",
+        description: "Official Sri Lanka MOA Community",
+        keywords:"moa"
     },
 
     {
-        name: "EXO, exol",
+        name: "EXO",
         page: "exo.html",
-        description: "Official Sri Lanka EXO-L Community"
+        description: "Official Sri Lanka EXO-L Community",
+        keywords:"exol"
     },
 
     {
-        name: "Marvel","spider",
+        name: "Marvel",
         page: "marvel.html",
-        description: "Marvel Fans Community"
+        description: "Marvel Fans Community",
+        keywords:"spiderman iron man hulk"
     },
 
     {
@@ -323,3 +329,4 @@ function clearSearch(){
     document.getElementById("searchInput").value = "";
 
 }
+
