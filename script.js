@@ -1,13 +1,13 @@
 const fandoms = [
 
     {
-        name: "BTS",
+        name: "BTS", "army",
         page: "bts.html",
         description: "Official Sri Lanka ARMY Community"
     },
 
     {
-        name: "BLACKPINK",
+        name: "BLACKPINK","blink",
         page: "blackpink.html",
         description: "Official Sri Lanka BLINK Community"
     },
