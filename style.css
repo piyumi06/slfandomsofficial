@@ -751,3 +751,10 @@ body{
     }
 
 }
+
+@import url('https://googleapis.com');
+
+.flag-emoji {
+  font-family: 'Noto Color Emoji', sans-serif;
+}
+
