@@ -13,25 +13,25 @@ const fandoms = [
     },
 
     {
-        name: "Stray Kids",
+        name: "Stray Kids","stay",
         page: "straykids.html",
         description: "Official Sri Lanka STAY Community"
     },
 
     {
-        name: "TXT",
-        page: "txt.html",
+        name: "TXT","Moa",
+        page: "txt.html",""
         description: "Official Sri Lanka MOA Community"
     },
 
     {
-        name: "EXO",
+        name: "EXO","exol",
         page: "exo.html",
         description: "Official Sri Lanka EXO-L Community"
     },
 
     {
-        name: "Marvel",
+        name: "Marvel","spider",
         page: "marvel.html",
         description: "Marvel Fans Community"
     },
