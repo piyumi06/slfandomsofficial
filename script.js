@@ -293,6 +293,7 @@ function searchFandom(){
     .getElementById("searchInput")
     .value
     .toLowerCase();
+    console.log(fandoms[0]);
 
 
   let results = fandoms.filter(item =>
