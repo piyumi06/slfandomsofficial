@@ -71,37 +71,44 @@ const fandoms = [
     {
         name: "Seventeen",
         page: "seventeen.html",
-        description: "Official Sri Lanka CARAT Community"
+        description: "Official Sri Lanka CARAT Community",
+        keywords:"carat dk"
     },
 
     {
         name: "NCT",
         page: "nct.html",
-        description: "Official Sri Lanka NCTzen Community"
+        description: "Official Sri Lanka NCTzen Community",
+        keywords:"nctzen"
     },
 
     {
         name: "TWICE",
         page: "twice.html",
-        description: "Official Sri Lanka ONCE Community"
+        description: "Official Sri Lanka ONCE Community",
+        keywords:"once"
     },
 
     {
         name: "ATEEZ",
         page: "ateez.html",
-        description: "Official Sri Lanka ATINY Community"
+        description: "Official Sri Lanka ATINY Community",
+        keywords:"atiny"
     },
 
     {
         name: "CORTIS",
         page: "cortis.html",
-        description: "Official Sri Lanka Community"
+        description: "Official Sri Lanka Community",
+        keywords:"coer"
     },
 
     {
         name: "RIIZE",
         page: "riize.html",
-        description: "Official Sri Lanka BRIIZE Community"
+        description: "Official Sri Lanka BRIIZE Community",
+        keywords:"briize"
+        
     },
 
 
