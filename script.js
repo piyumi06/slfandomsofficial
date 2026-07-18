@@ -295,6 +295,8 @@ function searchFandom(){
     .value
     .toLowerCase()
     .trim();
+
+    console.log(input);
     if(input === ""){
     document.getElementById("searchResults").innerHTML = "";
     return;
