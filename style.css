@@ -757,4 +757,63 @@ body{
 .flag-emoji {
   font-family: 'Noto Color Emoji', sans-serif;
 }
+/* ===== Mobile Responsive ===== */
+@media screen and (max-width: 768px) {
 
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero {
+        height: auto;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .artist-card {
+        width: 100%;
+        max-width: 350px;
+        margin: 10px auto;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    input,
+    button {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    section,
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    * {
+        max-width: 100%;
+    }
+}
