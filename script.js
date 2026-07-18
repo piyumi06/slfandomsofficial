@@ -294,6 +294,11 @@ function searchFandom(){
     .getElementById("searchInput")
     .value
     .toLowerCase();
+    .trim();
+    if(input === ""){
+    document.getElementById("searchResults").innerHTML = "";
+    return;
+}
     console.log(fandoms[0]);
 
 
