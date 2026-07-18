@@ -293,7 +293,7 @@ function searchFandom(){
     let input = document
     .getElementById("searchInput")
     .value
-    .toLowerCase();
+    .toLowerCase()
     .trim();
     if(input === ""){
     document.getElementById("searchResults").innerHTML = "";
