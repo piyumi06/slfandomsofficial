@@ -288,9 +288,11 @@ function searchFandom(){
     .toLowerCase();
 
 
-    let results = fandoms.filter(item =>
-        item.name.toLowerCase().includes(input)
-    );
+  let results = fandoms.filter(item =>
+    item.name.toLowerCase().includes(input) ||
+    item.description.toLowerCase().includes(input) ||
+    (item.keywords && item.keywords.toLowerCase().includes(input))
+);
 
 
     let output = "";
