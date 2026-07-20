@@ -4,21 +4,21 @@ const fandoms = [
         name: "BTS",
         page: "bts.html",
         description: "Official Sri Lanka ARMY Community",
-        keywords: "army bangtan bangtanboys bts kpop korea korean rm"
+        keywords: "army"
     },
 
     {
         name: "BLACKPINK",
         page: "blackpink.html",
         description: "Official Sri Lanka BLINK Community",
-        keywords: "blink jisoo rose lisa jennie girl kpop korea korean"
+        keywords: "blink"
     },
 
     {
         name: "Stray Kids",
         page: "straykids.html",
         description: "Official Sri Lanka STAY Community",
-        keywords:"stay bangchan kpop"
+        keywords:"stay"
     },
 
     {
@@ -271,8 +271,113 @@ const fandoms = [
         description: "Official Sri Lanka Community"
     },
 
-
     {
+    name: "ZEROBASEONE",
+    page: "zb1.html",
+    description: "Official Sri Lanka ZEROSE Community",
+    keywords: "zb1 zerose zero base one"
+},
+
+{
+    name: "AND2BLE",
+    page: "and2ble.html",
+    description: "Official Sri Lanka TOOBLES Community",
+    keywords: "and2ble toobles"
+},
+
+{
+    name: "TWS",
+    page: "tws.html",
+    description: "Official Sri Lanka 42 Community",
+    keywords: "tws 42 sai"
+},
+
+{
+    name: "Kim Gyuvin",
+    page: "kimgyuvin.html",
+    description: "Official Sri Lanka Kim Gyuvin Community",
+    keywords: "kim gyuvin gyuvin zb1 zerose"
+},
+
+{
+    name: "XLOV",
+    page: "xlov.html",
+    description: "Official Sri Lanka EVOL Community",
+    keywords: "xlov evol"
+},
+
+{
+    name: "P1Harmony",
+    page: "p1harmony.html",
+    description: "Official Sri Lanka P1ece Community",
+    keywords: "p1harmony p1ece p1ece"
+},
+
+{
+    name: "LONGSHOT",
+    page: "longshot.html",
+    description: "Official Sri Lanka SHOTTIES Community",
+    keywords: "longshot shotties"
+},
+
+{
+    name: "BABYMONSTER",
+    page: "babymonster.html",
+    description: "Official Sri Lanka MONSTIEZ Community",
+    keywords: "babymonster monstiez baby monster"
+},
+
+{
+    name: "CRAVITY",
+    page: "cravity.html",
+    description: "Official Sri Lanka LUVITY Community",
+    keywords: "cravity luvity"
+},
+
+{
+    name: "TREASURE",
+    page: "treasure.html",
+    description: "Official Sri Lanka Treasure Maker Community",
+    keywords: "treasure treasure maker teume"
+},
+
+{
+    name: "i-dle",
+    page: "idle.html",
+    description: "Official Sri Lanka Neverland Community",
+    keywords: "idle gidle g idle neverland"
+},
+
+{
+    name: "SHINee",
+    page: "shinee.html",
+    description: "Official Sri Lanka Shawol Community",
+    keywords: "shinee shawol shinee world"
+},
+
+{
+    name: "BOYNEXTDOOR",
+    page: "boysnextdoor.html",
+    description: "Official Sri Lanka ONEDOOR Community",
+    keywords: "boynextdoor bnd onedoor"
+},
+
+{
+    name: "GOT7",
+    page: "got7.html",
+    description: "Official Sri Lanka iGOT7 Community",
+    keywords: "got7 igot7 ahgase"
+},
+
+{
+    name: "LE SSERAFIM",
+    page: "lesserafim.html",
+    description: "Official Sri Lanka FEARNOT Community",
+    keywords: "le sserafim lesserafim fearnots fearnots"
+},
+
+
+{
         name: "K Drama",
         page: "kdrama.html",
         description: "Korean Drama Fans Community"
