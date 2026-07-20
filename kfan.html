@@ -19,6 +19,12 @@
     <p>
         Find official Sri Lankan fan communities for your favorite K-Pop artists.
     </p>
+     <input 
+        type="text" 
+        id="artistSearch" 
+        placeholder="🔍 Search artist or fandom..."
+        onkeyup="searchArtist()"
+    >
 
   
 <!-- ========================= -->
@@ -208,5 +214,29 @@
 <a href="index.html">⬅ Back to Home</a>
 
 </section>
+    <script>
+
+function searchArtist() {
+
+    let input = document.getElementById("artistSearch").value.toLowerCase();
+
+    let cards = document.getElementsByClassName("artist-card");
+
+    for (let i = 0; i < cards.length; i++) {
+
+        let artistInfo = cards[i].innerText.toLowerCase();
+
+        if (artistInfo.includes(input)) {
+            cards[i].style.display = "block";
+        } 
+        else {
+            cards[i].style.display = "none";
+        }
+
+    }
+
+}
+
+</script>
 </body>
 </html>
