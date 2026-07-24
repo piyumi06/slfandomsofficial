@@ -1171,3 +1171,239 @@ font-weight:bold;
 text-decoration:underline;
 
 }
+/* =========================
+   SLFO SIGNUP FORM DESIGN
+========================= */
+
+
+.signup-form{
+
+max-width:750px;
+
+margin:60px auto;
+
+padding:45px;
+
+background:linear-gradient(145deg,#161b22,#0d1117);
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
+
+}
+
+
+
+
+.signup-form h2{
+
+margin-top:35px;
+
+margin-bottom:20px;
+
+padding-bottom:10px;
+
+border-bottom:2px solid #ff4081;
+
+color:#ff4081;
+
+font-size:22px;
+
+}
+
+
+
+
+.signup-form label{
+
+display:block;
+
+margin-top:18px;
+
+margin-bottom:8px;
+
+font-size:15px;
+
+color:#ddd;
+
+font-weight:600;
+
+}
+
+
+
+
+.signup-form input,
+.signup-form select,
+.signup-form textarea{
+
+
+width:100%;
+
+padding:14px 16px;
+
+background:#21262d;
+
+color:white;
+
+border:1px solid #30363d;
+
+border-radius:12px;
+
+font-size:15px;
+
+outline:none;
+
+transition:0.3s;
+
+}
+
+
+
+
+.signup-form input:focus,
+.signup-form select:focus,
+.signup-form textarea:focus{
+
+
+border-color:#ff4081;
+
+box-shadow:0 0 10px rgba(255,64,129,0.3);
+
+}
+
+
+
+
+
+/* Dropdown */
+
+.signup-form select{
+
+cursor:pointer;
+
+}
+
+
+
+
+/* Checkbox section */
+
+
+.checkbox{
+
+display:flex !important;
+
+align-items:center;
+
+gap:12px;
+
+margin:12px 0;
+
+font-weight:normal !important;
+
+color:#ccc;
+
+}
+
+
+
+
+.checkbox input{
+
+width:18px !important;
+
+height:18px;
+
+accent-color:#ff4081;
+
+cursor:pointer;
+
+}
+
+
+
+
+/* Submit Button */
+
+
+.signup-form button{
+
+
+width:100%;
+
+margin-top:35px;
+
+padding:16px;
+
+border:none;
+
+border-radius:50px;
+
+background:linear-gradient(135deg,#ff4081,#ff1f69);
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.3s;
+
+box-shadow:0 10px 25px rgba(255,64,129,0.3);
+
+}
+
+
+
+.signup-form button:hover{
+
+
+transform:translateY(-5px);
+
+box-shadow:0 15px 35px rgba(255,64,129,0.5);
+
+}
+
+
+
+
+/* Textarea */
+
+.signup-form textarea{
+
+resize:none;
+
+min-height:120px;
+
+}
+
+
+
+
+/* Mobile */
+
+
+@media(max-width:600px){
+
+
+.signup-form{
+
+margin:30px 15px;
+
+padding:25px;
+
+}
+
+
+.signup-form h2{
+
+font-size:19px;
+
+}
+
+}
