@@ -11,6 +11,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 
 document.getElementById("signupForm").addEventListener("submit", (e)=>{
