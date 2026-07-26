@@ -4,7 +4,11 @@ import {
     getAuth,
     createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
-
+import { 
+    getFirestore,
+    doc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 const auth = getAuth(app);
 
@@ -32,17 +36,32 @@ document.getElementById("signupForm").addEventListener("submit", (e)=>{
 
     createUserWithEmailAndPassword(auth,email,password)
 
-    .then((userCredential)=>{
+   .then(async (userCredential)=>{
 
-        console.log(userCredential.user);
-
-        alert("🎉 Welcome to SLFO! Your account has been created.");
-
-        window.location.href="index.html";
-
-    })
+    const user = userCredential.user;
 
 
+    await setDoc(doc(db, "users", user.uid), {
+
+        fullName: document.querySelector('input[placeholder="Enter your full name"]').value,
+
+        displayName: document.querySelector('input[placeholder="How should other fans call you?"]').value,
+
+        email: user.email,
+
+        fandom: document.querySelector("select").value,
+
+        joinedDate: new Date()
+
+    });
+
+
+    alert("🎉 Welcome to SLFO! Your account has been created.");
+
+    window.location.href="index.html";
+
+
+})
     .catch((error)=>{
 
         alert(error.message);
