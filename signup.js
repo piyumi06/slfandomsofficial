@@ -52,6 +52,8 @@ document.getElementById("signupForm").addEventListener("submit", (e)=>{
 
         fandom: document.querySelector("select").value,
 
+        vipStatus: false,
+
         joinedDate: new Date()
 
     });
