@@ -2176,3 +2176,245 @@ body::after{
     0 0 35px gold;
 
 }
+/* ===================================
+        VIP LOGIN PAGE
+=================================== */
+
+
+.vip-page{
+
+    background:
+    radial-gradient(circle at top,#4b3a00,#0d1117 45%);
+
+}
+
+
+
+/* Hero */
+
+.vip-hero{
+
+    text-align:center;
+
+    padding:80px 20px 40px;
+
+}
+
+
+.vip-hero h1{
+
+    font-size:3.5rem;
+
+    color:#ffd700;
+
+    text-shadow:
+    0 0 20px gold;
+
+}
+
+
+.vip-hero p{
+
+    color:#ddd;
+
+    font-size:20px;
+
+}
+
+
+
+
+/* Login Area */
+
+.vip-login-section{
+
+    min-height:65vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+
+
+/* Card */
+
+.vip-login-card{
+
+
+    width:100%;
+
+    max-width:450px;
+
+
+    padding:45px;
+
+
+    text-align:center;
+
+
+    border-radius:30px;
+
+
+    background:
+
+    rgba(255,255,255,0.08);
+
+
+    backdrop-filter:blur(20px);
+
+
+    border:2px solid rgba(255,215,0,.6);
+
+
+    box-shadow:
+
+    0 0 40px rgba(255,215,0,.25);
+
+
+
+}
+
+
+
+
+.vip-icon{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+.vip-login-card h2{
+
+    color:#ffd700;
+
+    font-size:32px;
+
+}
+
+
+
+
+.vip-login-card p{
+
+    color:#ddd;
+
+    margin:20px 0 30px;
+
+}
+
+
+
+
+.vip-login-card input{
+
+
+    width:100%;
+
+    padding:16px;
+
+
+    margin:12px 0;
+
+
+    border-radius:15px;
+
+
+    border:none;
+
+
+    background:#111827;
+
+
+    color:white;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+
+.vip-login-card button{
+
+
+    width:100%;
+
+    margin-top:20px;
+
+
+    padding:16px;
+
+
+    border:none;
+
+
+    border-radius:50px;
+
+
+    cursor:pointer;
+
+
+    font-size:18px;
+
+
+    font-weight:bold;
+
+
+    background:
+
+    linear-gradient(90deg,#ffd700,#ff9900);
+
+
+    color:#111;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.vip-login-card button:hover{
+
+
+    transform:scale(1.05);
+
+
+    box-shadow:
+
+    0 0 30px gold;
+
+
+}
+
+
+
+
+.back-login{
+
+
+    display:block;
+
+    margin-top:25px;
+
+
+    color:#ffd700;
+
+    text-decoration:none;
+
+
+}
