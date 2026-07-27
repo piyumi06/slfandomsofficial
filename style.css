@@ -1846,3 +1846,239 @@ body::after{
     box-shadow:0 0 20px gold;
 
 }
+
+/* ==========================================
+        VIP LOGIN PAGE
+========================================== */
+
+
+.vip-login-container{
+
+    min-height:70vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px 20px;
+
+}
+
+
+
+/* VIP Login Card */
+
+.vip-login-form{
+
+    width:100%;
+
+    max-width:450px;
+
+    padding:45px 35px;
+
+    border-radius:30px;
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(255,215,0,0.15),
+        rgba(255,255,255,0.05)
+    );
+
+    backdrop-filter:blur(20px);
+
+    border:2px solid rgba(255,215,0,0.6);
+
+    box-shadow:
+
+    0 0 30px rgba(255,215,0,0.25);
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+/* Golden Glow Animation */
+
+.vip-login-form::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+
+    height:250px;
+
+    background:#ffd700;
+
+    filter:blur(120px);
+
+    top:-100px;
+
+    right:-100px;
+
+    opacity:.25;
+
+}
+
+
+
+/* Heading */
+
+.vip-login-form h2{
+
+    color:#ffd700;
+
+    font-size:32px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+/* Labels */
+
+.vip-login-form label{
+
+    display:block;
+
+    text-align:left;
+
+    color:white;
+
+    margin:15px 0 8px;
+
+    font-weight:bold;
+
+}
+
+
+
+/* Inputs */
+
+.vip-login-form input{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    border:none;
+
+    outline:none;
+
+    background:#111827;
+
+    color:white;
+
+    font-size:16px;
+
+    border:1px solid rgba(255,215,0,.3);
+
+}
+
+
+
+.vip-login-form input:focus{
+
+    border-color:#ffd700;
+
+    box-shadow:0 0 15px rgba(255,215,0,.5);
+
+}
+
+
+
+/* VIP Button */
+
+.vip-login-form button{
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#111;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #ffd700,
+        #ff9900
+    );
+
+    transition:.3s;
+
+}
+
+
+
+.vip-login-form button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+
+    0 0 25px gold;
+
+}
+
+
+
+/* VIP Info Text */
+
+.vip-login-info{
+
+    margin-top:30px;
+
+    color:#ddd;
+
+    font-size:15px;
+
+}
+
+
+
+/* Back link */
+
+.vip-back{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    color:#ffd700;
+
+    text-decoration:none;
+
+}
+
+
+.vip-back:hover{
+
+    text-decoration:underline;
+
+}
