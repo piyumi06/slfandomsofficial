@@ -1766,3 +1766,83 @@ body::after{
     box-shadow:0 0 40px rgba(255,215,0,0.5);
 
 }
+.vip-login-box{
+
+    width:90%;
+    max-width:600px;
+
+    margin:50px auto;
+
+    text-align:center;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    background:linear-gradient(
+        135deg,
+        #1f1b05,
+        #3b2f00
+    );
+
+    border:2px solid #ffd700;
+
+    box-shadow:
+    0 0 25px rgba(255,215,0,.25);
+
+}
+
+
+.vip-login-box h2{
+
+    color:#ffd700;
+
+    font-size:30px;
+
+    margin-bottom:15px;
+
+}
+
+
+.vip-login-box p{
+
+    color:white;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.vip-btn{
+
+    display:inline-block;
+
+    padding:14px 35px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    background:linear-gradient(
+        90deg,
+        #ffd700,
+        #ff9900
+    );
+
+    color:black;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+
+.vip-btn:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 20px gold;
+
+}
