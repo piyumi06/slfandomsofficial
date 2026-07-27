@@ -2416,3 +2416,475 @@ body::after{
     0 0 35px rgba(255,215,0,.35);
 
 }
+
+/* ==========================================
+        VIP PAYMENT PAGE
+========================================== */
+
+
+.vip-pay-hero{
+
+    text-align:center;
+
+    padding:90px 20px 50px;
+
+    background:
+
+    radial-gradient(
+        circle at top,
+        #5a4300,
+        #0d1117 60%
+    );
+
+}
+
+
+.vip-pay-hero h1{
+
+    font-size:3.2rem;
+
+    color:#ffd700;
+
+    text-shadow:
+
+    0 0 20px gold;
+
+    margin-bottom:20px;
+
+}
+
+
+.vip-pay-hero p{
+
+    color:#ddd;
+
+    font-size:20px;
+
+}
+
+
+
+/* Main Container */
+
+.vip-payment-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    padding:50px 20px;
+
+}
+
+
+
+/* Main VIP Card */
+
+.vip-payment-card{
+
+
+    width:100%;
+
+    max-width:750px;
+
+
+    padding:50px;
+
+
+    border-radius:35px;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(255,215,0,0.15),
+        rgba(255,255,255,0.05)
+    );
+
+
+    backdrop-filter:blur(20px);
+
+
+    border:
+
+    2px solid rgba(255,215,0,.5);
+
+
+    box-shadow:
+
+    0 0 40px rgba(255,215,0,.25);
+
+
+}
+
+
+
+
+.vip-payment-card h2{
+
+
+    text-align:center;
+
+    color:#ffd700;
+
+    font-size:32px;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.vip-payment-card > p{
+
+
+    text-align:center;
+
+    color:#ddd;
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+/* Benefits */
+
+.vip-benefits{
+
+
+    background:
+
+    rgba(0,0,0,.35);
+
+
+    padding:25px;
+
+
+    border-radius:25px;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+.vip-benefits h3{
+
+    color:#ffd700;
+
+}
+
+
+
+.vip-benefits ul{
+
+
+    list-style:none;
+
+    padding:0;
+
+
+}
+
+
+
+.vip-benefits li{
+
+
+    color:white;
+
+    padding:10px;
+
+    font-size:17px;
+
+
+}
+
+
+
+/* Payment Boxes */
+
+.payment-method{
+
+
+    margin:20px 0;
+
+
+    padding:25px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #1f1b05,
+        #302400
+    );
+
+
+    border:
+
+    1px solid rgba(255,215,0,.4);
+
+
+}
+
+
+
+.payment-method h3{
+
+
+    color:#ffd700;
+
+
+}
+
+
+
+.payment-method p{
+
+
+    color:white;
+
+    margin:8px 0;
+
+
+}
+
+
+
+/* Form */
+
+
+.vip-payment-card form{
+
+
+    margin-top:40px;
+
+    text-align:center;
+
+
+}
+
+
+
+.vip-payment-card input[type="text"],
+
+.vip-payment-card input[type="email"],
+
+.vip-payment-card input[type="file"]{
+
+
+    width:100%;
+
+
+    padding:16px;
+
+
+    margin:10px 0;
+
+
+    border-radius:15px;
+
+
+    border:none;
+
+
+    background:#111827;
+
+
+    color:white;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+/* Submit Button */
+
+
+.vip-payment-card button{
+
+
+    margin-top:25px;
+
+
+    padding:16px 45px;
+
+
+    border:none;
+
+
+    border-radius:50px;
+
+
+    cursor:pointer;
+
+
+    font-size:18px;
+
+
+    font-weight:bold;
+
+
+    color:#111;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #ffd700,
+        #ff9900
+    );
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.vip-payment-card button:hover{
+
+
+    transform:
+
+    translateY(-5px)
+    scale(1.05);
+
+
+    box-shadow:
+
+    0 0 35px gold;
+
+
+}
+
+
+
+
+/* Already Member Section */
+
+
+.already-member{
+
+
+    text-align:center;
+
+
+    margin:40px auto 70px;
+
+
+    padding:40px;
+
+
+    width:90%;
+
+
+    max-width:600px;
+
+
+    border-radius:30px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+    border:
+
+    1px solid rgba(255,215,0,.3);
+
+
+}
+
+
+
+.already-member h2{
+
+
+    color:#ffd700;
+
+
+}
+
+
+
+.already-member p{
+
+
+    color:#ddd;
+
+    margin:15px 0 25px;
+
+
+}
+
+
+
+
+.already-member a{
+
+
+    display:inline-block;
+
+
+    padding:15px 40px;
+
+
+    border-radius:50px;
+
+
+    text-decoration:none;
+
+
+    font-weight:bold;
+
+
+    color:#111;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #ffd700,
+        #ff9900
+    );
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.already-member a:hover{
+
+
+    transform:scale(1.08);
+
+
+    box-shadow:
+
+    0 0 30px gold;
+
+
+}
