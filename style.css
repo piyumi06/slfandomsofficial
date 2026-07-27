@@ -1407,3 +1407,211 @@ font-size:19px;
 }
 
 }
+
+/* ==========================================
+        MEMBER DASHBOARD
+========================================== */
+
+.member-dashboard{
+    width:90%;
+    max-width:1300px;
+    margin:60px auto;
+    text-align:center;
+}
+
+.member-dashboard h2{
+    font-size:2.4rem;
+    margin-bottom:15px;
+    color:#58a6ff;
+}
+
+.member-dashboard p{
+    color:#c9d1d9;
+    margin-bottom:40px;
+    font-size:18px;
+}
+
+
+/* Dashboard Grid */
+
+.member-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:30px;
+}
+
+
+/* Dashboard Cards */
+
+.member-card{
+
+    position:relative;
+
+    padding:35px 25px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    transition:.4s;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+
+/* Glow Border */
+
+.member-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-60%;
+
+    left:-60%;
+
+    width:220%;
+
+    height:220%;
+
+    background:linear-gradient(
+
+        45deg,
+
+        transparent,
+
+        rgba(88,166,255,.35),
+
+        transparent
+
+    );
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+
+.member-card:hover::before{
+
+    left:120%;
+
+}
+
+
+/* Hover */
+
+.member-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:#58a6ff;
+
+    box-shadow:
+
+    0 15px 40px rgba(88,166,255,.25);
+
+}
+
+
+/* Card Title */
+
+.member-card h3{
+
+    font-size:26px;
+
+    color:white;
+
+    margin-bottom:18px;
+
+}
+
+
+/* Description */
+
+.member-card p{
+
+    color:#c9d1d9;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+}
+
+
+/* Buttons */
+
+.member-card a{
+
+    display:inline-block;
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    background:linear-gradient(90deg,#58a6ff,#7c3aed);
+
+    color:white;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+
+.member-card a:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 18px #58a6ff;
+
+}
+
+
+/* Logout Button */
+
+#logoutBtn{
+
+    margin-top:60px;
+
+    border:none;
+
+    padding:16px 45px;
+
+    border-radius:50px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:linear-gradient(90deg,#ef4444,#dc2626);
+
+    transition:.3s;
+
+}
+
+
+#logoutBtn:hover{
+
+    transform:scale(1.06);
+
+    box-shadow:0 0 18px rgba(239,68,68,.5);
+
+}
