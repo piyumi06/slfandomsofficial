@@ -2082,3 +2082,97 @@ body::after{
     text-decoration:underline;
 
 }
+
+/* ==========================================
+        VIP LOGIN BUTTON (LOGIN PAGE)
+========================================== */
+
+
+.vip-login-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:15px 40px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#111;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #ffd700,
+        #ffb300
+    );
+
+    box-shadow:
+
+    0 0 20px rgba(255,215,0,.35);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+/* Shine animation */
+
+.vip-login-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:60%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.7),
+        transparent
+    );
+
+    transition:.6s;
+
+}
+
+
+
+.vip-login-btn:hover::before{
+
+    left:120%;
+
+}
+
+
+
+.vip-login-btn:hover{
+
+    transform:translateY(-5px) scale(1.05);
+
+    box-shadow:
+
+    0 0 35px gold;
+
+}
