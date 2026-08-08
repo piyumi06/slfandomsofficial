@@ -2946,3 +2946,110 @@ input[type="file"]{
 
 
 }
+
+
+
+
+
+/* ==============================
+   SLFN NEW THEME
+   ============================== */
+
+body {
+    background: #0F1115;
+    color: #F4EFE6;
+}
+
+/* Header */
+header {
+    background: #15181E;
+    border-bottom: 1px solid #2A2E35;
+}
+
+/* Website title */
+.site-title {
+    color: #F4EFE6;
+}
+
+/* Navigation */
+nav a {
+    color: #D8D3C9;
+}
+
+nav a:hover {
+    color: #C9A96E;
+}
+
+/* Hero section */
+.hero {
+    background: #0F1115;
+    color: #F4EFE6;
+}
+
+/* Main heading */
+.hero h1 {
+    color: #C9A96E;
+}
+
+/* Subtitle */
+.hero-subtitle {
+    color: #F4EFE6;
+}
+
+/* Description */
+.hero-description {
+    color: #B8B4AC;
+}
+
+/* Search box */
+.search-container input {
+    background: #F4EFE6;
+    color: #15181E;
+    border: 1px solid #C9A96E;
+}
+
+/* Search button */
+.search-container button {
+    background: #C9A96E;
+    color: #15181E;
+    border: none;
+}
+
+/* Buttons */
+button,
+.btn {
+    background: #C9A96E;
+    color: #15181E;
+    border: 1px solid #C9A96E;
+}
+
+button:hover,
+.btn:hover {
+    background: #E0C58A;
+}
+
+/* Outline button */
+.btn-outline {
+    background: transparent;
+    color: #C9A96E;
+    border: 1px solid #C9A96E;
+}
+
+.btn-outline:hover {
+    background: #C9A96E;
+    color: #15181E;
+}
+
+/* Cards */
+.card {
+    background: #1B1F26;
+    border: 1px solid #2A2E35;
+    color: #F4EFE6;
+}
+
+/* Footer */
+footer {
+    background: #0B0D10;
+    color: #B8B4AC;
+    border-top: 1px solid #2A2E35;
+}
