@@ -2977,3 +2977,614 @@ nav ul li a {
 nav ul li a:hover {
     color: #C9A96E;
 }
+
+
+
+
+
+/* =========================================================
+   SLFN — SRI LANKAN FANDOM NETWORK
+   MASTER THEME
+   Light Pink + Gold + Dark Background
+   ========================================================= */
+
+
+/* =========================================================
+   1. COLOR PALETTE
+   ========================================================= */
+
+:root {
+    --pink: #F4AFC1;
+    --light-pink: #FCE4EA;
+    --soft-pink: #F8CBD6;
+
+    --gold: #D6AE5C;
+    --light-gold: #E8CB8A;
+
+    --dark: #151216;
+    --dark-2: #1C171B;
+    --dark-3: #251E22;
+
+    --white: #FFF8F5;
+    --muted: #D8C9CE;
+
+    --border: rgba(214, 174, 92, 0.35);
+}
+
+
+/* =========================================================
+   2. GENERAL WEBSITE
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--dark);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Remove old purple-looking backgrounds */
+
+main,
+section {
+    background-color: transparent;
+}
+
+
+/* =========================================================
+   3. HEADER
+   ========================================================= */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 8%;
+
+    background: #181317;
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Logo + website name */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Logo */
+
+.logo img {
+    width: 65px;
+    height: 55px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* Website name */
+
+.site-title {
+    margin: 0;
+    padding: 0;
+
+    color: var(--light-pink);
+
+    font-size: 22px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   4. NAVIGATION
+   ========================================================= */
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Navigation links */
+
+nav a {
+    color: var(--white);
+
+    text-decoration: none;
+
+    padding: 0 18px;
+
+    font-size: 15px;
+
+    transition: all 0.3s ease;
+}
+
+
+/* Small separating lines */
+
+nav a + a {
+    border-left: 1px solid rgba(214, 174, 92, 0.45);
+}
+
+
+/* Navigation hover */
+
+nav a:hover {
+    color: var(--pink);
+}
+
+
+/* =========================================================
+   5. HERO / MAIN INTRODUCTION
+   ========================================================= */
+
+.hero {
+    background: var(--dark);
+
+    color: var(--white);
+
+    text-align: center;
+
+    padding: 90px 20px 70px;
+}
+
+
+/* Main heading */
+
+.hero h1 {
+    margin-bottom: 15px;
+
+    color: var(--light-pink);
+
+    font-size: 48px;
+    line-height: 1.2;
+}
+
+
+/* Subtitle */
+
+.hero-subtitle {
+    color: var(--pink);
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+
+/* Description */
+
+.hero-description {
+    color: var(--muted);
+
+    font-size: 16px;
+
+    max-width: 700px;
+
+    margin: 0 auto 30px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   6. SEARCH BAR
+   ========================================================= */
+
+.search-container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 30px auto;
+
+    max-width: 600px;
+}
+
+
+.search-container input {
+    flex: 1;
+
+    padding: 13px 16px;
+
+    background: var(--white);
+
+    color: #211A1E;
+
+    border: 1px solid var(--pink);
+
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+
+.search-container input:focus {
+    outline: none;
+
+    border-color: var(--gold);
+
+    box-shadow: 0 0 0 2px rgba(214, 174, 92, 0.15);
+}
+
+
+.search-container button {
+    padding: 13px 22px;
+
+    background: var(--gold);
+
+    color: #211A1E;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.search-container button:hover {
+    background: var(--light-gold);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   7. GENERAL BUTTONS
+   ========================================================= */
+
+button,
+.btn {
+    background: var(--gold);
+
+    color: #211A1E;
+
+    border: 1px solid var(--gold);
+
+    border-radius: 8px;
+
+    padding: 11px 20px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+
+button:hover,
+.btn:hover {
+    background: var(--pink);
+
+    border-color: var(--pink);
+
+    color: #211A1E;
+}
+
+
+/* Outline buttons */
+
+.btn-outline {
+    background: transparent;
+
+    color: var(--gold);
+
+    border: 1px solid var(--gold);
+}
+
+
+.btn-outline:hover {
+    background: var(--gold);
+
+    color: #211A1E;
+}
+
+
+/* =========================================================
+   8. SECTIONS
+   ========================================================= */
+
+section {
+    padding: 60px 8%;
+}
+
+
+section h2 {
+    color: var(--light-pink);
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    font-size: 32px;
+}
+
+
+section h3 {
+    color: var(--pink);
+}
+
+
+/* =========================================================
+   9. CARDS
+   ========================================================= */
+
+.card {
+    background: var(--dark-2);
+
+    color: var(--white);
+
+    border: 1px solid rgba(244, 175, 193, 0.20);
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    transition: all 0.3s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.30),
+        0 0 20px rgba(214, 174, 92, 0.08);
+}
+
+
+/* Card headings */
+
+.card h2,
+.card h3 {
+    color: var(--light-pink);
+}
+
+
+/* Card text */
+
+.card p {
+    color: var(--muted);
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   10. LINKS
+   ========================================================= */
+
+a {
+    color: var(--pink);
+
+    transition: color 0.3s ease;
+}
+
+
+a:hover {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   11. CATEGORY / FANDOM AREAS
+   ========================================================= */
+
+.category,
+.fandom-card {
+    background: var(--dark-2);
+
+    border: 1px solid rgba(244, 175, 193, 0.20);
+
+    border-radius: 12px;
+
+    transition: 0.3s ease;
+}
+
+
+.category:hover,
+.fandom-card:hover {
+    border-color: var(--gold);
+
+    transform: translateY(-3px);
+}
+
+
+/* Category headings */
+
+.category h2,
+.category h3,
+.fandom-card h2,
+.fandom-card h3 {
+    color: var(--light-pink);
+}
+
+
+/* =========================================================
+   12. IMAGES
+   ========================================================= */
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   13. FORMS
+   ========================================================= */
+
+input,
+textarea,
+select {
+    background: var(--dark-2);
+
+    color: var(--white);
+
+    border: 1px solid rgba(244, 175, 193, 0.35);
+
+    border-radius: 7px;
+
+    padding: 10px;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+
+    border-color: var(--gold);
+}
+
+
+/* =========================================================
+   14. FOOTER
+   ========================================================= */
+
+footer {
+    background: #0E0B0D;
+
+    color: var(--muted);
+
+    border-top: 1px solid var(--border);
+
+    padding: 40px 8%;
+
+    text-align: center;
+}
+
+
+footer a {
+    color: var(--pink);
+
+    text-decoration: none;
+}
+
+
+footer a:hover {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   15. HORIZONTAL LINES
+   ========================================================= */
+
+hr {
+    border: none;
+
+    border-top: 1px solid rgba(214, 174, 92, 0.25);
+
+    margin: 35px 0;
+}
+
+
+/* =========================================================
+   16. TEXT SELECTION
+   ========================================================= */
+
+::selection {
+    background: var(--pink);
+
+    color: #211A1E;
+}
+
+
+/* =========================================================
+   17. MOBILE / PHONE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px 5%;
+    }
+
+
+    .brand {
+        justify-content: center;
+    }
+
+
+    .site-title {
+        font-size: 18px;
+    }
+
+
+    nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 5px;
+    }
+
+
+    nav a {
+        padding: 5px 10px;
+
+        font-size: 13px;
+    }
+
+
+    .hero {
+        padding: 60px 20px 50px;
+    }
+
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+
+    .hero-subtitle {
+        font-size: 19px;
+    }
+
+
+    section {
+        padding: 45px 5%;
+    }
+
+
+    .search-container {
+        flex-direction: column;
+    }
+
+
+    .search-container input,
+    .search-container button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
