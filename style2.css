@@ -1,48 +1,44 @@
 
-
-
-/* =========================================================
-   1. VARIABLES
-   ========================================================= */
-
 :root {
-    --pink: #f3afc1;
-    --pink-light: #ffd8e3;
-    --pink-bright: #ffe5ec;
 
-    --gold: #d6ae5c;
-    --gold-light: #f0d18b;
+    --bg: #08070a;
+    --bg-2: #0f0b10;
+    --bg-3: #161017;
 
-    --black: #080709;
-    --dark: #100d10;
-    --dark-2: #171217;
-    --dark-3: #1e171d;
+    --pink: #f2a9bd;
+    --pink-light: #ffdce7;
+    --pink-soft: #f8c8d6;
 
-    --card: #241c22;
-    --card-light: #2b2229;
+    --gold: #d9b567;
+    --gold-light: #f1d58f;
 
     --white: #fffafd;
-    --text: #f5edf1;
-    --text-soft: #ded1d7;
+    --text: #f3e9ee;
+    --muted: #c9bac1;
 
-    --border: rgba(243, 175, 193, 0.22);
-    --gold-border: rgba(214, 174, 92, 0.30);
+    --card: rgba(35, 25, 32, 0.78);
+    --card-hover: rgba(48, 34, 43, 0.92);
 
-    --shadow: 0 15px 40px rgba(0, 0, 0, 0.30);
+    --border: rgba(242, 169, 189, 0.20);
+    --border-hover: rgba(242, 169, 189, 0.55);
 
-    --radius: 18px;
-    --transition: 0.3s ease;
+    --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    --radius: 20px;
+
+    --transition: 0.35s ease;
 }
 
 
-/* =========================================================
+/* ============================================================
    2. RESET
-   ========================================================= */
+   ============================================================ */
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -50,22 +46,25 @@ html {
 }
 
 body {
+
     min-height: 100vh;
+
+    color: var(--text);
 
     background:
         radial-gradient(
             circle at 10% 10%,
-            rgba(243, 175, 193, 0.06),
-            transparent 30%
+            rgba(242, 169, 189, 0.07),
+            transparent 25%
         ),
-        radial-gradient(
-            circle at 90% 30%,
-            rgba(214, 174, 92, 0.05),
-            transparent 30%
-        ),
-        var(--dark);
 
-    color: var(--text);
+        radial-gradient(
+            circle at 90% 25%,
+            rgba(217, 181, 103, 0.05),
+            transparent 25%
+        ),
+
+        var(--bg);
 
     font-family:
         Arial,
@@ -77,90 +76,110 @@ body {
     overflow-x: hidden;
 }
 
-img {
-    max-width: 100%;
-}
-
 a {
     color: inherit;
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 button,
 input,
-textarea,
-select {
+textarea {
     font-family: inherit;
 }
 
 
-/* =========================================================
+/* ============================================================
    3. HEADER
-   ========================================================= */
+   ============================================================ */
 
 header {
+
     position: sticky;
+
     top: 0;
-    z-index: 1000;
+
+    z-index: 9999;
 
     width: 100%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 25px;
 
-    padding: 12px 6%;
+    padding: 10px 5%;
 
-    background: rgba(8, 7, 9, 0.94);
+    background:
+        rgba(8, 7, 10, 0.90);
 
     border-bottom:
-        1px solid rgba(214, 174, 92, 0.20);
+        1px solid rgba(217, 181, 103, 0.18);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
 
     box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.30);
-
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+        0 8px 35px rgba(0, 0, 0, 0.30);
 }
 
 
-/* =========================================================
-   4. HEADER LOGO
-   ========================================================= */
+/* ============================================================
+   4. LOGO / BRAND
+   ============================================================ */
 
 .brand {
+
     display: flex;
+
     align-items: center;
 
-    gap: 12px;
+    gap: 14px;
 
     flex-shrink: 0;
 }
 
 .logo {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
 .logo img {
-    width: 58px;
-    height: 52px;
+
+    width: 78px;
+
+    height: 68px;
 
     object-fit: contain;
 
-    display: block;
-
-    transition: transform var(--transition);
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
 }
 
 .logo img:hover {
+
     transform: scale(1.06);
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(242, 169, 189, 0.35)
+        );
 }
 
 .site-title {
-    margin: 0;
 
     color: var(--pink-light);
 
@@ -168,27 +187,30 @@ header {
 
     font-weight: 700;
 
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
 
     white-space: nowrap;
 }
 
 
-/* =========================================================
+/* ============================================================
    5. NAVIGATION
-   ========================================================= */
+   ============================================================ */
 
 nav {
+
     flex: 1;
 }
 
 nav ul {
+
     list-style: none;
 
     display: flex;
 
-    align-items: center;
     justify-content: flex-end;
+
+    align-items: center;
 
     flex-wrap: wrap;
 
@@ -200,6 +222,7 @@ nav li {
 }
 
 nav a {
+
     position: relative;
 
     display: inline-block;
@@ -212,9 +235,7 @@ nav a {
 
     font-size: 14px;
 
-    font-weight: 500;
-
-    border-radius: 8px;
+    border-radius: 9px;
 
     transition:
         color var(--transition),
@@ -222,11 +243,13 @@ nav a {
 }
 
 nav a::after {
+
     content: "";
 
     position: absolute;
 
     left: 12px;
+
     right: 12px;
 
     bottom: 2px;
@@ -240,39 +263,46 @@ nav a::after {
             var(--gold)
         );
 
-    border-radius: 10px;
-
-    transform: scaleX(0);
+    transform:
+        scaleX(0);
 
     transform-origin: center;
 
-    transition: transform var(--transition);
+    transition:
+        transform var(--transition);
+
+    border-radius: 10px;
 }
 
 nav a:hover {
+
     color: var(--pink-light);
 
     background:
-        rgba(243, 175, 193, 0.06);
+        rgba(242, 169, 189, 0.06);
 }
 
 nav a:hover::after {
-    transform: scaleX(1);
+
+    transform:
+        scaleX(1);
 }
 
 
-/* =========================================================
+/* ============================================================
    6. HERO
-   ========================================================= */
+   ============================================================ */
 
 .hero {
+
     position: relative;
 
-    min-height: 650px;
+    min-height: 700px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding:
@@ -284,27 +314,38 @@ nav a:hover::after {
     overflow: hidden;
 
     background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(242, 169, 189, 0.08),
+            transparent 38%
+        ),
+
         linear-gradient(
             180deg,
-            #0d0a0d 0%,
-            #151016 55%,
-            #110e12 100%
+            #0b080b,
+            #140e14
         );
 }
 
 
-/* Soft pink glow */
+/* ============================================================
+   7. HERO DECORATION
+   ============================================================ */
 
 .hero::before {
+
     content: "";
 
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 600px;
+
+    height: 600px;
 
     left: 50%;
-    top: 45%;
+
+    top: 48%;
 
     transform:
         translate(-50%, -50%);
@@ -312,20 +353,21 @@ nav a:hover::after {
     background:
         radial-gradient(
             circle,
-            rgba(243, 175, 193, 0.11),
-            rgba(243, 175, 193, 0.03) 40%,
-            transparent 70%
+            rgba(242, 169, 189, 0.10),
+            transparent 68%
         );
 
-    filter: blur(20px);
+    filter:
+        blur(30px);
+
+    animation:
+        heroGlow 6s ease-in-out infinite;
 
     pointer-events: none;
 }
 
-
-/* Subtle background grid */
-
 .hero::after {
+
     content: "";
 
     position: absolute;
@@ -333,29 +375,56 @@ nav a:hover::after {
     inset: 0;
 
     background-image:
+
         linear-gradient(
-            rgba(214, 174, 92, 0.025) 1px,
+            rgba(242, 169, 189, 0.025) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
-            rgba(214, 174, 92, 0.025) 1px,
+            rgba(242, 169, 189, 0.025) 1px,
             transparent 1px
         );
 
-    background-size: 70px 70px;
+    background-size:
+        70px 70px;
 
     mask-image:
         linear-gradient(
             to bottom,
             black,
-            transparent
+            transparent 90%
         );
 
     pointer-events: none;
 }
 
+@keyframes heroGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+}
+
+
+/* ============================================================
+   8. HERO CONTENT
+   ============================================================ */
+
 .hero-content {
+
     position: relative;
 
     z-index: 2;
@@ -368,40 +437,45 @@ nav a:hover::after {
 }
 
 
-/* =========================================================
-   7. HERO TITLE
-   ========================================================= */
+/* ============================================================
+   9. HERO TITLE
+   ============================================================ */
 
 .hero h1 {
-    margin: 0 auto 22px;
 
-    max-width: 850px;
+    max-width: 820px;
 
-    color: var(--pink-bright);
+    margin:
+        0 auto 20px;
+
+    color:
+        var(--pink-light);
 
     font-size:
-        clamp(38px, 6vw, 64px);
+        clamp(34px, 5vw, 54px);
 
-    line-height: 1.08;
+    line-height: 1.12;
 
-    letter-spacing: -1.3px;
+    letter-spacing:
+        -0.7px;
 
     text-shadow:
-        0 0 35px
-        rgba(243, 175, 193, 0.12);
+        0 0 40px
+        rgba(242, 169, 189, 0.10);
 }
 
 .hero h1::after {
+
     content: "";
 
     display: block;
 
-    width: 70px;
+    width: 65px;
+
     height: 3px;
 
     margin:
-        24px auto
-        0;
+        22px auto 0;
 
     background:
         linear-gradient(
@@ -414,16 +488,18 @@ nav a:hover::after {
 }
 
 
-/* =========================================================
-   8. HERO DESCRIPTION
-   ========================================================= */
+/* ============================================================
+   10. HERO DESCRIPTION
+   ============================================================ */
 
 .hero p {
+
     max-width: 680px;
 
-    margin: 0 auto;
+    margin: auto;
 
-    color: var(--text);
+    color:
+        var(--text);
 
     font-size: 17px;
 
@@ -431,80 +507,133 @@ nav a:hover::after {
 }
 
 
-/* =========================================================
-   9. SEARCH
-   ========================================================= */
+/* ============================================================
+   11. SEARCH
+   ============================================================ */
 
 .search-box {
+
+    position: relative;
+
     display: flex;
 
     align-items: center;
 
-    width: min(620px, 92%);
+    width:
+        min(620px, 92%);
 
     margin:
-        35px auto
-        20px;
+        35px auto 18px;
 
-    padding: 5px;
+    padding: 4px;
 
     background:
-        rgba(255, 250, 253, 0.07);
+        rgba(255, 255, 255, 0.055);
 
     border:
         1px solid
-        rgba(243, 175, 193, 0.30);
+        rgba(242, 169, 189, 0.30);
 
-    border-radius: 14px;
+    border-radius:
+        50px;
 
     box-shadow:
-        0 12px 35px
-        rgba(0, 0, 0, 0.30);
 
-    backdrop-filter: blur(12px);
+        0 15px 45px
+        rgba(0, 0, 0, 0.30),
+
+        inset 0 0 25px
+        rgba(242, 169, 189, 0.025);
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.search-box::before {
+
+    content: "⌕";
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 46px;
+
+    height: 46px;
+
+    flex-shrink: 0;
+
+    color:
+        var(--pink-soft);
+
+    font-size: 24px;
+}
+
+.search-box:focus-within {
+
+    border-color:
+        rgba(242, 169, 189, 0.70);
+
+    box-shadow:
+
+        0 0 0 4px
+        rgba(242, 169, 189, 0.055),
+
+        0 18px 50px
+        rgba(0, 0, 0, 0.35);
 }
 
 .search-box input {
+
     width: 100%;
 
-    min-width: 0;
-
     padding:
-        15px 18px;
+        14px 18px 14px 5px;
 
     border: none;
 
     outline: none;
 
-    background: transparent;
+    background:
+        transparent;
 
-    color: var(--white);
+    color:
+        var(--white);
 
     font-size: 15px;
 }
 
 .search-box input::placeholder {
-    color: #b7aab0;
+
+    color:
+        #b9aab1;
 }
 
 
-/* Search results */
+/* ============================================================
+   12. SEARCH RESULTS
+   ============================================================ */
 
 #searchResults {
-    width: min(620px, 92%);
+
+    width:
+        min(620px, 92%);
 
     margin:
-        0 auto
-        20px;
+        0 auto 18px;
 
     text-align: left;
 }
 
 #searchResults a {
+
     display: block;
 
     padding:
-        12px 15px;
+        13px 16px;
 
     margin-bottom: 5px;
 
@@ -515,60 +644,71 @@ nav a:hover::after {
         1px solid
         var(--border);
 
-    border-radius: 10px;
+    border-radius:
+        11px;
 
-    color: var(--white);
+    color:
+        var(--white);
 
     text-decoration: none;
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition),
+        border-color var(--transition);
 }
 
 #searchResults a:hover {
-    transform: translateX(4px);
+
+    transform:
+        translateX(5px);
 
     border-color:
         var(--gold);
-
-    background:
-        var(--card-light);
 }
 
 
-/* =========================================================
-   10. HERO BUTTONS
-   ========================================================= */
+/* ============================================================
+   13. HERO BUTTONS
+   ============================================================ */
 
 .hero-buttons {
+
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     flex-wrap: wrap;
 
-    gap: 14px;
+    gap: 13px;
 
     margin-top: 28px;
 }
 
 .hero-buttons a {
+
     text-decoration: none;
 }
 
 
-/* Gold button */
+/* Primary button */
 
 .btn {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    min-width: 155px;
+    min-width: 160px;
 
     padding:
         12px 24px;
+
+    color:
+        #20181b;
 
     background:
         linear-gradient(
@@ -577,128 +717,132 @@ nav a:hover::after {
             var(--gold-light)
         );
 
-    color: #211a1d;
-
     border:
         1px solid
         var(--gold);
 
-    border-radius: 10px;
+    border-radius:
+        11px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 
     box-shadow:
-        0 8px 20px
-        rgba(214, 174, 92, 0.12);
+        0 10px 25px
+        rgba(217, 181, 103, 0.10);
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
 .btn:hover {
-    transform: translateY(-3px);
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink),
-            var(--pink-light)
-        );
-
-    border-color:
-        var(--pink);
+    transform:
+        translateY(-4px);
 
     box-shadow:
-        0 12px 28px
-        rgba(243, 175, 193, 0.16);
+        0 15px 35px
+        rgba(217, 181, 103, 0.18);
 }
 
 
-/* Pink outline button */
+/* Secondary button */
 
 .btn2 {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    min-width: 155px;
+    min-width: 160px;
 
     padding:
         12px 24px;
 
-    background:
-        rgba(243, 175, 193, 0.05);
+    color:
+        var(--pink-light);
 
-    color: var(--pink-light);
+    background:
+        rgba(242, 169, 189, 0.045);
 
     border:
         1px solid
-        rgba(243, 175, 193, 0.55);
+        rgba(242, 169, 189, 0.48);
 
-    border-radius: 10px;
+    border-radius:
+        11px;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition);
 }
 
 .btn2:hover {
-    transform: translateY(-3px);
+
+    transform:
+        translateY(-4px);
 
     background:
         var(--pink);
 
-    color: #211a1d;
-
-    border-color:
-        var(--pink);
-
-    box-shadow:
-        0 12px 28px
-        rgba(243, 175, 193, 0.15);
+    color:
+        #211a1d;
 }
 
 
-/* =========================================================
-   11. GENERAL SECTIONS
-   ========================================================= */
+/* ============================================================
+   14. GENERAL SECTIONS
+   ============================================================ */
 
 section {
+
     position: relative;
 
     width: 100%;
 
     padding:
-        90px 7%;
+        95px 7%;
 }
 
 section h2 {
+
+    position: relative;
+
     margin:
-        0 auto
-        45px;
+        0 auto 50px;
 
     color:
         var(--pink-light);
 
-    text-align: center;
+    text-align:
+        center;
 
     font-size:
-        clamp(28px, 4vw, 36px);
+        clamp(27px, 4vw, 37px);
 
-    line-height: 1.2;
+    line-height:
+        1.2;
 }
 
 section h2::after {
+
     content: "";
 
     display: block;
 
-    width: 48px;
+    width: 50px;
+
     height: 3px;
 
     margin:
-        15px auto
-        0;
+        16px auto 0;
 
     background:
         linear-gradient(
@@ -707,35 +851,30 @@ section h2::after {
             var(--gold)
         );
 
-    border-radius: 10px;
+    border-radius:
+        20px;
 }
 
 
-/* =========================================================
-   12. CATEGORY SECTION
-   ========================================================= */
+/* ============================================================
+   15. CATEGORY SECTION
+   ============================================================ */
 
 .categories {
+
     background:
         linear-gradient(
             180deg,
-            var(--dark-2),
-            var(--dark-3)
+            #120d12,
+            #171016
         );
-
-    border-top:
-        1px solid
-        rgba(243, 175, 193, 0.04);
-
-    border-bottom:
-        1px solid
-        rgba(243, 175, 193, 0.04);
 }
 
 .category-grid {
+
     width: 100%;
 
-    max-width: 1100px;
+    max-width: 1120px;
 
     margin: auto;
 
@@ -744,38 +883,49 @@ section h2::after {
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 24px;
+    gap: 25px;
 }
 
 
-/* =========================================================
-   13. CATEGORY CARDS
-   ========================================================= */
+/* ============================================================
+   16. CATEGORY CARDS
+   ============================================================ */
 
 .card {
+
     position: relative;
 
-    display: block;
-
-    min-height: 195px;
+    min-height:
+        210px;
 
     padding:
-        32px 24px;
+        34px 25px;
 
     overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align:
+        center;
+
+    text-decoration:
+        none;
+
+    color:
+        var(--white);
 
     background:
         linear-gradient(
             145deg,
-            var(--card-light),
-            var(--card)
+            rgba(45, 32, 41, 0.88),
+            rgba(28, 20, 26, 0.92)
         );
-
-    color: var(--white);
-
-    text-align: center;
-
-    text-decoration: none;
 
     border:
         1px solid
@@ -785,111 +935,177 @@ section h2::after {
         var(--radius);
 
     box-shadow:
-        0 10px 30px
-        rgba(0, 0, 0, 0.20);
+        var(--shadow);
 
     transition:
         transform var(--transition),
         border-color var(--transition),
-        box-shadow var(--transition);
+        background var(--transition);
 }
 
+
+/* Decorative circle */
+
 .card::before {
+
     content: "";
 
     position: absolute;
 
-    width: 150px;
-    height: 150px;
+    width: 190px;
 
-    top: -75px;
-    right: -75px;
+    height: 190px;
+
+    right:
+        -100px;
+
+    top:
+        -100px;
+
+    border-radius:
+        50%;
 
     background:
-        rgba(214, 174, 92, 0.08);
+        rgba(242, 169, 189, 0.08);
 
-    border-radius: 50%;
-
-    filter: blur(10px);
+    filter:
+        blur(5px);
 
     transition:
-        transform var(--transition);
+        transform 0.5s ease;
 }
 
 .card:hover::before {
-    transform: scale(1.6);
+
+    transform:
+        scale(1.5);
+}
+
+
+/* Gold corner */
+
+.card::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 45px;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink),
+            var(--gold)
+        );
+
+    border-radius:
+        0 10px 0 0;
 }
 
 .card:hover {
+
     transform:
-        translateY(-8px);
+        translateY(-9px);
+
+    background:
+        var(--card-hover);
 
     border-color:
-        rgba(214, 174, 92, 0.65);
+        var(--border-hover);
 
     box-shadow:
-        0 20px 45px
-        rgba(0, 0, 0, 0.32);
+        0 25px 60px
+        rgba(0, 0, 0, 0.42);
 }
 
 .card span {
-    display: inline-flex;
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 62px;
+
+    height: 62px;
+
+    display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    width: 60px;
-    height: 60px;
+    margin-bottom:
+        12px;
 
-    margin-bottom: 10px;
+    border-radius:
+        50%;
 
     background:
-        rgba(243, 175, 193, 0.07);
+        rgba(242, 169, 189, 0.07);
 
     border:
         1px solid
-        rgba(243, 175, 193, 0.20);
+        rgba(242, 169, 189, 0.20);
 
-    border-radius: 50%;
-
-    font-size: 27px;
+    font-size:
+        27px;
 }
 
 .card h3 {
+
+    position: relative;
+
+    z-index: 2;
+
     margin:
-        8px 0;
+        5px 0 8px;
 
     color:
         var(--pink-light);
 
-    font-size: 20px;
+    font-size:
+        20px;
 }
 
 .card p {
-    margin: 0;
+
+    position: relative;
+
+    z-index: 2;
 
     color:
-        var(--text-soft);
+        var(--muted);
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    line-height: 1.6;
+    line-height:
+        1.6;
 }
 
 
-/* =========================================================
-   14. STATS
-   ========================================================= */
+/* ============================================================
+   17. STATS
+   ============================================================ */
 
 .stats {
+
     background:
-        var(--dark);
+        var(--bg);
 }
 
 .stats-grid {
+
     width: 100%;
 
-    max-width: 1100px;
+    max-width: 1120px;
 
     margin: auto;
 
@@ -898,85 +1114,118 @@ section h2::after {
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
 
-    gap: 18px;
+    gap:
+        18px;
 }
 
 .stat-card {
-    padding:
-        28px 18px;
 
-    text-align: center;
+    position: relative;
+
+    padding:
+        30px 18px;
+
+    text-align:
+        center;
 
     background:
         linear-gradient(
             145deg,
-            var(--card),
-            var(--dark-2)
+            rgba(42, 29, 37, 0.80),
+            rgba(22, 16, 21, 0.95)
         );
 
     border:
         1px solid
-        var(--gold-border);
+        rgba(217, 181, 103, 0.24);
 
-    border-radius: 15px;
+    border-radius:
+        17px;
+
+    overflow:
+        hidden;
 
     transition:
         transform var(--transition),
-        border-color var(--transition),
-        box-shadow var(--transition);
+        border-color var(--transition);
+}
+
+.stat-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
 }
 
 .stat-card:hover {
+
     transform:
-        translateY(-6px);
+        translateY(-7px);
 
     border-color:
-        rgba(214, 174, 92, 0.70);
-
-    box-shadow:
-        0 18px 35px
-        rgba(0, 0, 0, 0.28);
+        rgba(217, 181, 103, 0.60);
 }
 
 .stat-card h1 {
-    margin:
-        0 0 7px;
+
+    margin-bottom:
+        7px;
 
     color:
         var(--gold-light);
 
-    font-size: 34px;
+    font-size:
+        35px;
 
-    line-height: 1.2;
+    line-height:
+        1.2;
 }
 
 .stat-card p {
-    margin: 0;
 
     color:
-        var(--text-soft);
+        var(--muted);
 
-    font-size: 14px;
+    font-size:
+        14px;
 }
 
 
-/* =========================================================
-   15. NEWS
-   ========================================================= */
+/* ============================================================
+   18. NEWS
+   ============================================================ */
 
 .news {
+
     background:
         linear-gradient(
             180deg,
-            var(--dark-2),
-            var(--dark-3)
+            #120d12,
+            #0d090d
         );
 }
 
 .news-grid {
+
     width: 100%;
 
-    max-width: 1100px;
+    max-width: 1120px;
 
     margin: auto;
 
@@ -985,20 +1234,22 @@ section h2::after {
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 24px;
+    gap:
+        24px;
 }
 
 .news-card {
+
     position: relative;
 
     padding:
-        28px;
+        30px;
 
     background:
         linear-gradient(
             145deg,
-            var(--card-light),
-            var(--card)
+            rgba(44, 31, 39, 0.90),
+            rgba(25, 18, 23, 0.96)
         );
 
     border:
@@ -1008,9 +1259,8 @@ section h2::after {
     border-radius:
         var(--radius);
 
-    box-shadow:
-        0 10px 30px
-        rgba(0, 0, 0, 0.18);
+    overflow:
+        hidden;
 
     transition:
         transform var(--transition),
@@ -1018,47 +1268,90 @@ section h2::after {
         box-shadow var(--transition);
 }
 
-.news-card:hover {
+.news-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink),
+            var(--gold)
+        );
+
     transform:
-        translateY(-7px);
+        scaleX(0);
+
+    transform-origin:
+        left;
+
+    transition:
+        transform var(--transition);
+}
+
+.news-card:hover::before {
+
+    transform:
+        scaleX(1);
+}
+
+.news-card:hover {
+
+    transform:
+        translateY(-8px);
 
     border-color:
-        rgba(214, 174, 92, 0.60);
+        rgba(242, 169, 189, 0.42);
 
     box-shadow:
-        0 20px 40px
-        rgba(0, 0, 0, 0.30);
+        0 25px 55px
+        rgba(0, 0, 0, 0.35);
 }
 
 .news-card h3 {
-    margin:
-        0 0 12px;
+
+    margin-bottom:
+        12px;
 
     color:
         var(--pink-light);
 
-    font-size: 19px;
+    font-size:
+        19px;
 }
 
 .news-card p {
-    margin:
-        0 0 15px;
+
+    margin-bottom:
+        18px;
 
     color:
-        var(--text-soft);
+        var(--muted);
 
-    line-height: 1.7;
+    line-height:
+        1.75;
 }
 
 .news-card a {
-    display: inline-block;
 
     color:
         var(--gold-light);
 
-    text-decoration: none;
+    text-decoration:
+        none;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
     transition:
         color var(--transition),
@@ -1066,6 +1359,7 @@ section h2::after {
 }
 
 .news-card a:hover {
+
     color:
         var(--pink-light);
 
@@ -1074,41 +1368,47 @@ section h2::after {
 }
 
 
-/* =========================================================
-   16. PARTNER SECTION
-   ========================================================= */
+/* ============================================================
+   19. PARTNER SECTION
+   ============================================================ */
 
 .partner {
-    background:
-        var(--dark);
 
-    text-align: center;
+    background:
+        var(--bg);
 }
 
 .partner > p {
-    max-width: 700px;
+
+    max-width:
+        700px;
 
     margin:
-        0 auto
-        35px;
+        0 auto 35px;
 
     color:
-        var(--text-soft);
+        var(--muted);
 
-    line-height: 1.8;
+    text-align:
+        center;
+
+    line-height:
+        1.8;
 }
 
 .partner form {
-    width:
-        min(600px, 100%);
 
-    margin: auto;
+    width:
+        min(620px, 100%);
+
+    margin:
+        auto;
 
     padding:
-        30px;
+        32px;
 
     background:
-        rgba(36, 28, 34, 0.90);
+        rgba(34, 24, 30, 0.85);
 
     border:
         1px solid
@@ -1123,57 +1423,74 @@ section h2::after {
 
 .partner input,
 .partner textarea {
-    width: 100%;
 
-    margin-bottom: 15px;
+    width:
+        100%;
+
+    margin-bottom:
+        15px;
 
     padding:
-        14px 15px;
+        14px 16px;
 
     background:
-        #120f12;
-
-    color:
-        var(--white);
+        #100c10;
 
     border:
         1px solid
-        rgba(243, 175, 193, 0.25);
+        rgba(242, 169, 189, 0.20);
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
-    outline: none;
+    outline:
+        none;
+
+    color:
+        var(--white);
 
     transition:
         border-color var(--transition),
         box-shadow var(--transition);
 }
 
-.partner input::placeholder,
-.partner textarea::placeholder {
-    color:
-        #a99ba1;
-}
-
 .partner input:focus,
 .partner textarea:focus {
+
     border-color:
-        var(--gold);
+        var(--pink);
 
     box-shadow:
         0 0 0 3px
-        rgba(214, 174, 92, 0.08);
+        rgba(242, 169, 189, 0.06);
+}
+
+.partner input::placeholder,
+.partner textarea::placeholder {
+
+    color:
+        #9e9097;
 }
 
 .partner textarea {
-    min-height: 130px;
 
-    resize: vertical;
+    min-height:
+        130px;
+
+    resize:
+        vertical;
 }
 
 .partner button {
+
     padding:
         13px 28px;
+
+    border:
+        none;
+
+    border-radius:
+        10px;
 
     background:
         linear-gradient(
@@ -1183,85 +1500,63 @@ section h2::after {
         );
 
     color:
-        #211a1d;
+        #21191c;
 
-    border: none;
+    font-weight:
+        700;
 
-    border-radius: 10px;
-
-    font-weight: 700;
-
-    cursor: pointer;
+    cursor:
+        pointer;
 
     transition:
-        transform var(--transition),
-        background var(--transition);
+        transform var(--transition);
 }
 
 .partner button:hover {
+
     transform:
-        translateY(-2px);
-
-    background:
-        var(--pink-light);
+        translateY(-3px);
 }
 
 
-/* =========================================================
-   17. ABOUT / CONTACT
-   ========================================================= */
-
-.about-team {
-    max-width: 800px;
-
-    margin: auto;
-
-    text-align: center;
-}
-
-.about-team p,
-.contact p {
-    color:
-        var(--text-soft);
-
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   18. FOOTER
-   ========================================================= */
+/* ============================================================
+   20. FOOTER
+   ============================================================ */
 
 footer {
-    position: relative;
 
     padding:
-        50px 7%;
+        55px 7%;
 
-    background:
-        #080608;
+    text-align:
+        center;
 
     color:
-        var(--text-soft);
+        var(--muted);
 
-    text-align: center;
+    background:
+        #070608;
 
     border-top:
         1px solid
-        rgba(214, 174, 92, 0.20);
+        rgba(217, 181, 103, 0.18);
 }
 
 footer::before {
+
     content: "";
 
-    display: block;
+    display:
+        block;
 
-    width: 70px;
-    height: 2px;
+    width:
+        65px;
+
+    height:
+        2px;
 
     margin:
-        0 auto
-        25px;
+        0 auto 24px;
 
     background:
         linear-gradient(
@@ -1272,44 +1567,58 @@ footer::before {
 }
 
 footer h3 {
-    margin-bottom: 10px;
+
+    margin-bottom:
+        10px;
 
     color:
         var(--pink-light);
 }
 
 footer p {
+
     margin:
         7px 0;
 
     color:
-        var(--text-soft);
+        var(--muted);
 }
 
 footer a {
+
     color:
         var(--pink-light);
 
-    text-decoration: none;
+    text-decoration:
+        none;
 
     transition:
         color var(--transition);
 }
 
 footer a:hover {
+
     color:
         var(--gold-light);
 }
 
 
-/* =========================================================
-   19. HR
-   ========================================================= */
+/* ============================================================
+   21. GENERAL TEXT
+   ============================================================ */
+
+p {
+    color:
+        var(--text);
+}
 
 hr {
-    border: none;
 
-    height: 1px;
+    border:
+        none;
+
+    height:
+        1px;
 
     margin:
         40px 0;
@@ -1318,139 +1627,166 @@ hr {
         linear-gradient(
             90deg,
             transparent,
-            rgba(214, 174, 92, 0.35),
+            rgba(217, 181, 103, 0.30),
             transparent
         );
 }
 
 
-/* =========================================================
-   20. TEXT SELECTION
-   ========================================================= */
+/* ============================================================
+   22. SELECTION
+   ============================================================ */
 
 ::selection {
+
     background:
         var(--pink);
 
     color:
-        #211a1d;
+        #21191c;
 }
 
 
-/* =========================================================
-   21. SCROLLBAR
-   ========================================================= */
+/* ============================================================
+   23. SCROLLBAR
+   ============================================================ */
 
 ::-webkit-scrollbar {
-    width: 9px;
+    width:
+        9px;
 }
 
 ::-webkit-scrollbar-track {
+
     background:
-        var(--black);
+        #08070a;
 }
 
 ::-webkit-scrollbar-thumb {
+
     background:
         linear-gradient(
             var(--pink),
             var(--gold)
         );
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 }
 
 
-/* =========================================================
-   22. TABLET
-   ========================================================= */
+/* ============================================================
+   24. TABLET
+   ============================================================ */
 
 @media (max-width: 1000px) {
 
     header {
+
         padding:
-            12px 4%;
+            10px 4%;
     }
 
     nav a {
+
         padding:
             7px 9px;
 
-        font-size: 13px;
+        font-size:
+            13px;
     }
 
     .category-grid,
     .news-grid {
+
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
 
     .stats-grid {
+
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
 }
 
 
-/* =========================================================
-   23. MOBILE / TABLET
-   ========================================================= */
+/* ============================================================
+   25. TABLET / MOBILE
+   ============================================================ */
 
 @media (max-width: 768px) {
 
     header {
-        position: relative;
 
-        flex-direction: column;
+        position:
+            relative;
 
-        justify-content: center;
+        flex-direction:
+            column;
 
-        gap: 12px;
+        justify-content:
+            center;
+
+        gap:
+            8px;
 
         padding:
-            14px 5%;
+            12px 4%;
     }
 
     .brand {
-        justify-content: center;
+
+        justify-content:
+            center;
     }
 
     .logo img {
-        width: 54px;
-        height: 48px;
+
+        width:
+            68px;
+
+        height:
+            60px;
     }
 
     .site-title {
-        font-size: 18px;
+
+        font-size:
+            18px;
     }
 
     nav {
-        width: 100%;
+
+        width:
+            100%;
     }
 
     nav ul {
-        justify-content: center;
 
-        gap: 3px 5px;
+        justify-content:
+            center;
+
+        gap:
+            3px 5px;
     }
 
     nav a {
+
         padding:
             6px 8px;
 
-        font-size: 12px;
-    }
-
-    nav a::after {
-        left: 8px;
-        right: 8px;
+        font-size:
+            12px;
     }
 
 
     /* Hero */
 
     .hero {
-        min-height: 570px;
+
+        min-height:
+            590px;
 
         padding:
             75px 18px
@@ -1458,26 +1794,31 @@ hr {
     }
 
     .hero h1 {
-        font-size:
-            clamp(34px, 8vw, 48px);
 
-        letter-spacing:
-            -0.8px;
+        font-size:
+            clamp(31px, 8vw, 45px);
     }
 
     .hero p {
-        max-width: 600px;
 
-        font-size: 15px;
+        font-size:
+            15px;
     }
 
-    .hero-buttons {
-        flex-direction: column;
 
-        gap: 10px;
+    /* Buttons */
+
+    .hero-buttons {
+
+        flex-direction:
+            column;
+
+        gap:
+            10px;
     }
 
     .hero-buttons a {
+
         width:
             min(290px, 90%);
     }
@@ -1486,14 +1827,9 @@ hr {
     /* Sections */
 
     section {
+
         padding:
-            65px 5%;
-    }
-
-    section h2 {
-        font-size: 29px;
-
-        margin-bottom: 35px;
+            70px 5%;
     }
 
 
@@ -1501,97 +1837,108 @@ hr {
 
     .category-grid,
     .news-grid {
+
         grid-template-columns:
             1fr;
 
-        gap: 16px;
-    }
-
-    .card {
-        min-height: 175px;
+        gap:
+            17px;
     }
 
 
     /* Stats */
 
     .stats-grid {
+
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
 
-        gap: 12px;
+        gap:
+            12px;
     }
 
     .stat-card {
+
         padding:
-            23px 10px;
+            24px 10px;
     }
 
     .stat-card h1 {
-        font-size: 29px;
-    }
 
-    .stat-card p {
-        font-size: 13px;
+        font-size:
+            29px;
     }
 
 
     /* Partner */
 
     .partner form {
+
         padding:
-            23px 18px;
+            25px 18px;
     }
 }
 
 
-/* =========================================================
-   24. SMALL PHONES
-   ========================================================= */
+/* ============================================================
+   26. SMALL PHONES
+   ============================================================ */
 
 @media (max-width: 480px) {
 
-    header {
-        padding:
-            13px 4%;
-    }
-
     .logo img {
-        width: 50px;
-        height: 45px;
+
+        width:
+            62px;
+
+        height:
+            55px;
     }
 
     .site-title {
-        font-size: 16px;
+
+        font-size:
+            16px;
     }
 
     nav ul {
+
         gap:
-            2px 2px;
+            2px;
     }
 
     nav a {
+
         padding:
             5px 6px;
 
-        font-size: 11px;
+        font-size:
+            11px;
     }
 
 
     /* Hero */
 
     .hero {
-        min-height: 530px;
+
+        min-height:
+            540px;
 
         padding:
             60px 15px;
     }
 
     .hero h1 {
+
         font-size:
-            31px;
+            30px;
+
+        line-height:
+            1.15;
     }
 
     .hero p {
+
         font-size:
             14px;
 
@@ -1599,13 +1946,31 @@ hr {
             1.7;
     }
 
+
+    /* Search */
+
     .search-box {
-        width: 100%;
+
+        width:
+            94%;
+
+        margin-top:
+            28px;
+    }
+
+    .search-box::before {
+
+        width:
+            40px;
+
+        font-size:
+            21px;
     }
 
     .search-box input {
+
         padding:
-            13px 14px;
+            13px 12px 13px 3px;
 
         font-size:
             14px;
@@ -1615,37 +1980,31 @@ hr {
     /* Sections */
 
     section {
+
         padding:
-            55px 5%;
+            58px 5%;
     }
 
     section h2 {
+
         font-size:
             26px;
-    }
 
-
-    /* Category */
-
-    .card {
-        padding:
-            25px 18px;
+        margin-bottom:
+            35px;
     }
 
 
     /* Stats */
 
-    .stats-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
     .stat-card h1 {
+
         font-size:
             24px;
     }
 
     .stat-card p {
+
         font-size:
             11px;
     }
@@ -1654,32 +2013,36 @@ hr {
     /* News */
 
     .news-card {
+
         padding:
-            23px;
+            24px;
     }
 
 
     /* Footer */
 
     footer {
+
         padding:
-            40px 5%;
+            45px 5%;
     }
 }
 
 
-/* =========================================================
-   25. VERY SMALL PHONES
-   ========================================================= */
+/* ============================================================
+   27. EXTRA SMALL PHONES
+   ============================================================ */
 
 @media (max-width: 360px) {
 
     .site-title {
+
         font-size:
             15px;
     }
 
     nav a {
+
         padding:
             4px 5px;
 
@@ -1688,41 +2051,35 @@ hr {
     }
 
     .hero h1 {
+
         font-size:
-            28px;
+            27px;
     }
 
     .hero p {
+
         font-size:
             13px;
     }
 
     .stat-card h1 {
+
         font-size:
             21px;
-    }
-
-    .stat-card p {
-        font-size:
-            10px;
     }
 }
 
 
-/* =========================================================
-   26. REDUCED MOTION
-   ========================================================= */
+/* ============================================================
+   28. ACCESSIBILITY
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior:
-            auto;
-    }
 
     *,
     *::before,
     *::after {
+
         animation-duration:
             0.01ms !important;
 
