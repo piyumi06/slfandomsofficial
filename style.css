@@ -20,10 +20,10 @@ header{
     top:0;
 }
 
-.logo{
-    font-size:28px;
-    font-weight:bold;
-    color:#7c4dff;
+.logo img{
+    height: 60px;
+    width: auto;
+    display: block;
 }
 
 nav ul{
