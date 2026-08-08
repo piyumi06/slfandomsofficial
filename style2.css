@@ -2192,3 +2192,91 @@ hr {
     }
 }
 
+
+/* ============================================================
+   🔎 SEARCH BUTTON — FINAL DESIGN
+   ============================================================ */
+
+.search-box button {
+
+    height: 48px;
+
+    padding: 0 24px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2a9bd,
+            #d9b567
+        );
+
+    color: #21191c;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/* Hover */
+
+.search-box button:hover {
+
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.08);
+
+    box-shadow:
+        0 10px 25px
+        rgba(242, 169, 189, 0.20);
+}
+
+
+/* Click */
+
+.search-box button:active {
+
+    transform:
+        translateY(0)
+        scale(0.97);
+}
+
+
+/* ============================================================
+   📱 MOBILE SEARCH BUTTON
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    .search-box button {
+
+        height: 44px;
+
+        padding: 0 17px;
+
+        border-radius: 11px;
+
+        font-size: 13px;
+    }
+}
+
