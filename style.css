@@ -50,21 +50,7 @@ nav a{
     white-space: nowrap;
 }    
 
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:30px;
-}
 
-nav ul li a{
-    text-decoration:none;
-    color:white;
-    transition:0.3s;
-}
-
-nav ul li a:hover{
-    color:#7c4dff;
-}
 
 .dark-mode-btn{
     background:#7c4dff;
