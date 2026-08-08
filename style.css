@@ -3053,3 +3053,31 @@ footer {
     color: #B8B4AC;
     border-top: 1px solid #2A2E35;
 }
+
+
+/* ==============================
+   SLFN NAVIGATION
+   ============================== */
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: #D8D3C9;
+    text-decoration: none;
+    padding: 0 18px;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+/* Separating lines */
+nav a + a {
+    border-left: 1px solid rgba(201, 169, 110, 0.35);
+}
+
+/* Hover effect */
+nav a:hover {
+    color: #C9A96E;
+}
