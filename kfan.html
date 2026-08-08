@@ -1,6 +1,23 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
+         <style>
+.artists {
+    position: relative;
+    overflow: hidden;
+}
+
+.artists::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("slfn-logo.png.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 500px;
+    z-index: -1;
+}
+</style>
     </head>
 <body>
 
