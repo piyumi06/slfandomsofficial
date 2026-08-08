@@ -15,7 +15,7 @@ header{
     align-item: center;
     justify-content: space-between;
     padding:20px 8%;
-    background:#161b22;
+    background:black;
     
 }
 .brand{
@@ -3643,7 +3643,7 @@ header {
 
     padding: 12px 8%;
 
-    background: #181317;
+    background: black;
 
     border-bottom: 1px solid var(--border);
 
