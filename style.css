@@ -12,7 +12,7 @@ body{
 
 header{
     display:flex;
-    gap: 15px;
+    gap: 8px;
     align-item: center;
     padding:20px 8%;
     background:#161b22;
