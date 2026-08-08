@@ -12,13 +12,13 @@ body{
 
 header{
     display:flex;
-    justify-content:space-between;
-    align-items:center;
+    gap: 15px;
+    align-item: center;
     padding:20px 8%;
     background:#161b22;
-    position:sticky;
-    top:0;
+    
 }
+
 
 .logo img{
     height: 60px;
@@ -26,6 +26,11 @@ header{
     object-fit: contain;
     display: block;
 }
+
+.site-title{
+    margin-left:100px;
+    padding:0;
+}    
 
 nav ul{
     display:flex;
