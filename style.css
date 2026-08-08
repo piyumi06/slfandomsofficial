@@ -12,24 +12,42 @@ body{
 
 header{
     display:flex;
-    gap: 8px;
     align-item: center;
+    justify-content: space-between;
     padding:20px 8%;
     background:#161b22;
     
 }
-
+.brand{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}    
+    
 
 .logo img{
-    height: 60px;
-    width: 120px;
+    height: 55px;
+    width: 65px;
     object-fit: contain;
     display: block;
 }
 
 .site-title{
-    margin-left: 0;
+    margin: 0;
     padding: 0;
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}   
+
+nav{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a{
+    white-space: nowrap;
 }    
 
 nav ul{
