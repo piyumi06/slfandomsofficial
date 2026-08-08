@@ -3764,32 +3764,24 @@ nav a:hover {
 
 .search-box {
     display: flex;
-
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-
+    width: 100%;
     max-width: 600px;
-
     margin: 30px auto;
-
     gap: 10px;
 }
 
 .search-box input {
-    flex: 1;
-
+    width: 470px;
+    max-width: 90%;
+    box-sizing: border-box;
     padding: 14px 18px;
-
     border-radius: 8px;
-
     border: 1px solid var(--pink);
-
     background: #FFF8F5;
-
-    color: #211A1E;
-
-    font-size: 15px;
 }
-
 .search-box input:focus {
     outline: none;
 
