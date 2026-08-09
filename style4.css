@@ -1,0 +1,1292 @@
+/* =========================================================
+   SL FANDOMS — T-POP PAGE
+   STYLE 4
+   Theme: Midnight Black • Dusty Pink • Champagne Gold
+   ========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+    --black: #08070a;
+    --black-soft: #100c10;
+    --black-card: #171016;
+
+    --pink: #f2a9bd;
+    --pink-light: #ffdce7;
+    --pink-soft: #e9a6b9;
+
+    --gold: #d9b567;
+    --gold-light: #f1d58f;
+
+    --white: #fffafd;
+    --text: #f4e9ee;
+    --muted: #c6b7bf;
+
+    --glass: rgba(35, 25, 32, 0.76);
+
+    --border: rgba(242, 169, 189, 0.20);
+    --border-hover: rgba(242, 169, 189, 0.60);
+
+    --shadow:
+        0 20px 55px rgba(0, 0, 0, 0.40);
+
+    --radius: 20px;
+
+    --transition: 0.35s ease;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    margin: 0;
+
+    color: var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(242, 169, 189, 0.08),
+            transparent 26%
+        ),
+
+        radial-gradient(
+            circle at 90% 25%,
+            rgba(217, 181, 103, 0.065),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            145deg,
+            #08070a,
+            #100b10 50%,
+            #08070a
+        );
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   3. SUBTLE GRID BACKGROUND
+   ========================================================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -5;
+
+    opacity: 0.35;
+
+    background-image:
+        linear-gradient(
+            rgba(242, 169, 189, 0.018) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(242, 169, 189, 0.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 65px 65px;
+}
+
+
+/* =========================================================
+   4. MAIN ARTISTS SECTION
+   ========================================================= */
+
+.artists {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding:
+        85px 6% 110px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   5. LOGO WATERMARK
+   ========================================================= */
+
+.artists::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("slfn-logo.png.jpeg");
+
+    background-repeat:
+        no-repeat;
+
+    background-position:
+        center 58%;
+
+    background-size:
+        500px;
+
+    opacity:
+        0.045;
+
+    filter:
+        grayscale(100%);
+
+    z-index:
+        -1;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   6. LOGO GLOW
+   ========================================================= */
+
+.artists::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+
+    height: 650px;
+
+    top: 150px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(242, 169, 189, 0.045),
+            transparent 68%
+        );
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   7. SECTION HEADINGS
+   ========================================================= */
+
+.artists > h2 {
+
+    position: relative;
+
+    max-width: 1100px;
+
+    margin:
+        0 auto 30px;
+
+    text-align:
+        center;
+
+    color:
+        var(--pink-light);
+
+    font-size:
+        clamp(28px, 4vw, 43px);
+
+    line-height:
+        1.2;
+
+    letter-spacing:
+        -0.5px;
+
+    text-shadow:
+        0 0 30px
+        rgba(242, 169, 189, 0.12);
+}
+
+
+/* Decorative heading line */
+
+.artists > h2::after {
+
+    content: "";
+
+    display: block;
+
+    width: 65px;
+
+    height: 3px;
+
+    margin:
+        17px auto 0;
+
+    border-radius:
+        30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink),
+            var(--gold)
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(242, 169, 189, 0.18);
+}
+
+
+/* =========================================================
+   8. CATEGORY GRID
+   ========================================================= */
+
+.category-grid {
+
+    width: min(1100px, 100%);
+
+    margin:
+        0 auto 75px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(240px, 1fr)
+        );
+
+    gap:
+        22px;
+}
+
+
+/* =========================================================
+   9. BL CATEGORY CARD
+   ========================================================= */
+
+.category-grid .card {
+
+    position: relative;
+
+    min-height: 190px;
+
+    padding:
+        30px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: var(--white);
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(49, 33, 42, 0.88),
+            rgba(23, 16, 21, 0.96)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    backdrop-filter:
+        blur(13px);
+
+    -webkit-backdrop-filter:
+        blur(13px);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+
+/* Category glow */
+
+.category-grid .card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+
+    height: 190px;
+
+    top: -110px;
+
+    right: -90px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(242, 169, 189, 0.15),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.category-grid .card:hover {
+
+    transform:
+        translateY(-9px);
+
+    border-color:
+        var(--border-hover);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(57, 38, 48, 0.94),
+            rgba(27, 19, 24, 0.98)
+        );
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.45),
+
+        0 0 25px
+        rgba(242, 169, 189, 0.06);
+}
+
+
+.category-grid .card:hover::before {
+
+    transform:
+        scale(1.55);
+}
+
+
+/* Category emoji */
+
+.category-grid .card span {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size:
+        38px;
+
+    margin-bottom:
+        12px;
+
+    filter:
+        drop-shadow(
+            0 5px 10px
+            rgba(0, 0, 0, 0.35)
+        );
+
+    transition:
+        transform var(--transition);
+}
+
+
+.category-grid .card:hover span {
+
+    transform:
+        scale(1.12)
+        rotate(-4deg);
+}
+
+
+/* Category title */
+
+.category-grid .card h3 {
+
+    position: relative;
+
+    z-index: 2;
+
+    color:
+        var(--pink-light);
+
+    font-size:
+        21px;
+
+    margin-bottom:
+        4px;
+}
+
+
+/* Category description */
+
+.category-grid .card p {
+
+    position: relative;
+
+    z-index: 2;
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+}
+
+
+/* =========================================================
+   10. T-POP HEADING
+   ========================================================= */
+
+.artists > h2:nth-of-type(2) {
+
+    margin-top:
+        20px;
+
+    margin-bottom:
+        40px;
+}
+
+
+/* =========================================================
+   11. ARTIST GRID
+   ========================================================= */
+
+.artist-grid {
+
+    width:
+        min(1200px, 100%);
+
+    margin:
+        0 auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        24px;
+}
+
+
+/* =========================================================
+   12. ARTIST CARD
+   ========================================================= */
+
+.artist-card {
+
+    position:
+        relative;
+
+    min-height:
+        215px;
+
+    padding:
+        30px 25px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    overflow:
+        hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(39, 28, 34, 0.90),
+            rgba(20, 14, 18, 0.97)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+
+/* Pink corner glow */
+
+.artist-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        200px;
+
+    height:
+        200px;
+
+    top:
+        -125px;
+
+    right:
+        -100px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(242, 169, 189, 0.13),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.55s ease;
+}
+
+
+/* Gold bottom glow */
+
+.artist-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        160px;
+
+    height:
+        160px;
+
+    bottom:
+        -115px;
+
+    left:
+        -100px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(217, 181, 103, 0.09),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.55s ease;
+}
+
+
+/* =========================================================
+   13. ARTIST CARD HOVER
+   ========================================================= */
+
+.artist-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        var(--border-hover);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(52, 36, 44, 0.96),
+            rgba(27, 19, 24, 0.98)
+        );
+
+    box-shadow:
+
+        0 27px 65px
+        rgba(0, 0, 0, 0.48),
+
+        0 0 25px
+        rgba(242, 169, 189, 0.055);
+}
+
+
+.artist-card:hover::before {
+
+    transform:
+        scale(1.6);
+}
+
+
+.artist-card:hover::after {
+
+    transform:
+        scale(1.5);
+}
+
+
+/* =========================================================
+   14. ARTIST TITLE
+   ========================================================= */
+
+.artist-card h3 {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    margin:
+        0 0 9px;
+
+    color:
+        var(--pink-light);
+
+    font-size:
+        21px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.35;
+
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+
+.artist-card:hover h3 {
+
+    color:
+        #fff2f6;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   15. ARTIST DESCRIPTION
+   ========================================================= */
+
+.artist-card p {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    max-width:
+        290px;
+
+    margin:
+        0 0 18px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   16. VISIT BUTTON
+   ========================================================= */
+
+.artist-card a {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-width:
+        105px;
+
+    padding:
+        9px 18px;
+
+    color:
+        var(--pink-light);
+
+    background:
+        rgba(242, 169, 189, 0.055);
+
+    border:
+        1px solid
+        rgba(242, 169, 189, 0.40);
+
+    border-radius:
+        10px;
+
+    text-decoration:
+        none;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+
+/* Available button */
+
+.artist-card a:hover {
+
+    transform:
+        translateY(-4px);
+
+    color:
+        #21191c;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--gold)
+        );
+
+    border-color:
+        transparent;
+
+    box-shadow:
+        0 10px 24px
+        rgba(242, 169, 189, 0.15);
+}
+
+
+/* =========================================================
+   17. "NOT AVAILABLE" BUTTON
+   ========================================================= */
+
+.artist-card a[href*="proxie"],
+.artist-card a[href*="perses"],
+.artist-card a[href*="pixxie"],
+.artist-card a[href*="4eve"],
+.artist-card a[href*="atlas"],
+.artist-card a[href*="dice"],
+.artist-card a[href*="mxfruit"],
+.artist-card a[href*="bamm"],
+.artist-card a[href*="viis"],
+.artist-card a[href*="alala"] {
+
+    color:
+        #a99da3;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border-color:
+        rgba(255, 255, 255, 0.12);
+
+    cursor:
+        default;
+}
+
+
+/* =========================================================
+   18. HOVER ONLY FOR REAL COMMUNITY
+   ========================================================= */
+
+.artist-card a[href*="lykn"]:hover,
+.artist-card a[href*="williamjkp"]:hover {
+
+    color:
+        #21191c;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--gold)
+        );
+
+    border-color:
+        transparent;
+}
+
+
+/* =========================================================
+   19. ARTIST CARD TOP ACCENT
+   ========================================================= */
+
+.artist-card h3::after {
+
+    content:
+        "";
+
+    display:
+        block;
+
+    width:
+        30px;
+
+    height:
+        2px;
+
+    margin:
+        8px auto 0;
+
+    border-radius:
+        20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink),
+            var(--gold)
+        );
+
+    opacity:
+        0.55;
+
+    transition:
+        width var(--transition),
+        opacity var(--transition);
+}
+
+
+.artist-card:hover h3::after {
+
+    width:
+        50px;
+
+    opacity:
+        1;
+}
+
+
+/* =========================================================
+   20. TEXT SELECTION
+   ========================================================= */
+
+::selection {
+
+    background:
+        var(--pink);
+
+    color:
+        #21191c;
+}
+
+
+/* =========================================================
+   21. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+
+    width:
+        9px;
+}
+
+::-webkit-scrollbar-track {
+
+    background:
+        #08070a;
+}
+
+::-webkit-scrollbar-thumb {
+
+    border-radius:
+        20px;
+
+    background:
+        linear-gradient(
+            var(--pink),
+            var(--gold)
+        );
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        linear-gradient(
+            var(--pink-light),
+            var(--gold-light)
+        );
+}
+
+
+/* =========================================================
+   22. TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .artists {
+
+        padding:
+            70px 5% 90px;
+    }
+
+    .artist-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            20px;
+    }
+}
+
+
+/* =========================================================
+   23. MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .artists {
+
+        padding:
+            60px 5% 75px;
+    }
+
+    .artists::before {
+
+        background-size:
+            330px;
+
+        background-position:
+            center 70%;
+    }
+
+    .artists > h2 {
+
+        font-size:
+            clamp(27px, 8vw, 38px);
+
+        margin-bottom:
+            25px;
+    }
+
+    .category-grid {
+
+        grid-template-columns:
+            1fr;
+
+        margin-bottom:
+            55px;
+
+        gap:
+            17px;
+    }
+
+    .category-grid .card {
+
+        min-height:
+            165px;
+
+        padding:
+            25px 20px;
+    }
+
+    .artist-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            17px;
+    }
+
+    .artist-card {
+
+        min-height:
+            200px;
+
+        padding:
+            27px 20px;
+    }
+}
+
+
+/* =========================================================
+   24. SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .artists {
+
+        padding:
+            50px 5% 65px;
+    }
+
+    .artists::before {
+
+        background-size:
+            250px;
+
+        opacity:
+            0.035;
+    }
+
+    .artists > h2 {
+
+        font-size:
+            28px;
+
+        line-height:
+            1.25;
+    }
+
+    .artists > h2::after {
+
+        width:
+            52px;
+
+        height:
+            2px;
+
+        margin-top:
+            14px;
+    }
+
+    .category-grid .card {
+
+        min-height:
+            155px;
+
+        border-radius:
+            17px;
+    }
+
+    .category-grid .card span {
+
+        font-size:
+            32px;
+    }
+
+    .category-grid .card h3 {
+
+        font-size:
+            19px;
+    }
+
+    .category-grid .card p {
+
+        font-size:
+            13px;
+    }
+
+    .artist-card {
+
+        min-height:
+            190px;
+
+        padding:
+            24px 17px;
+
+        border-radius:
+            17px;
+    }
+
+    .artist-card h3 {
+
+        font-size:
+            19px;
+    }
+
+    .artist-card p {
+
+        font-size:
+            13px;
+
+        max-width:
+            270px;
+    }
+
+    .artist-card a {
+
+        min-width:
+            100px;
+
+        padding:
+            8px 16px;
+
+        font-size:
+            12px;
+    }
+}
+
+
+/* =========================================================
+   25. EXTRA SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .artists > h2 {
+
+        font-size:
+            25px;
+    }
+
+    .artist-card {
+
+        padding:
+            22px 14px;
+    }
+
+    .artist-card h3 {
+
+        font-size:
+            18px;
+    }
+
+    .artist-card p {
+
+        font-size:
+            12px;
+    }
+}
+
+
+/* =========================================================
+   26. REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+}
