@@ -1,0 +1,1261 @@
+/* ============================================================
+   SL FANDOMS — K-POP COMMUNITIES
+   STYLE 3
+   Theme: Midnight Black • Dusty Pink • Champagne Gold
+   ============================================================ */
+
+
+/* ============================================================
+   1. VARIABLES
+   ============================================================ */
+
+:root {
+
+    --bg: #08070a;
+    --bg-2: #0f0b10;
+    --bg-3: #161017;
+
+    --pink: #f2a9bd;
+    --pink-light: #ffdce7;
+    --pink-soft: #f8c8d6;
+
+    --gold: #d9b567;
+    --gold-light: #f1d58f;
+
+    --white: #fffafd;
+    --text: #f3e9ee;
+    --muted: #c9bac1;
+
+    --card: rgba(35, 25, 32, 0.78);
+    --card-hover: rgba(48, 34, 43, 0.95);
+
+    --border: rgba(242, 169, 189, 0.20);
+    --border-hover: rgba(242, 169, 189, 0.60);
+
+    --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    --radius: 20px;
+
+    --transition: 0.35s ease;
+}
+
+
+/* ============================================================
+   2. RESET
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    min-height: 100vh;
+
+    color: var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(242, 169, 189, 0.08),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(217, 181, 103, 0.06),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 50% 80%,
+            rgba(242, 169, 189, 0.035),
+            transparent 30%
+        ),
+
+        var(--bg);
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ============================================================
+   3. PAGE BACKGROUND EFFECT
+   ============================================================ */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    background-image:
+
+        linear-gradient(
+            rgba(242, 169, 189, 0.018) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(242, 169, 189, 0.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
+}
+
+
+/* ============================================================
+   4. MAIN PAGE CONTAINER
+   ============================================================ */
+
+main {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 85px 6% 100px;
+
+    position: relative;
+}
+
+
+/* ============================================================
+   5. PAGE HERO / INTRO
+   ============================================================ */
+
+main > h1 {
+
+    position: relative;
+
+    max-width: 950px;
+
+    margin: 0 auto 15px;
+
+    text-align: center;
+
+    color: var(--pink-light);
+
+    font-size:
+        clamp(34px, 5vw, 55px);
+
+    line-height: 1.15;
+
+    letter-spacing: -0.8px;
+
+    text-shadow:
+        0 0 35px
+        rgba(242, 169, 189, 0.12);
+}
+
+
+/* Decorative line under title */
+
+main > h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 70px;
+
+    height: 3px;
+
+    margin: 20px auto 0;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink),
+            var(--gold)
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(242, 169, 189, 0.20);
+}
+
+
+/* ============================================================
+   6. DESCRIPTION
+   ============================================================ */
+
+main > p {
+
+    max-width: 700px;
+
+    margin: 0 auto 35px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+/* ============================================================
+   7. SEARCH AREA
+   ============================================================ */
+
+#artistSearch {
+
+    display: block;
+
+    width: min(680px, 92%);
+
+    height: 58px;
+
+    margin: 30px auto 55px;
+
+    padding:
+        0 22px;
+
+    border:
+        1px solid
+        rgba(242, 169, 189, 0.30);
+
+    border-radius: 16px;
+
+    outline: none;
+
+    color: var(--white);
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    box-shadow:
+
+        0 15px 45px
+        rgba(0, 0, 0, 0.30),
+
+        inset 0 0 25px
+        rgba(242, 169, 189, 0.025);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    font-size: 15px;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        transform var(--transition);
+}
+
+
+/* Search focus */
+
+#artistSearch:focus {
+
+    background:
+        rgba(255, 255, 255, 0.085);
+
+    border-color:
+        rgba(242, 169, 189, 0.75);
+
+    box-shadow:
+
+        0 0 0 4px
+        rgba(242, 169, 189, 0.055),
+
+        0 18px 50px
+        rgba(0, 0, 0, 0.40);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* Placeholder */
+
+#artistSearch::placeholder {
+
+    color: #b9aab1;
+
+    opacity: 1;
+}
+
+
+/* ============================================================
+   8. ARTIST GRID
+   ============================================================ */
+
+/*
+   Works whether your cards are inside:
+   .artist-grid
+   .artist-container
+   .artists
+   or directly inside main.
+*/
+
+.artist-grid {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+
+/* ============================================================
+   9. ARTIST CARD
+   ============================================================ */
+
+.artist-card {
+
+    position: relative;
+
+    min-height: 220px;
+
+    padding: 30px 25px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: var(--white);
+
+    text-decoration: none;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(45, 32, 41, 0.90),
+            rgba(24, 17, 22, 0.96)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+
+/* ============================================================
+   10. CARD GLOW
+   ============================================================ */
+
+.artist-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 210px;
+
+    height: 210px;
+
+    right: -115px;
+
+    top: -115px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(242, 169, 189, 0.13),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.55s ease,
+        opacity 0.55s ease;
+}
+
+
+/* Second decorative glow */
+
+.artist-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    left: -100px;
+
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(217, 181, 103, 0.10),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.55s ease;
+}
+
+
+/* ============================================================
+   11. CARD HOVER
+   ============================================================ */
+
+.artist-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(52, 37, 46, 0.96),
+            rgba(30, 21, 27, 0.98)
+        );
+
+    border-color:
+        var(--border-hover);
+
+    box-shadow:
+
+        0 25px 65px
+        rgba(0, 0, 0, 0.45),
+
+        0 0 25px
+        rgba(242, 169, 189, 0.055);
+}
+
+
+.artist-card:hover::before {
+
+    transform:
+        scale(1.6);
+}
+
+
+.artist-card:hover::after {
+
+    transform:
+        scale(1.5);
+}
+
+
+/* ============================================================
+   12. CARD IMAGE
+   ============================================================ */
+
+.artist-card img {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 115px;
+
+    height: 115px;
+
+    object-fit: cover;
+
+    margin-bottom: 18px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        rgba(242, 169, 189, 0.35);
+
+    box-shadow:
+
+        0 8px 25px
+        rgba(0, 0, 0, 0.35),
+
+        0 0 0 5px
+        rgba(242, 169, 189, 0.035);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+
+.artist-card:hover img {
+
+    transform:
+        scale(1.07);
+
+    border-color:
+        var(--pink);
+
+    box-shadow:
+
+        0 12px 30px
+        rgba(0, 0, 0, 0.45),
+
+        0 0 25px
+        rgba(242, 169, 189, 0.16);
+}
+
+
+/* ============================================================
+   13. CARD TITLE
+   ============================================================ */
+
+.artist-card h2,
+.artist-card h3 {
+
+    position: relative;
+
+    z-index: 3;
+
+    margin:
+        5px 0 8px;
+
+    color:
+        var(--pink-light);
+
+    font-size:
+        21px;
+
+    line-height: 1.3;
+
+    transition:
+        color var(--transition);
+}
+
+
+.artist-card:hover h2,
+.artist-card:hover h3 {
+
+    color:
+        #fff1f5;
+}
+
+
+/* ============================================================
+   14. CARD DESCRIPTION
+   ============================================================ */
+
+.artist-card p {
+
+    position: relative;
+
+    z-index: 3;
+
+    max-width: 300px;
+
+    margin: 0 auto 15px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   15. CARD LINKS
+   ============================================================ */
+
+.artist-card a {
+
+    position: relative;
+
+    z-index: 5;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 8px;
+
+    padding:
+        9px 18px;
+
+    color:
+        var(--pink-light);
+
+    background:
+        rgba(242, 169, 189, 0.055);
+
+    border:
+        1px solid
+        rgba(242, 169, 189, 0.38);
+
+    border-radius:
+        10px;
+
+    text-decoration:
+        none;
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+
+.artist-card a:hover {
+
+    transform:
+        translateY(-3px);
+
+    color:
+        #21191c;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--gold)
+        );
+
+    border-color:
+        transparent;
+
+    box-shadow:
+        0 8px 20px
+        rgba(242, 169, 189, 0.15);
+}
+
+
+/* ============================================================
+   16. ARTIST CARD BUTTONS
+   ============================================================ */
+
+.artist-card button {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 10px;
+
+    padding:
+        10px 20px;
+
+    border:
+        1px solid
+        var(--gold);
+
+    border-radius:
+        10px;
+
+    color:
+        #21191c;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold),
+            var(--gold-light)
+        );
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+}
+
+
+.artist-card button:hover {
+
+    transform:
+        translateY(-3px);
+
+    filter:
+        brightness(1.08);
+
+    box-shadow:
+        0 10px 25px
+        rgba(217, 181, 103, 0.18);
+}
+
+
+/* ============================================================
+   17. BACK TO HOME
+   ============================================================ */
+
+main > a[href*="index"] {
+
+    display: flex;
+
+    width: fit-content;
+
+    margin:
+        65px auto 0;
+
+    padding:
+        11px 22px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--pink-light);
+
+    background:
+        rgba(242, 169, 189, 0.045);
+
+    border:
+        1px solid
+        rgba(242, 169, 189, 0.35);
+
+    border-radius:
+        11px;
+
+    text-decoration:
+        none;
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+
+main > a[href*="index"]:hover {
+
+    transform:
+        translateY(-4px);
+
+    color:
+        #21191c;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--gold)
+        );
+
+    border-color:
+        transparent;
+
+    box-shadow:
+        0 12px 30px
+        rgba(242, 169, 189, 0.14);
+}
+
+
+/* ============================================================
+   18. IF ARTIST CARDS ARE DIRECT CHILDREN OF MAIN
+   ============================================================ */
+
+main > .artist-card {
+
+    width: min(1200px, 100%);
+
+    margin:
+        0 auto 22px;
+}
+
+
+/* ============================================================
+   19. EMPTY SEARCH STATE
+   ============================================================ */
+
+.no-results {
+
+    width:
+        min(600px, 90%);
+
+    margin:
+        35px auto;
+
+    padding:
+        25px;
+
+    text-align:
+        center;
+
+    color:
+        var(--muted);
+
+    background:
+        rgba(35, 25, 32, 0.75);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        15px;
+}
+
+
+/* ============================================================
+   20. SELECTION
+   ============================================================ */
+
+::selection {
+
+    background:
+        var(--pink);
+
+    color:
+        #21191c;
+}
+
+
+/* ============================================================
+   21. SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+
+    width:
+        9px;
+}
+
+::-webkit-scrollbar-track {
+
+    background:
+        #08070a;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background:
+        linear-gradient(
+            var(--pink),
+            var(--gold)
+        );
+
+    border-radius:
+        20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        linear-gradient(
+            var(--pink-light),
+            var(--gold-light)
+        );
+}
+
+
+/* ============================================================
+   22. TABLET
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+    main {
+
+        padding:
+            70px 5% 85px;
+    }
+
+    .artist-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:
+            20px;
+    }
+
+    main > h1 {
+
+        font-size:
+            clamp(32px, 6vw, 48px);
+    }
+}
+
+
+/* ============================================================
+   23. MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    main {
+
+        padding:
+            60px 5% 75px;
+    }
+
+    main > h1 {
+
+        font-size:
+            clamp(30px, 8vw, 43px);
+
+        line-height:
+            1.18;
+    }
+
+    main > p {
+
+        font-size:
+            15px;
+
+        line-height:
+            1.7;
+
+        margin-bottom:
+            28px;
+    }
+
+    #artistSearch {
+
+        width:
+            94%;
+
+        height:
+            55px;
+
+        margin:
+            25px auto 40px;
+
+        font-size:
+            14px;
+    }
+
+    .artist-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            17px;
+    }
+
+    .artist-card {
+
+        min-height:
+            205px;
+
+        padding:
+            28px 22px;
+    }
+
+    .artist-card img {
+
+        width:
+            100px;
+
+        height:
+            100px;
+    }
+
+    .artist-card h2,
+    .artist-card h3 {
+
+        font-size:
+            20px;
+    }
+
+    main > a[href*="index"] {
+
+        margin-top:
+            45px;
+    }
+}
+
+
+/* ============================================================
+   24. SMALL PHONES
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    main {
+
+        padding:
+            50px 5% 65px;
+    }
+
+    main > h1 {
+
+        font-size:
+            29px;
+
+        letter-spacing:
+            -0.4px;
+    }
+
+    main > h1::after {
+
+        width:
+            55px;
+
+        height:
+            2px;
+
+        margin-top:
+            16px;
+    }
+
+    main > p {
+
+        font-size:
+            14px;
+
+        line-height:
+            1.65;
+    }
+
+    #artistSearch {
+
+        width:
+            96%;
+
+        height:
+            53px;
+
+        padding:
+            0 16px;
+
+        border-radius:
+            14px;
+
+        font-size:
+            14px;
+    }
+
+    .artist-card {
+
+        min-height:
+            195px;
+
+        padding:
+            25px 18px;
+
+        border-radius:
+            17px;
+    }
+
+    .artist-card img {
+
+        width:
+            88px;
+
+        height:
+            88px;
+
+        margin-bottom:
+            14px;
+    }
+
+    .artist-card h2,
+    .artist-card h3 {
+
+        font-size:
+            18px;
+    }
+
+    .artist-card p {
+
+        font-size:
+            13px;
+    }
+
+    .artist-card a {
+
+        padding:
+            8px 15px;
+
+        font-size:
+            12px;
+    }
+
+    main > a[href*="index"] {
+
+        width:
+            90%;
+
+        margin-top:
+            40px;
+
+        padding:
+            10px 18px;
+
+        font-size:
+            13px;
+    }
+}
+
+
+/* ============================================================
+   25. EXTRA SMALL PHONES
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+    main > h1 {
+
+        font-size:
+            26px;
+    }
+
+    main > p {
+
+        font-size:
+            13px;
+    }
+
+    #artistSearch {
+
+        height:
+            50px;
+
+        font-size:
+            13px;
+    }
+
+    .artist-card {
+
+        padding:
+            22px 15px;
+    }
+
+    .artist-card img {
+
+        width:
+            78px;
+
+        height:
+            78px;
+    }
+
+    .artist-card h2,
+    .artist-card h3 {
+
+        font-size:
+            17px;
+    }
+}
+
+
+/* ============================================================
+   26. ACCESSIBILITY
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+}
