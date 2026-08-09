@@ -789,3 +789,188 @@ a[href*="index.html"]:hover {
         transition: none !important;
     }
 }
+/* =========================================================
+   📱 MOBILE PHONE BOOST
+   Makes K-POP / T-POP pages easier to read on phones
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Main page spacing */
+    main,
+    .artists {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        padding-top: 45px !important;
+        padding-bottom: 70px !important;
+    }
+
+
+    /* Main title */
+    h1 {
+        font-size: 34px !important;
+        line-height: 1.25 !important;
+        letter-spacing: -0.3px !important;
+    }
+
+
+    /* Description underneath title */
+    main > p,
+    .artists > p {
+        font-size: 16px !important;
+        line-height: 1.7 !important;
+
+        max-width: 95% !important;
+
+        margin-top: 18px !important;
+        margin-bottom: 30px !important;
+    }
+
+
+    /* Search box */
+    #artistSearch {
+        width: 100% !important;
+
+        height: 58px !important;
+
+        padding:
+            0 18px !important;
+
+        font-size: 16px !important;
+
+        border-radius: 15px !important;
+
+        margin:
+            25px auto 45px !important;
+    }
+
+
+    /* Section headings */
+    .artists h2 {
+        font-size: 29px !important;
+
+        margin-bottom: 30px !important;
+    }
+
+
+    /* Artist grid */
+    .artist-grid {
+        grid-template-columns: 1fr !important;
+
+        gap: 18px !important;
+    }
+
+
+    /* Artist cards */
+    .artist-card {
+        min-height: 175px !important;
+
+        padding:
+            25px 20px !important;
+
+        border-radius: 18px !important;
+    }
+
+
+    /* Artist names */
+    .artist-card h2,
+    .artist-card h3 {
+        font-size: 22px !important;
+
+        line-height: 1.4 !important;
+
+        margin-bottom: 9px !important;
+    }
+
+
+    /* Artist descriptions */
+    .artist-card p {
+        font-size: 15px !important;
+
+        line-height: 1.6 !important;
+
+        margin-bottom: 17px !important;
+    }
+
+
+    /* Visit buttons */
+    .artist-card a {
+        min-width: 90px !important;
+
+        height: 40px !important;
+
+        padding:
+            0 18px !important;
+
+        font-size: 14px !important;
+
+        border-radius: 10px !important;
+    }
+
+
+    /* Back to home */
+    a[href*="index.html"] {
+        font-size: 14px !important;
+
+        padding:
+            11px 20px !important;
+
+        margin-top: 45px !important;
+    }
+}
+
+
+/* =========================================================
+   📱 SMALLER PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    h1 {
+        font-size: 31px !important;
+    }
+
+
+    main > p,
+    .artists > p {
+        font-size: 15px !important;
+    }
+
+
+    #artistSearch {
+        height: 56px !important;
+
+        font-size: 15px !important;
+    }
+
+
+    .artists h2 {
+        font-size: 27px !important;
+    }
+
+
+    .artist-card {
+        min-height: 170px !important;
+
+        padding:
+            23px 18px !important;
+    }
+
+
+    .artist-card h2,
+    .artist-card h3 {
+        font-size: 21px !important;
+    }
+
+
+    .artist-card p {
+        font-size: 14px !important;
+    }
+
+
+    .artist-card a {
+        height: 39px !important;
+
+        font-size: 13px !important;
+    }
+}
