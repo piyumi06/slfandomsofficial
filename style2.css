@@ -2280,3 +2280,261 @@ hr {
     }
 }
 
+/* =========================================================
+   📱 INDEX.HTML — MOBILE TEXT & LAYOUT BOOST
+   Add this at the VERY BOTTOM of style.css
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* =========================
+       GENERAL PAGE
+       ========================= */
+
+    body {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+
+    /* =========================
+       MAIN HEADINGS
+       ========================= */
+
+    h1 {
+        font-size: 34px !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.3px !important;
+    }
+
+    h2 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+    }
+
+    h3 {
+        font-size: 21px !important;
+        line-height: 1.4 !important;
+    }
+
+
+    /* =========================
+       NORMAL TEXT
+       ========================= */
+
+    p {
+        font-size: 16px !important;
+        line-height: 1.75 !important;
+    }
+
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    nav a {
+        font-size: 15px !important;
+    }
+
+
+    /* =========================
+       HERO SECTION
+       ========================= */
+
+    .hero {
+        padding:
+            75px 20px 65px !important;
+
+        min-height:
+            70vh !important;
+    }
+
+    .hero h1 {
+        font-size:
+            38px !important;
+
+        line-height:
+            1.15 !important;
+    }
+
+    .hero p {
+        font-size:
+            17px !important;
+
+        line-height:
+            1.7 !important;
+
+        max-width:
+            95% !important;
+
+        margin-left:
+            auto !important;
+
+        margin-right:
+            auto !important;
+    }
+
+
+    /* =========================
+       HERO BUTTONS
+       ========================= */
+
+    .hero a,
+    .hero button {
+        font-size:
+            15px !important;
+
+        padding:
+            12px 20px !important;
+    }
+
+
+    /* =========================
+       SECTIONS
+       ========================= */
+
+    section {
+        padding:
+            55px 20px !important;
+    }
+
+
+    /* =========================
+       CARDS / GRIDS
+       ========================= */
+
+    .card,
+    .artist-card,
+    .category-card,
+    .feature-card {
+        padding:
+            23px 19px !important;
+    }
+
+
+    /* Card titles */
+
+    .card h3,
+    .artist-card h3,
+    .category-card h3,
+    .feature-card h3 {
+        font-size:
+            20px !important;
+    }
+
+
+    /* Card text */
+
+    .card p,
+    .artist-card p,
+    .category-card p,
+    .feature-card p {
+        font-size:
+            15px !important;
+
+        line-height:
+            1.65 !important;
+    }
+
+
+    /* =========================
+       SEARCH BOX
+       ========================= */
+
+    input,
+    textarea,
+    select {
+        font-size:
+            16px !important;
+    }
+
+
+    /* =========================
+       BUTTONS
+       ========================= */
+
+    button,
+    .btn,
+    .button {
+        font-size:
+            15px !important;
+
+        min-height:
+            42px !important;
+
+        padding:
+            10px 18px !important;
+    }
+
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+        padding:
+            35px 20px !important;
+
+        text-align:
+            center;
+    }
+
+    footer p {
+        font-size:
+            14px !important;
+
+        line-height:
+            1.7 !important;
+    }
+
+}
+
+
+/* =========================================================
+   📱 SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    h1 {
+        font-size:
+            31px !important;
+    }
+
+    h2 {
+        font-size:
+            26px !important;
+    }
+
+    h3 {
+        font-size:
+            20px !important;
+    }
+
+    p {
+        font-size:
+            15px !important;
+    }
+
+
+    .hero {
+        padding:
+            65px 16px 55px !important;
+    }
+
+    .hero h1 {
+        font-size:
+            34px !important;
+    }
+
+    .hero p {
+        font-size:
+            16px !important;
+    }
+
+
+    section {
+        padding:
+            48px 16px !important;
+    }
+}
