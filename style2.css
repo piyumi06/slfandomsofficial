@@ -2489,52 +2489,280 @@ hr {
 
 }
 
-
 /* =========================================================
-   📱 SMALL PHONES
+   📱 INDEX.HTML — STRONG MOBILE TEXT BOOST
+   Put this at the VERY BOTTOM of style.css
    ========================================================= */
 
-@media (max-width: 400px) {
+@media screen and (max-width: 600px) {
+
+    /* =========================
+       BASE TEXT
+       ========================= */
+
+    body {
+        font-size: 18px !important;
+        line-height: 1.8 !important;
+    }
+
+
+    /* =========================
+       ALL NORMAL PARAGRAPHS
+       ========================= */
+
+    p {
+        font-size: 18px !important;
+        line-height: 1.8 !important;
+    }
+
+
+    /* =========================
+       MAIN HEADINGS
+       ========================= */
 
     h1 {
-        font-size:
-            31px !important;
+        font-size: 42px !important;
+        line-height: 1.15 !important;
     }
 
     h2 {
-        font-size:
-            26px !important;
+        font-size: 34px !important;
+        line-height: 1.25 !important;
     }
 
     h3 {
-        font-size:
-            20px !important;
+        font-size: 25px !important;
+        line-height: 1.35 !important;
     }
 
-    p {
-        font-size:
-            15px !important;
+    h4 {
+        font-size: 21px !important;
     }
 
+
+    /* =========================
+       HERO
+       ========================= */
 
     .hero {
         padding:
-            65px 16px 55px !important;
+            90px 22px 80px !important;
+
+        min-height:
+            75vh !important;
+
+        text-align:
+            center !important;
     }
 
     .hero h1 {
         font-size:
-            34px !important;
+            44px !important;
+
+        line-height:
+            1.12 !important;
+
+        margin-bottom:
+            22px !important;
+    }
+
+    .hero h2 {
+        font-size:
+            32px !important;
     }
 
     .hero p {
         font-size:
-            16px !important;
+            19px !important;
+
+        line-height:
+            1.8 !important;
+
+        max-width:
+            100% !important;
     }
 
 
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    nav a {
+        font-size:
+            17px !important;
+    }
+
+
+    /* =========================
+       SECTION TEXT
+       ========================= */
+
     section {
         padding:
-            48px 16px !important;
+            65px 22px !important;
+    }
+
+    section p {
+        font-size:
+            18px !important;
+
+        line-height:
+            1.8 !important;
+    }
+
+
+    /* =========================
+       CARDS
+       ========================= */
+
+    .card,
+    .artist-card,
+    .category-card,
+    .feature-card {
+        padding:
+            28px 22px !important;
+    }
+
+
+    .card h3,
+    .artist-card h3,
+    .category-card h3,
+    .feature-card h3 {
+        font-size:
+            24px !important;
+
+        line-height:
+            1.35 !important;
+    }
+
+
+    .card p,
+    .artist-card p,
+    .category-card p,
+    .feature-card p {
+        font-size:
+            17px !important;
+
+        line-height:
+            1.7 !important;
+    }
+
+
+    /* =========================
+       LINKS
+       ========================= */
+
+    a {
+        font-size:
+            17px;
+    }
+
+
+    /* =========================
+       BUTTONS
+       ========================= */
+
+    button,
+    .btn,
+    .button {
+        font-size:
+            17px !important;
+
+        min-height:
+            48px !important;
+
+        padding:
+            12px 22px !important;
+    }
+
+
+    /* =========================
+       INPUTS
+       ========================= */
+
+    input,
+    textarea,
+    select {
+        font-size:
+            18px !important;
+
+        min-height:
+            50px !important;
+    }
+
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+        padding:
+            45px 22px !important;
+    }
+
+    footer p {
+        font-size:
+            16px !important;
+
+        line-height:
+            1.8 !important;
+    }
+
+    footer h3 {
+        font-size:
+            22px !important;
+    }
+}
+
+
+/* =========================================================
+   📱 VERY SMALL PHONES
+   ========================================================= */
+
+@media screen and (max-width: 400px) {
+
+    body {
+        font-size:
+            17px !important;
+    }
+
+    p {
+        font-size:
+            17px !important;
+    }
+
+    h1 {
+        font-size:
+            38px !important;
+    }
+
+    h2 {
+        font-size:
+            31px !important;
+    }
+
+    h3 {
+        font-size:
+            23px !important;
+    }
+
+    .hero {
+        padding:
+            80px 18px 70px !important;
+    }
+
+    .hero h1 {
+        font-size:
+            40px !important;
+    }
+
+    .hero p {
+        font-size:
+            18px !important;
+    }
+
+    section {
+        padding:
+            55px 18px !important;
     }
 }
