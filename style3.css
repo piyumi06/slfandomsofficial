@@ -4,11 +4,12 @@
    ========================================================== */
 
 
-/* =========================
+/* ==========================================================
    COLOR SYSTEM
-   ========================= */
+   ========================================================== */
 
 :root {
+
     --black: #070609;
     --black2: #0d0a0e;
     --black3: #151016;
@@ -32,9 +33,9 @@
 }
 
 
-/* =========================
+/* ==========================================================
    RESET
-   ========================= */
+   ========================================================== */
 
 * {
     box-sizing: border-box;
@@ -47,6 +48,7 @@ html {
 }
 
 body {
+
     margin: 0;
     padding: 0;
 
@@ -68,6 +70,7 @@ body {
             rgba(239, 166, 187, 0.10),
             transparent 35%
         ),
+
         linear-gradient(
             135deg,
             #070609 0%,
@@ -77,11 +80,12 @@ body {
 }
 
 
-/* =========================
+/* ==========================================================
    SUBTLE BACKGROUND
-   ========================= */
+   ========================================================== */
 
 body::before {
+
     content: "";
 
     position: fixed;
@@ -93,10 +97,12 @@ body::before {
     z-index: -1;
 
     background-image:
+
         linear-gradient(
             rgba(255,255,255,0.018) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(255,255,255,0.018) 1px,
@@ -107,13 +113,15 @@ body::before {
 }
 
 
-/* =========================
+/* ==========================================================
    MAIN PAGE
-   ========================= */
+   ========================================================== */
 
 main,
 .artists {
+
     width: 100%;
+
     max-width: 1350px;
 
     margin: 0 auto;
@@ -125,11 +133,12 @@ main,
 }
 
 
-/* =========================
+/* ==========================================================
    PAGE TITLE
-   ========================= */
+   ========================================================== */
 
 h1 {
+
     width: 100%;
 
     margin: 0 auto;
@@ -151,14 +160,16 @@ h1 {
 }
 
 
-/* little gold/pink line */
+/* TITLE LINE */
 
 h1::after {
+
     content: "";
 
     display: block;
 
     width: 55px;
+
     height: 3px;
 
     margin: 16px auto 0;
@@ -174,12 +185,13 @@ h1::after {
 }
 
 
-/* =========================
+/* ==========================================================
    INTRO TEXT
-   ========================= */
+   ========================================================== */
 
 main > p,
 .artists > p {
+
     max-width: 650px;
 
     margin: 16px auto 28px;
@@ -194,11 +206,12 @@ main > p,
 }
 
 
-/* =========================
+/* ==========================================================
    SEARCH
-   ========================= */
+   ========================================================== */
 
 #artistSearch {
+
     display: block;
 
     width: min(600px, 90%);
@@ -207,8 +220,7 @@ main > p,
 
     margin: 28px auto 55px;
 
-    padding:
-        0 20px;
+    padding: 0 20px;
 
     outline: none;
 
@@ -238,14 +250,14 @@ main > p,
         box-shadow var(--ease);
 }
 
-
 #artistSearch:hover {
+
     border-color:
         rgba(239,166,187,0.42);
 }
 
-
 #artistSearch:focus {
+
     border-color:
         var(--pink);
 
@@ -253,6 +265,7 @@ main > p,
         rgba(255,255,255,0.065);
 
     box-shadow:
+
         0 0 0 4px
         rgba(239,166,187,0.055),
 
@@ -260,17 +273,18 @@ main > p,
         rgba(0,0,0,0.4);
 }
 
-
 #artistSearch::placeholder {
+
     color: #a99aa2;
 }
 
 
-/* =========================
+/* ==========================================================
    ARTISTS SECTION TITLE
-   ========================= */
+   ========================================================== */
 
 .artists h2 {
+
     width: 100%;
 
     margin:
@@ -287,13 +301,14 @@ main > p,
     letter-spacing: 0.2px;
 }
 
-
 .artists h2::after {
+
     content: "";
 
     display: block;
 
     width: 38px;
+
     height: 2px;
 
     margin: 10px auto 0;
@@ -309,11 +324,12 @@ main > p,
 }
 
 
-/* =========================
+/* ==========================================================
    ARTIST GRID
-   ========================= */
+   ========================================================== */
 
 .artist-grid {
+
     width: 100%;
 
     max-width: 1100px;
@@ -329,11 +345,12 @@ main > p,
 }
 
 
-/* =========================
+/* ==========================================================
    ARTIST CARD
-   ========================= */
+   ========================================================== */
 
 .artist-card {
+
     position: relative;
 
     min-height: 155px;
@@ -378,11 +395,12 @@ main > p,
 }
 
 
-/* =========================
+/* ==========================================================
    CARD TOP GLOW
-   ========================= */
+   ========================================================== */
 
 .artist-card::before {
+
     content: "";
 
     position: absolute;
@@ -407,11 +425,12 @@ main > p,
 }
 
 
-/* =========================
+/* ==========================================================
    CARD BOTTOM GOLD GLOW
-   ========================= */
+   ========================================================== */
 
 .artist-card::after {
+
     content: "";
 
     position: absolute;
@@ -436,11 +455,12 @@ main > p,
 }
 
 
-/* =========================
+/* ==========================================================
    CARD HOVER
-   ========================= */
+   ========================================================== */
 
 .artist-card:hover {
+
     transform:
         translateY(-6px);
 
@@ -455,6 +475,7 @@ main > p,
         );
 
     box-shadow:
+
         0 18px 40px
         rgba(0,0,0,0.42),
 
@@ -462,25 +483,26 @@ main > p,
         rgba(239,166,187,0.045);
 }
 
-
 .artist-card:hover::before {
+
     transform:
         scale(1.5);
 }
 
-
 .artist-card:hover::after {
+
     transform:
         scale(1.4);
 }
 
 
-/* =========================
+/* ==========================================================
    ARTIST NAME
-   ========================= */
+   ========================================================== */
 
 .artist-card h2,
 .artist-card h3 {
+
     position: relative;
 
     z-index: 2;
@@ -504,19 +526,20 @@ main > p,
         color var(--ease);
 }
 
-
 .artist-card:hover h2,
 .artist-card:hover h3 {
+
     color:
         #fff3f7;
 }
 
 
-/* =========================
+/* ==========================================================
    CARD DESCRIPTION
-   ========================= */
+   ========================================================== */
 
 .artist-card p {
+
     position: relative;
 
     z-index: 2;
@@ -535,11 +558,12 @@ main > p,
 }
 
 
-/* =========================
+/* ==========================================================
    VISIT BUTTON
-   ========================= */
+   ========================================================== */
 
 .artist-card a {
+
     position: relative;
 
     z-index: 5;
@@ -547,6 +571,7 @@ main > p,
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     min-width: 76px;
@@ -581,8 +606,8 @@ main > p,
         border-color var(--ease);
 }
 
-
 .artist-card a:hover {
+
     transform:
         translateY(-2px);
 
@@ -605,11 +630,12 @@ main > p,
 }
 
 
-/* =========================
+/* ==========================================================
    BACK TO HOME
-   ========================= */
+   ========================================================== */
 
 a[href*="index.html"] {
+
     display: flex;
 
     width: fit-content;
@@ -646,8 +672,8 @@ a[href*="index.html"] {
         all var(--ease);
 }
 
-
 a[href*="index.html"]:hover {
+
     color:
         #1d1519;
 
@@ -666,20 +692,23 @@ a[href*="index.html"]:hover {
 }
 
 
-/* =========================
+/* ==========================================================
    SCROLLBAR
-   ========================= */
+   ========================================================== */
 
 ::-webkit-scrollbar {
+
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
+
     background:
         #070609;
 }
 
 ::-webkit-scrollbar-thumb {
+
     border-radius: 20px;
 
     background:
@@ -690,510 +719,400 @@ a[href*="index.html"]:hover {
 }
 
 
-/* =========================
+/* ==========================================================
    TABLET
-   ========================= */
+   ========================================================== */
 
-@media (max-width: 900px) {
+@media screen and (max-width: 1000px) {
 
     main,
     .artists {
+
         padding:
-            50px 28px 70px;
+            50px 30px 70px;
     }
 
     .artist-grid {
+
         grid-template-columns:
             repeat(2, 1fr);
+
+        gap: 18px;
     }
 }
 
 
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 600px) {
-
-    main,
-    .artists {
-        padding:
-            45px 16px 60px;
-    }
-
-    h1 {
-        font-size: 30px;
-    }
-
-    main > p,
-    .artists > p {
-        font-size: 14px;
-    }
-
-    #artistSearch {
-        width: 100%;
-
-        height: 50px;
-
-        margin-bottom: 40px;
-    }
-
-    .artist-grid {
-        grid-template-columns: 1fr;
-
-        gap: 14px;
-    }
-
-    .artist-card {
-        min-height: 145px;
-
-        padding: 20px 17px;
-    }
-
-    .artist-card h2,
-    .artist-card h3 {
-        font-size: 18px;
-    }
-
-    .artist-card p {
-        font-size: 12px;
-    }
-}
-
-
-/* =========================
-   SMALL PHONES
-   ========================= */
-
-@media (max-width: 380px) {
-
-    h1 {
-        font-size: 27px;
-    }
-
-    .artist-card {
-        min-height: 140px;
-    }
-}
-
-
-/* =========================
-   REDUCED MOTION
-   ========================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    * {
-        scroll-behavior: auto !important;
-
-        transition: none !important;
-    }
-}
-/* =========================================================
-   📱 MOBILE PHONE BOOST
-   Makes K-POP / T-POP pages easier to read on phones
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    /* Main page spacing */
-    main,
-    .artists {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        padding-top: 45px !important;
-        padding-bottom: 70px !important;
-    }
-
-
-    /* Main title */
-    h1 {
-        font-size: 34px !important;
-        line-height: 1.25 !important;
-        letter-spacing: -0.3px !important;
-    }
-
-
-    /* Description underneath title */
-    main > p,
-    .artists > p {
-        font-size: 16px !important;
-        line-height: 1.7 !important;
-
-        max-width: 95% !important;
-
-        margin-top: 18px !important;
-        margin-bottom: 30px !important;
-    }
-
-
-    /* Search box */
-    #artistSearch {
-        width: 100% !important;
-
-        height: 58px !important;
-
-        padding:
-            0 18px !important;
-
-        font-size: 16px !important;
-
-        border-radius: 15px !important;
-
-        margin:
-            25px auto 45px !important;
-    }
-
-
-    /* Section headings */
-    .artists h2 {
-        font-size: 29px !important;
-
-        margin-bottom: 30px !important;
-    }
-
-
-    /* Artist grid */
-    .artist-grid {
-        grid-template-columns: 1fr !important;
-
-        gap: 18px !important;
-    }
-
-
-    /* Artist cards */
-    .artist-card {
-        min-height: 175px !important;
-
-        padding:
-            25px 20px !important;
-
-        border-radius: 18px !important;
-    }
-
-
-    /* Artist names */
-    .artist-card h2,
-    .artist-card h3 {
-        font-size: 22px !important;
-
-        line-height: 1.4 !important;
-
-        margin-bottom: 9px !important;
-    }
-
-
-    /* Artist descriptions */
-    .artist-card p {
-        font-size: 15px !important;
-
-        line-height: 1.6 !important;
-
-        margin-bottom: 17px !important;
-    }
-
-
-    /* Visit buttons */
-    .artist-card a {
-        min-width: 90px !important;
-
-        height: 40px !important;
-
-        padding:
-            0 18px !important;
-
-        font-size: 14px !important;
-
-        border-radius: 10px !important;
-    }
-
-
-    /* Back to home */
-    a[href*="index.html"] {
-        font-size: 14px !important;
-
-        padding:
-            11px 20px !important;
-
-        margin-top: 45px !important;
-    }
-}
-
-
-/* =========================================================
-   📱 INDEX.HTML — STRONG MOBILE TEXT BOOST
-   Put this at the VERY BOTTOM of style.css
-   ========================================================= */
+/* ==========================================================
+   MOBILE — BIG & READABLE
+   ========================================================== */
 
 @media screen and (max-width: 600px) {
 
-    /* =========================
-       BASE TEXT
-       ========================= */
-
     body {
-        font-size: 18px !important;
-        line-height: 1.8 !important;
+
+        font-size: 17px;
+
+        line-height: 1.7;
     }
 
 
-    /* =========================
-       ALL NORMAL PARAGRAPHS
-       ========================= */
+    /* PAGE */
 
-    p {
-        font-size: 18px !important;
-        line-height: 1.8 !important;
+    main,
+    .artists {
+
+        width: 100%;
+
+        padding:
+            35px 14px 65px;
     }
 
 
-    /* =========================
-       MAIN HEADINGS
-       ========================= */
+    /* MAIN TITLE */
 
     h1 {
-        font-size: 42px !important;
-        line-height: 1.15 !important;
-    }
 
-    h2 {
-        font-size: 34px !important;
-        line-height: 1.25 !important;
-    }
-
-    h3 {
-        font-size: 25px !important;
-        line-height: 1.35 !important;
-    }
-
-    h4 {
-        font-size: 21px !important;
-    }
-
-
-    /* =========================
-       HERO
-       ========================= */
-
-    .hero {
-        padding:
-            90px 22px 80px !important;
-
-        min-height:
-            75vh !important;
-
-        text-align:
-            center !important;
-    }
-
-    .hero h1 {
         font-size:
-            44px !important;
+            38px;
 
         line-height:
-            1.12 !important;
+            1.2;
 
-        margin-bottom:
-            22px !important;
+        letter-spacing:
+            -0.5px;
     }
 
-    .hero h2 {
-        font-size:
-            32px !important;
+
+    /* TITLE LINE */
+
+    h1::after {
+
+        width:
+            60px;
+
+        height:
+            3px;
+
+        margin-top:
+            15px;
     }
 
-    .hero p {
-        font-size:
-            19px !important;
 
-        line-height:
-            1.8 !important;
+    /* INTRO TEXT */
+
+    main > p,
+    .artists > p {
+
+        width:
+            100%;
 
         max-width:
-            100% !important;
-    }
+            none;
 
-
-    /* =========================
-       NAVIGATION
-       ========================= */
-
-    nav a {
-        font-size:
-            17px !important;
-    }
-
-
-    /* =========================
-       SECTION TEXT
-       ========================= */
-
-    section {
         padding:
-            65px 22px !important;
-    }
+            0 5px;
 
-    section p {
+        margin:
+            18px auto 30px;
+
         font-size:
-            18px !important;
+            17px;
 
         line-height:
-            1.8 !important;
+            1.75;
     }
 
 
-    /* =========================
-       CARDS
-       ========================= */
+    /* SEARCH */
 
-    .card,
-    .artist-card,
-    .category-card,
-    .feature-card {
+    #artistSearch {
+
+        width:
+            100%;
+
+        height:
+            60px;
+
         padding:
-            28px 22px !important;
+            0 20px;
+
+        margin:
+            25px auto 45px;
+
+        font-size:
+            18px;
+
+        border-radius:
+            16px;
     }
 
 
-    .card h3,
-    .artist-card h3,
-    .category-card h3,
-    .feature-card h3 {
+    /* SECTION TITLE */
+
+    .artists h2 {
+
         font-size:
-            24px !important;
+            31px;
 
         line-height:
-            1.35 !important;
+            1.3;
+
+        margin:
+            10px auto 30px;
     }
 
 
-    .card p,
-    .artist-card p,
-    .category-card p,
-    .feature-card p {
+    /* GRID */
+
+    .artist-grid {
+
+        width:
+            100%;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            20px;
+    }
+
+
+    /* CARD */
+
+    .artist-card {
+
+        width:
+            100%;
+
+        min-height:
+            190px;
+
+        padding:
+            28px 22px;
+
+        border-radius:
+            20px;
+    }
+
+
+    /* CARD NAME */
+
+    .artist-card h2,
+    .artist-card h3 {
+
         font-size:
-            17px !important;
+            24px;
 
         line-height:
-            1.7 !important;
+            1.35;
+
+        margin-bottom:
+            10px;
     }
 
 
-    /* =========================
-       LINKS
-       ========================= */
+    /* CARD DESCRIPTION */
 
-    a {
+    .artist-card p {
+
         font-size:
+            16px;
+
+        line-height:
+            1.7;
+
+        margin-bottom:
+            18px;
+    }
+
+
+    /* BUTTON */
+
+    .artist-card a {
+
+        min-width:
+            105px;
+
+        height:
+            44px;
+
+        padding:
+            0 20px;
+
+        font-size:
+            15px;
+
+        border-radius:
+            12px;
+    }
+
+
+    /* BACK HOME */
+
+    a[href*="index.html"] {
+
+        font-size:
+            16px;
+
+        padding:
+            13px 22px;
+
+        margin-top:
+            45px;
+
+        border-radius:
+            12px;
+    }
+}
+
+
+/* ==========================================================
+   SMALL PHONES
+   ========================================================== */
+
+@media screen and (max-width: 380px) {
+
+    main,
+    .artists {
+
+        padding:
+            30px 12px 55px;
+    }
+
+
+    h1 {
+
+        font-size:
+            34px;
+
+        line-height:
+            1.2;
+    }
+
+
+    main > p,
+    .artists > p {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.7;
+    }
+
+
+    #artistSearch {
+
+        height:
+            58px;
+
+        font-size:
+            17px;
+
+        padding:
+            0 18px;
+    }
+
+
+    .artists h2 {
+
+        font-size:
+            28px;
+    }
+
+
+    .artist-grid {
+
+        gap:
             17px;
     }
 
 
-    /* =========================
-       BUTTONS
-       ========================= */
-
-    button,
-    .btn,
-    .button {
-        font-size:
-            17px !important;
+    .artist-card {
 
         min-height:
-            48px !important;
+            180px;
 
         padding:
-            12px 22px !important;
+            25px 19px;
     }
 
 
-    /* =========================
-       INPUTS
-       ========================= */
+    .artist-card h2,
+    .artist-card h3 {
 
-    input,
-    textarea,
-    select {
         font-size:
-            18px !important;
-
-        min-height:
-            50px !important;
+            22px;
     }
 
 
-    /* =========================
-       FOOTER
-       ========================= */
+    .artist-card p {
 
-    footer {
-        padding:
-            45px 22px !important;
-    }
-
-    footer p {
         font-size:
-            16px !important;
+            15px;
 
         line-height:
-            1.8 !important;
+            1.65;
     }
 
-    footer h3 {
+
+    .artist-card a {
+
+        height:
+            42px;
+
+        min-width:
+            100px;
+
         font-size:
-            22px !important;
+            14px;
     }
 }
 
 
-/* =========================================================
-   📱 VERY SMALL PHONES
-   ========================================================= */
+/* ==========================================================
+   TOUCH DEVICES
+   Prevent hover effects from feeling weird on phones
+   ========================================================== */
 
-@media screen and (max-width: 400px) {
+@media (hover: none) and (pointer: coarse) {
 
-    body {
-        font-size:
-            17px !important;
+    .artist-card:hover {
+
+        transform:
+            none;
+
+        border-color:
+            var(--border);
     }
 
-    p {
-        font-size:
-            17px !important;
+    .artist-card:hover::before,
+    .artist-card:hover::after {
+
+        transform:
+            none;
     }
 
-    h1 {
-        font-size:
-            38px !important;
-    }
+    .artist-card a:hover {
 
-    h2 {
-        font-size:
-            31px !important;
+        transform:
+            none;
     }
+}
 
-    h3 {
-        font-size:
-            23px !important;
-    }
 
-    .hero {
-        padding:
-            80px 18px 70px !important;
-    }
+/* ==========================================================
+   REDUCED MOTION
+   ========================================================== */
 
-    .hero h1 {
-        font-size:
-            40px !important;
-    }
+@media (prefers-reduced-motion: reduce) {
 
-    .hero p {
-        font-size:
-            18px !important;
-    }
+    * {
 
-    section {
-        padding:
-            55px 18px !important;
+        scroll-behavior:
+            auto !important;
+
+        transition:
+            none !important;
     }
 }
