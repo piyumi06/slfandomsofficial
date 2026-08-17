@@ -153,6 +153,20 @@ const fandoms = [
     keywords: "le sserafim lesserafim fearnots fearnots"
 },
 
+{
+    name: "ALPHA DRIVE ONE",
+    page: "ald1.html",
+    description: "Official Sri Lanka ALLYZ Community",
+    keywords: "lald1  allyz"
+},
+
+{
+    name: "&TEAM",
+    page: "andteam.html",
+    description: "Official Sri Lanka LUNÉ Community",
+    keywords: " andteam  lune"
+},    
+
 
 
 ];
