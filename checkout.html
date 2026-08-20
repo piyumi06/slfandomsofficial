@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Echo of Siam</title>
+
+    <link rel="stylesheet" href="ticketing.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SLFN</div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="event.html">Event</a>
+    </nav>
+</header>
+
+
+<main class="checkout-page">
+
+    <h1>Get Your Ticket</h1>
+
+    <p class="checkout-subtitle">
+        Echo of Siam — November 24
+    </p>
+
+
+    <form class="checkout-form">
+
+        <!-- CUSTOMER INFORMATION -->
+
+        <section class="checkout-section">
+
+            <h2>Your Information</h2>
+
+            <label for="name">Full Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label for="phone">Phone Number</label>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+        </section>
+
+
+        <!-- TICKET INFORMATION -->
+
+        <section class="checkout-section">
+
+            <h2>Ticket Details</h2>
+
+            <label for="ticket-type">
+                Ticket Type
+            </label>
+
+            <select id="ticket-type" name="ticket-type">
+
+                <option value="VIP">
+                    VIP Ticket — Rs. XXX
+                </option>
+
+                <option value="Regular">
+                    Regular Ticket — Rs. XXX
+                </option>
+
+            </select>
+
+
+            <label for="quantity">
+                Quantity
+            </label>
+
+            <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                max="10"
+                value="1"
+                required
+            >
+
+        </section>
+
+
+        <!-- PAYMENT -->
+
+        <section class="checkout-section">
+
+            <h2>Payment Method</h2>
+
+            <div class="payment-option">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="bank"
+                        required
+                    >
+
+                    Bank Transfer
+                </label>
+
+            </div>
+
+            <p class="payment-note">
+                After placing your order, you will receive
+                the bank transfer details and instructions
+                for submitting your payment proof.
+            </p>
+
+        </section>
+
+
+        <!-- ORDER SUMMARY -->
+
+        <section class="order-summary">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Ticket</span>
+                <span id="summary-ticket">VIP</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Quantity</span>
+                <span id="summary-quantity">1</span>
+            </div>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="total">Rs. XXX</span>
+            </div>
+
+        </section>
+
+
+        <button type="submit" class="checkout-button">
+            CONTINUE TO PAYMENT
+        </button>
+
+    </form>
+
+</main>
+
+
+<footer>
+    <p>© 2026 Sri Lankan Fandom Network</p>
+</footer>
+
+</body>
+</html>
