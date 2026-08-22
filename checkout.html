@@ -225,6 +225,24 @@
 <footer>
     <p>© 2026 Sri Lankan Fandom Network</p>
 </footer>
+    <script>
+    const quantityInput = document.getElementById("quantity");
+    const totalPrice = document.getElementById("totalPrice");
+
+    const ticketPrice = 2800;
+
+    function updateTotal() {
+        const quantity = Number(quantityInput.value) || 1;
+        const total = ticketPrice * quantity;
+
+        totalPrice.textContent =
+            "LKR " + total.toLocaleString("en-LK");
+    }
+
+    quantityInput.addEventListener("input", updateTotal);
+
+    updateTotal();
+</script>
 
 </body>
 </html>
