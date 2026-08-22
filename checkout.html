@@ -36,71 +36,124 @@
 >
 
      
+  <section class="checkout-section">
 
-        <section class="checkout-section">
+        <h2>Your Information</h2>
 
-            <h2>Your Information</h2>
+        <label for="name">Full Name</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            required
+        >
 
-            <label for="name">Full Name</label>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your full name"
-                required
-            >
+        <label for="email">Email Address</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
 
+        <label for="phone">Phone Number</label>
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+            required
+        >
 
-            <label for="email">Email Address</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-            >
-
-
-            <label for="phone">Phone Number</label>
-            <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Enter your phone number"
-                required
-            >
-
-        </section>
+    </section>
 
 
+    <!-- TICKET DETAILS -->
+    <section class="checkout-section">
 
-        <section class="checkout-section">
+        <h2>Ticket Details</h2>
 
-            <h2>Ticket Details</h2>
+        <label for="quantity">Number of Tickets</label>
 
+        <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            max="10"
+            value="1"
+            required
+        >
 
-            <label for="quantity">
-                Quantity
-            </label>
-
-            <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="10"
-                value="1"
-                required
-            >
-
-        </section>
+    </section>
 
 
-        <button type="submit" class="checkout-button">
-            Register
-        </button>
 
-    </form>
+    <section class="checkout-section">
+
+        <h2>💳 Bank Transfer Payment</h2>
+
+        <p>
+            Please transfer the total ticket amount to the bank account
+            below before submitting this form.
+        </p>
+
+        <div class="bank-details">
+
+            <p><strong>Bank:</strong> YOUR BANK NAME</p>
+
+            <p><strong>Account Name:</strong> SRI LANKAN FANDOM NETWORK</p>
+
+            <p><strong>Account Number:</strong> XXXX XXXX XXXX</p>
+
+            <p><strong>Branch:</strong> YOUR BRANCH</p>
+
+            <p><strong>Ticket Price:</strong> LKR XXX per ticket</p>
+
+        </div>
+
+
+        <label for="reference">
+            Transaction / Reference Number
+            <span>(if provided)</span>
+        </label>
+
+        <input
+            type="text"
+            id="reference"
+            name="reference"
+            placeholder="Enter your transaction/reference number"
+        >
+
+        <p class="payment-note">
+            If your bank does not provide a reference number,
+            you may leave this field blank.
+        </p>
+
+    </section>
+
+
+    <!-- IMPORTANT NOTICE -->
+    <section class="payment-notice">
+
+        <h3>⚠️ Payment Verification</h3>
+
+        <p>
+            Your registration will be reviewed after payment.
+            Your ticket will only be confirmed once the bank transfer
+            has been successfully verified by the SLFN team.
+        </p>
+
+    </section>
+
+
+    <button type="submit" class="checkout-button">
+        Submit Registration
+    </button>
+
+</form>
 
 </main>
 
