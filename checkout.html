@@ -33,14 +33,19 @@
     class="checkout-form"
     action="https://formspree.io/f/mnparvoj"
     method="POST"
+    enctype="multipart/form-data"
 >
 
-     
-  <section class="checkout-section">
+    <!-- ============================= -->
+    <!-- YOUR INFORMATION -->
+    <!-- ============================= -->
+
+    <section class="checkout-section">
 
         <h2>Your Information</h2>
 
         <label for="name">Full Name</label>
+
         <input
             type="text"
             id="name"
@@ -49,16 +54,20 @@
             required
         >
 
+
         <label for="email">Email Address</label>
+
         <input
             type="email"
             id="email"
             name="email"
-            placeholder="Enter your email"
+            placeholder="Enter your email address"
             required
         >
 
+
         <label for="phone">Phone Number</label>
+
         <input
             type="tel"
             id="phone"
@@ -70,12 +79,17 @@
     </section>
 
 
+    <!-- ============================= -->
     <!-- TICKET DETAILS -->
+    <!-- ============================= -->
+
     <section class="checkout-section">
 
-        <h2>Ticket Details</h2>
+        <h2>🎟️ Ticket Details</h2>
 
-        <label for="quantity">Number of Tickets</label>
+        <label for="quantity">
+            Number of Tickets
+        </label>
 
         <input
             type="number"
@@ -90,30 +104,51 @@
     </section>
 
 
+    <!-- ============================= -->
+    <!-- BANK TRANSFER PAYMENT -->
+    <!-- ============================= -->
 
     <section class="checkout-section">
 
         <h2>💳 Bank Transfer Payment</h2>
 
-        <p>
-            Please transfer the total ticket amount to the bank account
-            below before submitting this form.
+        <p class="payment-intro">
+            Please complete the bank transfer using the details below
+            before submitting your registration.
         </p>
+
 
         <div class="bank-details">
 
-            <p><strong>Bank:</strong> YOUR BANK NAME</p>
+            <p>
+                <strong>Bank:</strong>
+                YOUR BANK NAME
+            </p>
 
-            <p><strong>Account Name:</strong> SRI LANKAN FANDOM NETWORK</p>
+            <p>
+                <strong>Account Name:</strong>
+                SRI LANKAN FANDOM NETWORK
+            </p>
 
-            <p><strong>Account Number:</strong> XXXX XXXX XXXX</p>
+            <p>
+                <strong>Account Number:</strong>
+                XXXX XXXX XXXX
+            </p>
 
-            <p><strong>Branch:</strong> YOUR BRANCH</p>
+            <p>
+                <strong>Branch:</strong>
+                YOUR BRANCH
+            </p>
 
-            <p><strong>Ticket Price:</strong> LKR XXX per ticket</p>
+            <p>
+                <strong>Ticket Price:</strong>
+                LKR XXX per ticket
+            </p>
 
         </div>
 
+
+        <!-- TRANSACTION REFERENCE -->
 
         <label for="reference">
             Transaction / Reference Number
@@ -132,29 +167,62 @@
             you may leave this field blank.
         </p>
 
-    </section>
 
+        <!-- PAYMENT RECEIPT -->
 
-    <!-- IMPORTANT NOTICE -->
-    <section class="payment-notice">
+        <label for="receipt">
+            Payment Receipt
+        </label>
 
-        <h3>⚠️ Payment Verification</h3>
+        <input
+            type="file"
+            id="receipt"
+            name="receipt"
+            accept="image/*,.pdf"
+            required
+        >
 
-        <p>
-            Your registration will be reviewed after payment.
-            Your ticket will only be confirmed once the bank transfer
-            has been successfully verified by the SLFN team.
+        <p class="payment-note">
+            Upload a screenshot or PDF of your bank transfer receipt.
         </p>
 
     </section>
 
 
-    <button type="submit" class="checkout-button">
+    <!-- ============================= -->
+    <!-- PAYMENT VERIFICATION -->
+    <!-- ============================= -->
+
+    <section class="payment-notice">
+
+        <h3>⚠️ Payment Verification</h3>
+
+        <p>
+            Submitting this form does not automatically confirm your ticket.
+            Your registration will be reviewed by the SLFN team after
+            your payment is verified.
+        </p>
+
+        <p>
+            Your ticket will be confirmed only after the bank transfer
+            has been successfully verified.
+        </p>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SUBMIT -->
+    <!-- ============================= -->
+
+    <button
+        type="submit"
+        class="checkout-button"
+    >
         Submit Registration
     </button>
 
 </form>
-
 </main>
 
 
