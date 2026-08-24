@@ -111,7 +111,101 @@ body::before {
 
     background-size: 55px 55px;
 }
+/* ==========================================================
+   SLFN HEADER
+   ========================================================== */
 
+header {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #070609 !important;
+    border-bottom: 1px solid rgba(239, 166, 187, 0.18);
+
+    position: relative;
+    z-index: 1000;
+}
+
+header .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+header .logo img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    display: block;
+}
+
+header .site-title {
+    color: #f8eef2;
+    font-size: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+header nav {
+    display: block;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+header nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+    padding: 9px 16px;
+
+    border: 1px solid rgba(239, 166, 187, 0.22);
+    border-radius: 10px;
+
+    color: #f8eef2;
+    background: rgba(255,255,255,0.025);
+
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #1d1519;
+    border-color: transparent;
+
+    background: linear-gradient(
+        135deg,
+        #efa6bb,
+        #d7b36b
+    );
+
+    transform: translateY(-2px);
+}
 
 /* ==========================================================
    MAIN PAGE
