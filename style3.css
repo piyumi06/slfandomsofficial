@@ -728,7 +728,7 @@ main > p,
    BACK TO HOME
    ========================================================== */
 
-a[href*="index.html"] {
+.back-home a { 
 
     display: flex;
 
@@ -766,7 +766,7 @@ a[href*="index.html"] {
         all var(--ease);
 }
 
-a[href*="index.html"]:hover {
+.back-home a:hover { 
 
     color:
         #1d1519;
@@ -1058,7 +1058,53 @@ a[href*="index.html"]:hover {
             12px;
     }
 }
+/* ==========================================================
+   MOBILE HEADER
+   ========================================================== */
 
+@media screen and (max-width: 700px) {
+
+    header {
+        padding: 12px 15px;
+
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    header .brand {
+        justify-content: center;
+    }
+
+    header .logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+    header .site-title {
+        font-size: 17px;
+    }
+
+    header nav {
+        width: 100%;
+    }
+
+    header nav ul {
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        gap: 7px;
+    }
+
+    header nav ul li a {
+        min-height: 38px;
+        padding: 8px 11px;
+
+        font-size: 12px;
+    }
+}
 
 /* ==========================================================
    SMALL PHONES
