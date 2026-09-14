@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Checkout | SLFN</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -47,9 +49,15 @@
             font-size: 20px;
         }
 
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
         label {
             display: block;
-            margin-top: 18px;
+            margin-top: 15px;
             margin-bottom: 7px;
             font-weight: bold;
         }
@@ -97,8 +105,11 @@
             color: #555;
             text-decoration: none;
         }
+
     </style>
+
 </head>
+
 
 <body>
 
@@ -108,18 +119,38 @@
 
         <h1>Checkout</h1>
 
+
+        <!-- EVENT -->
+
         <div class="event-name" id="eventName">
             Loading event...
         </div>
 
-        <label for="ticketType">Ticket Type</label>
+
+        <!-- TICKET -->
+
+        <h2>Ticket Details</h2>
+
+        <label for="ticketType">
+            Ticket Type
+        </label>
 
         <select id="ticketType">
-            <option value="2600">Early Bird — Rs. 2,600</option>
-            <option value="2800">Standard — Rs. 2,800</option>
+
+            <option value="2600">
+                Early Bird — Rs. 2,600
+            </option>
+
+            <option value="2800">
+                Standard — Rs. 2,800
+            </option>
+
         </select>
 
-        <label for="quantity">Quantity</label>
+
+        <label for="quantity">
+            Quantity
+        </label>
 
         <input
             type="number"
@@ -128,13 +159,67 @@
             value="1"
         >
 
+
+        <!-- CUSTOMER DETAILS -->
+
+        <h2>Customer Details</h2>
+
+
+        <label for="fullName">
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="fullName"
+            placeholder="Enter your full name"
+            required
+        >
+
+
+        <label for="email">
+            Email Address
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="example@email.com"
+            required
+        >
+
+
+        <label for="phone">
+            Phone Number
+        </label>
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="07XXXXXXXX"
+            required
+        >
+
+
+        <!-- TOTAL -->
+
         <div class="total">
-            Total: Rs. <span id="total">2600</span>
+
+            Total: Rs.
+            <span id="total">2,600</span>
+
         </div>
 
-        <button class="continue-btn" onclick="continueCheckout()">
-            Continue
+
+        <!-- CONTINUE -->
+
+        <button
+            class="continue-btn"
+            onclick="continueCheckout()"
+        >
+            Continue to Payment
         </button>
+
 
         <a href="events.html" class="back">
             ← Back to Events
@@ -145,14 +230,20 @@
 </div>
 
 
+
 <script>
 
-    // Get event ID from URL
-    const params = new URLSearchParams(window.location.search);
+    // GET EVENT FROM URL
 
-    const eventId = params.get("event");
+    const params =
+        new URLSearchParams(window.location.search);
 
-    // Temporary event data
+    const eventId =
+        params.get("event");
+
+
+    // TEMPORARY EVENT DATA
+
     const events = {
 
         "echoes-of-siam": {
@@ -166,7 +257,8 @@
     };
 
 
-    // Display event name
+    // SHOW EVENT NAME
+
     if (eventId && events[eventId]) {
 
         document.getElementById("eventName").textContent =
@@ -180,16 +272,23 @@
     }
 
 
-    // Calculate total
+
+    // CALCULATE TOTAL
+
     function updateTotal() {
 
         const price =
-            Number(document.getElementById("ticketType").value);
+            Number(
+                document.getElementById("ticketType").value
+            );
 
         const quantity =
-            Number(document.getElementById("quantity").value);
+            Number(
+                document.getElementById("quantity").value
+            );
 
-        const total = price * quantity;
+        const total =
+            price * quantity;
 
         document.getElementById("total").textContent =
             total.toLocaleString();
@@ -197,32 +296,48 @@
     }
 
 
-    document.getElementById("ticketType")
+    document
+        .getElementById("ticketType")
         .addEventListener("change", updateTotal);
 
-    document.getElementById("quantity")
+
+    document
+        .getElementById("quantity")
         .addEventListener("input", updateTotal);
 
 
-    // Continue button
+
+    // CONTINUE
+
     function continueCheckout() {
 
-        const ticketType =
-            document.getElementById("ticketType").value;
+        const name =
+            document.getElementById("fullName").value;
 
-        const quantity =
-            document.getElementById("quantity").value;
+        const email =
+            document.getElementById("email").value;
 
-        const url =
-            `checkout.html?event=${eventId}&ticket=${ticketType}&quantity=${quantity}`;
+        const phone =
+            document.getElementById("phone").value;
 
-        console.log("Checkout:", url);
 
-        alert("Checkout information saved!");
+        if (!name || !email || !phone) {
+
+            alert("Please fill in all customer details.");
+
+            return;
+
+        }
+
+
+        alert(
+            "Customer details saved! Payment will be added next."
+        );
 
     }
 
 </script>
 
 </body>
+
 </html>
