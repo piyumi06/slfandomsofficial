@@ -188,7 +188,7 @@
 
             <p>Revenue: Rs. 0</p>
 
-            <button onclick="manageEvent()">
+            <button onclick="manageEvent('eos')">
                 Manage Event
             </button>
 
@@ -230,9 +230,9 @@
 
 <script>
 
-    function manageEvent() {
+    function manageEvent(eventID) {
 
-        window.location.href = "event-admin.html";
+        window.location.href = "event-admin.html?event=" + eventID;
 
     }
 
