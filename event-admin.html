@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Event | SLFN</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff7fb;
+            color: #333;
+        }
+
+        header {
+            background: #f4c542;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .ticket {
+            background: #fff1f7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #f4c542;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .add-ticket {
+            margin-top: 10px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #555;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>SLFN Admin</h1>
+
+</header>
+
+
+<div class="container">
+
+
+    <a href="admin.html" class="back">
+        ← Back to Dashboard
+    </a>
+
+
+    <!-- EVENT INFORMATION -->
+
+    <div class="box">
+
+        <h2>Event Information</h2>
+
+
+        <label>
+            Event Name
+        </label>
+
+        <input
+            type="text"
+            id="eventName"
+            value="Echoes of Siam 2026"
+        >
+
+
+        <label>
+            Date
+        </label>
+
+        <input
+            type="date"
+            id="eventDate"
+        >
+
+
+        <label>
+            Venue
+        </label>
+
+        <input
+            type="text"
+            id="venue"
+            placeholder="Enter venue"
+        >
+
+
+        <label>
+            Description
+        </label>
+
+        <textarea
+            id="description"
+            placeholder="Enter event description"
+        ></textarea>
+
+    </div>
+
+
+
+    <!-- TICKETS -->
+
+    <div class="box">
+
+        <h2>Ticket Types</h2>
+
+
+        <div class="ticket">
+
+            <label>
+                Ticket Name
+            </label>
+
+            <input
+                type="text"
+                value="Early Bird"
+            >
+
+
+            <label>
+                Price (Rs.)
+            </label>
+
+            <input
+                type="number"
+                value="2600"
+            >
+
+        </div>
+
+
+        <div class="ticket">
+
+            <label>
+                Ticket Name
+            </label>
+
+            <input
+                type="text"
+                value="Standard"
+            >
+
+
+            <label>
+                Price (Rs.)
+            </label>
+
+            <input
+                type="number"
+                value="2800"
+            >
+
+        </div>
+
+
+        <button
+            class="add-ticket"
+            onclick="addTicket()"
+        >
+            + Add Ticket Type
+        </button>
+
+    </div>
+
+
+
+    <!-- SAVE -->
+
+    <div class="box">
+
+        <button onclick="saveEvent()">
+            Save Event
+        </button>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+    function addTicket() {
+
+        alert(
+            "Ticket type creation will be connected to the database later."
+        );
+
+    }
+
+
+    function saveEvent() {
+
+        alert(
+            "Event saved! Database connection will be added later."
+        );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
