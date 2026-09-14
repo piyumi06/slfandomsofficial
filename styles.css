@@ -306,25 +306,61 @@ body {
 }
 
 
+
 /* =========================================
    PAST EVENTS
 ========================================= */
 
 .past-events {
     text-align: center;
-
     padding-top: 20px;
 }
 
 .past-events h2 {
     color: #f5c7d9;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
 
-    font-size: 30
+.past-events h2::after {
+    content: "";
+
+    display: block;
+
+    width: 60px;
+    height: 4px;
+
+    margin: 15px auto 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #f4a9c8,
+        #f4c85f
+    );
+}
+
+.past-events-container {
+    min-height: 100px;
+
+    margin-top: 35px;
+
+    border: 1px dashed rgba(245, 174, 204, 0.2);
+
+    border-radius: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #81757e;
+
+    font-size: 14px;
+}
 
 
-
-
-   /* =========================================
+/* =========================================
    EVENT DETAILS PAGE
 ========================================= */
 
@@ -385,28 +421,22 @@ body {
 
 .event-label {
     color: #f1c66b;
-
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
-
     margin-bottom: 12px;
 }
 
 .event-hero-content h1 {
     color: #f5c7d9;
-
     font-size: 40px;
-
     margin-bottom: 18px;
 }
 
 .event-hero-content .event-date,
 .event-hero-content .event-location {
     color: #d8cdd2;
-
     font-size: 15px;
-
     margin-bottom: 8px;
 }
 
@@ -418,18 +448,13 @@ body {
 .event-information {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     gap: 35px;
 }
-
-
-/* ABOUT */
 
 .event-details {
     padding: 30px;
 
-    background:
-        rgba(30, 21, 27, 0.9);
+    background: rgba(30, 21, 27, 0.9);
 
     border: 1px solid rgba(245, 174, 204, 0.2);
 
@@ -439,9 +464,7 @@ body {
 .event-details h2,
 .ticket-section h2 {
     color: #f5c7d9;
-
     font-size: 26px;
-
     margin-bottom: 20px;
 }
 
@@ -467,7 +490,6 @@ body {
 
 .event-details p {
     color: #cfc5ca;
-
     font-size: 15px;
     line-height: 1.8;
 }
@@ -486,9 +508,6 @@ body {
     margin-bottom: 25px;
 }
 
-
-/* TICKET CARD */
-
 .ticket-card {
     display: flex;
 
@@ -498,7 +517,6 @@ body {
     gap: 20px;
 
     padding: 22px;
-
     margin-bottom: 18px;
 
     background:
@@ -519,43 +537,31 @@ body {
 
 .ticket-card:hover {
     transform: translateY(-3px);
-
     border-color: rgba(245, 198, 93, 0.5);
 }
 
 .ticket-info h3 {
     color: #f5d6e2;
-
     font-size: 18px;
-
     margin-bottom: 8px;
 }
 
 .ticket-price {
     color: #f3c65d;
-
     font-size: 20px;
     font-weight: 700;
-
     margin-bottom: 7px;
 }
 
 .ticket-info p:last-child {
     color: #aaa0a6;
-
     font-size: 13px;
 }
 
-
-/* BUY BUTTON */
-
 .ticket-card .event-button {
     width: auto;
-
     min-width: 105px;
-
     padding: 11px 18px;
-
     white-space: nowrap;
 }
 
@@ -566,15 +572,12 @@ body {
 
 .back-to-events {
     text-align: center;
-
     margin-top: 50px;
 }
 
 .back-to-events a {
     color: #f3b4cf;
-
     text-decoration: none;
-
     font-size: 14px;
 
     transition: color 0.3s ease;
@@ -613,12 +616,11 @@ body {
 
     .ticket-card {
         flex-direction: column;
-
         align-items: stretch;
     }
 
     .ticket-card .event-button {
         width: 100%;
     }
-
 }
+
