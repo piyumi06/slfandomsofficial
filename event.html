@@ -177,6 +177,79 @@
         </p>
 
     </footer>
+    <script>
+
+    const events = {
+
+        event001: {
+            title: "Test Fandom Event 01",
+            date: "20 December 2026",
+            time: "10:00 AM",
+            location: "Colombo",
+            description: "This is our first test event for the SLFN ticketing system.",
+            regularPrice: 2800,
+            vipPrice: 4000
+        },
+
+        event002: {
+            title: "Test Fandom Event 02",
+            date: "15 January 2027",
+            time: "2:00 PM",
+            location: "Colombo",
+            description: "This is our second test event.",
+            regularPrice: 3000,
+            vipPrice: 4500
+        },
+
+        event003: {
+            title: "Test Fandom Event 03",
+            date: "10 February 2027",
+            time: "5:00 PM",
+            location: "Kandy",
+            description: "This is our third test event.",
+            regularPrice: 2500,
+            vipPrice: 3500
+        }
+
+    };
+
+
+    // Get the event ID from the URL
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const eventId = urlParams.get("id");
+
+
+    // Find the event
+
+    const event = events[eventId];
+
+
+    // If the event exists, display its information
+
+    if (event) {
+
+        document.querySelector(".event-hero-content h1").textContent = event.title;
+
+        document.querySelector(".event-date").textContent =
+            event.date + " • " + event.time;
+
+        document.querySelector(".event-location").textContent =
+            event.location;
+
+        document.querySelector(".event-details p").textContent =
+            event.description;
+
+        document.querySelectorAll(".ticket-price")[0].textContent =
+            "Rs. " + event.regularPrice.toLocaleString();
+
+        document.querySelectorAll(".ticket-price")[1].textContent =
+            "Rs. " + event.vipPrice.toLocaleString();
+
+    }
+
+</script>
 
 </body>
 </html>
