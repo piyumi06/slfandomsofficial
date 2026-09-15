@@ -200,6 +200,17 @@
         SUPABASE_KEY
     );
 </script>
+<script>
+    async function testSupabase() {
+        const { data, error } = await supabase
+            .from("events")
+            .select("*");
 
+        console.log("Supabase data:", data);
+        console.log("Supabase error:", error);
+    }
+
+    testSupabase();
+</script>
 </body>
 </html>
