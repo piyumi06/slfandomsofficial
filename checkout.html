@@ -437,66 +437,208 @@
     // CONTINUE
     // =========================
 
-    function continueCheckout() {
+async function continueCheckout() {
 
-        const name =
-            document.getElementById("fullName").value.trim();
+    const name =
+        document.getElementById("fullName").value.trim();
 
+    const email =
+        document.getElementById("email").value.trim();
 
-        const email =
-            document.getElementById("email").value.trim();
+    const phone =
+        document.getElementById("phone").value.trim();
 
-
-        const phone =
-            document.getElementById("phone").value.trim();
-
-
-        const quantity =
-            Number(
-                document.getElementById("quantity").value
-            );
-
-
-        if (!name || !email || !phone) {
-
-            alert(
-                "Please fill in all customer details."
-            );
-
-            return;
-        }
-
-
-        if (!selectedTicket) {
-
-            alert(
-                "Ticket information is not loaded."
-            );
-
-            return;
-        }
-
-
-        if (
-            quantity < 1 ||
-            quantity > selectedTicket.quantity
-        ) {
-
-            alert(
-                "Please enter a valid ticket quantity."
-            );
-
-            return;
-        }
-
-
-        alert(
-            "Customer details saved! Payment will be added next."
+    const quantity =
+        Number(
+            document.getElementById("quantity").value
         );
 
+
+    // Check customer details
+
+    if (!name || !email || !phone) {
+
+        alert(
+            "Please fill in all customer details."
+        );
+
+        return;
     }
 
 
+    // Check ticket
+
+    if (!selectedTicket) {
+
+        alert(
+            "Ticket information is not loaded."
+        );
+
+        return;
+    }
+
+
+    // Check quantity
+
+    if (
+        quantity < 1 ||
+        quantity > selectedTicket.quantity
+    ) {
+
+        alert(
+            "Please enter a valid ticket quantity."
+        );
+
+        return;
+    }
+
+
+    // Calculate total
+
+    const unitPrice =
+        Number(selectedTicket.price);
+
+    const totalAmount =
+        unitPrice * quantity;
+
+
+    // Disable button while saving
+
+    const button =
+        document.querySelector(".continue-btn");
+
+    button.disabled = true;
+
+    button.textContent =
+        "Creating Order...";
+
+
+    // =========================
+    // CREATE ORDER
+    // =========================
+
+    const { data: order, error: orderError } =
+        await supabaseClient
+
+            .from("orders")
+
+            .insert([{
+
+                event_id: selectedTicket.event_id,
+
+                customer_name: name,
+
+                customer_email: email,
+
+                customer_phone: phone,
+
+                total_amount: totalAmount,
+
+                payment_status: "pending",
+
+                payment_ref: null
+
+            }])
+
+            .select()
+
+            .single();
+
+
+    if (orderError) {
+
+        console.error(
+            "Error creating order:",
+            orderError
+        );
+
+        alert(
+            "Unable to create order. Please try again."
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+            "Continue to Payment";
+
+        return;
+    }
+
+
+    console.log(
+        "Order created:",
+        order
+    );
+
+
+    // =========================
+    // CREATE ORDER ITEM
+    // =========================
+
+    const { data: orderItem, error: itemError } =
+        await supabaseClient
+
+            .from("order_items")
+
+            .insert([{
+
+                order_id: order.id,
+
+                ticket_type_id:
+                    selectedTicket.id,
+
+                quantity: quantity,
+
+                unit_price: unitPrice
+
+            }])
+
+            .select()
+
+            .single();
+
+
+    if (itemError) {
+
+        console.error(
+            "Error creating order item:",
+            itemError
+        );
+
+        alert(
+            "Order was created, but the ticket information could not be saved."
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+            "Continue to Payment";
+
+        return;
+    }
+
+
+    console.log(
+        "Order item created:",
+        orderItem
+    );
+
+
+    // =========================
+    // TEMPORARY SUCCESS
+    // =========================
+
+    alert(
+        "Order created successfully! Payment will be added next."
+    );
+
+
+    console.log(
+        "Order ID:",
+        order.id
+    );
+
+}
     // START
 
     loadTicket();
