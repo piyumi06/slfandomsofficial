@@ -189,35 +189,37 @@
         </p>
 
     </footer>
-<script>
-    console.log("SLFN TEST: JavaScript is running!");
-</script>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-    console.log("SLFN TEST: Supabase script loaded!");
-    console.log("Supabase object:", window.supabase);
-
     const SUPABASE_URL = "https://ixjzimaqsgrpcwzidcgx.supabase.co";
     const SUPABASE_KEY = "sb_publishable_DKTtTNjxkbrsWzQYqm_EEA_2Q6TLzZI";
+
+    console.log("Step 1: Starting");
 
     const supabaseClient = window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY
     );
 
-    console.log("SLFN TEST: Supabase client created!");
+    console.log("Step 2: Client created");
 
     async function testSupabase() {
-        console.log("SLFN TEST: Testing events table...");
+
+        console.log("Step 3: Querying events table");
 
         const { data, error } = await supabaseClient
             .from("events")
             .select("*");
 
-        console.log("Supabase data:", data);
-        console.log("Supabase error:", error);
+        console.log("DATA:", data);
+        console.log("ERROR:", error);
+
+        if (error) {
+            console.error("Full error:", error);
+        } else {
+            console.log("SUCCESS! Supabase is connected.");
+        }
     }
 
     testSupabase();
