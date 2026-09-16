@@ -224,5 +224,44 @@
 
     testSupabase();
 </script>
+    <script>
+async function loadEvents() {
+
+    const { data, error } = await supabaseClient
+        .from("events")
+        .select("*")
+        .eq("status", "active");
+
+    console.log("Events from Supabase:", data);
+
+    if (error) {
+        console.error("Error:", error);
+        return;
+    }
+
+    const cards = document.querySelectorAll(".event-card");
+
+    data.forEach((event, index) => {
+
+        if (!cards[index]) return;
+
+        cards[index].querySelector("h2").textContent = event.title;
+
+        cards[index].querySelector(".event-date").textContent =
+            event.event_date + " • " + event.event_time;
+
+        cards[index].querySelector(".event-location").textContent =
+            event.venue;
+
+        cards[index].querySelector(".event-description").textContent =
+            event.description;
+
+        cards[index].querySelector(".event-button").href =
+            "event.html?id=" + event.id;
+    });
+}
+
+loadEvents();
+</script>
 </body>
 </html>
