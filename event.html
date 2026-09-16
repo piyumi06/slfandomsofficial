@@ -177,79 +177,75 @@
         </p>
 
     </footer>
-    <script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    const events = {
+<script>
 
-        event001: {
-            title: "Test Fandom Event 01",
-            date: "20 December 2026",
-            time: "10:00 AM",
-            location: "Colombo",
-            description: "This is our first test event for the SLFN ticketing system.",
-            regularPrice: 2800,
-            vipPrice: 4000
-        },
+    const SUPABASE_URL = "https://ixjzimaqsgrpcwzidcgx.supabase.co";
 
-        event002: {
-            title: "Test Fandom Event 02",
-            date: "15 January 2027",
-            time: "2:00 PM",
-            location: "Colombo",
-            description: "This is our second test event.",
-            regularPrice: 3000,
-            vipPrice: 4500
-        },
+    const SUPABASE_KEY =
+        "sb_publishable_DKTtTNjxkbrsWzQYqm_EEA_2Q6TLzZI";
 
-        event003: {
-            title: "Test Fandom Event 03",
-            date: "10 February 2027",
-            time: "5:00 PM",
-            location: "Kandy",
-            description: "This is our third test event.",
-            regularPrice: 2500,
-            vipPrice: 3500
-        }
-
-    };
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-    // Get the event ID from the URL
-
+    // Get event ID from the URL
     const urlParams = new URLSearchParams(window.location.search);
 
     const eventId = urlParams.get("id");
 
 
-    // Find the event
+    // Load the selected event
+    async function loadEvent() {
 
-    const event = events[eventId];
+        if (!eventId) {
+            console.error("No event ID found in URL.");
+            return;
+        }
 
 
-    // If the event exists, display its information
+        const { data: event, error } = await supabaseClient
+            .from("events")
+            .select("*")
+            .eq("id", eventId)
+            .single();
 
-    if (event) {
 
-        document.querySelector(".event-hero-content h1").textContent = event.title;
+        if (error) {
+            console.error("Error loading event:", error);
+            return;
+        }
+
+
+        console.log("Event loaded:", event);
+
+
+        // Display event information
+
+        document.querySelector(".event-hero-content h1").textContent =
+            event.title;
+
 
         document.querySelector(".event-date").textContent =
-            event.date + " • " + event.time;
+            event.event_date + " • " + event.event_time;
+
 
         document.querySelector(".event-location").textContent =
-            event.location;
+            event.venue;
+
 
         document.querySelector(".event-details p").textContent =
             event.description;
 
-        document.querySelectorAll(".ticket-price")[0].textContent =
-            "Rs. " + event.regularPrice.toLocaleString();
-
-        document.querySelectorAll(".ticket-price")[1].textContent =
-            "Rs. " + event.vipPrice.toLocaleString();
-
     }
 
-</script>
 
+    loadEvent();
+
+</script>
 </body>
 </html>
