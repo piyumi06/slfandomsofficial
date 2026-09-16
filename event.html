@@ -91,62 +91,15 @@
             <!-- =========================
                  TICKETS
             ========================== -->
+<div class="ticket-section">
 
-            <div class="ticket-section">
+    <h2>Tickets</h2>
 
-                <h2>Tickets</h2>
+    <div id="ticket-list">
+        <p>Loading tickets...</p>
+    </div>
 
-
-                <!-- REGULAR TICKET -->
-
-                <div class="ticket-card">
-
-                    <div class="ticket-info">
-
-                        <h3>Regular Ticket</h3>
-
-                        <p class="ticket-price">
-                            Rs. 2,800
-                        </p>
-
-                        <p>
-                            Standard entry to the event.
-                        </p>
-
-                    </div>
-
-                    <a href="checkout.html" class="event-button">
-                        Buy Now
-                    </a>
-
-                </div>
-
-
-                <!-- VIP TICKET -->
-
-                <div class="ticket-card">
-
-                    <div class="ticket-info">
-
-                        <h3>VIP Ticket</h3>
-
-                        <p class="ticket-price">
-                            Rs. 4,000
-                        </p>
-
-                        <p>
-                            VIP access to the event.
-                        </p>
-
-                    </div>
-
-                    <a href="checkout.html" class="event-button">
-                        Buy Now
-                    </a>
-
-                </div>
-
-            </div>
+</div>
 
         </section>
 
@@ -243,8 +196,85 @@
 
     }
 
+loadEvent();
+loadTicketTypes();
+    // Load ticket types for this event
+async function loadTicketTypes() {
 
-    loadEvent();
+    if (!eventId) {
+        return;
+    }
+
+    const { data: tickets, error } = await supabaseClient
+        .from("ticket_types")
+        .select("*")
+        .eq("event_id", eventId)
+        .order("price", { ascending: true });
+
+
+    if (error) {
+        console.error("Error loading ticket types:", error);
+
+        document.querySelector("#ticket-list").innerHTML =
+            "<p>Unable to load tickets.</p>";
+
+        return;
+    }
+
+
+    console.log("Ticket types loaded:", tickets);
+
+
+    const ticketList = document.querySelector("#ticket-list");
+
+    ticketList.innerHTML = "";
+
+
+    if (!tickets || tickets.length === 0) {
+
+        ticketList.innerHTML =
+            "<p>No tickets available for this event.</p>";
+
+        return;
+    }
+
+
+    tickets.forEach(ticket => {
+
+        const ticketCard = document.createElement("div");
+
+        ticketCard.className = "ticket-card";
+
+
+        ticketCard.innerHTML = `
+
+            <div class="ticket-info">
+
+                <h3>${ticket.name}</h3>
+
+                <p class="ticket-price">
+                    Rs. ${Number(ticket.price).toLocaleString()}
+                </p>
+
+                <p>
+                    ${ticket.quantity} tickets available.
+                </p>
+
+            </div>
+
+            <a href="checkout.html?ticket_id=${ticket.id}"
+               class="event-button">
+                Buy Now
+            </a>
+
+        `;
+
+
+        ticketList.appendChild(ticketCard);
+
+    });
+
+}
 
 </script>
 </body>
