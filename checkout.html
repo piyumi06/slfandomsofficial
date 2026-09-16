@@ -62,13 +62,23 @@
             font-weight: bold;
         }
 
-        select,
         input {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 16px;
+        }
+
+        .ticket-display {
+            background: #fff1f7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ticket-display p {
+            margin: 7px 0;
         }
 
         .total {
@@ -131,21 +141,31 @@
 
         <h2>Ticket Details</h2>
 
-        <label for="ticketType">
-            Ticket Type
-        </label>
+        <div class="ticket-display">
 
-        <select id="ticketType">
+            <p>
+                <strong>Ticket Type:</strong>
+                <span id="ticketName">
+                    Loading...
+                </span>
+            </p>
 
-            <option value="2600">
-                Early Bird — Rs. 2,600
-            </option>
+            <p>
+                <strong>Price:</strong>
+                Rs.
+                <span id="ticketPrice">
+                    0
+                </span>
+            </p>
 
-            <option value="2800">
-                Standard — Rs. 2,800
-            </option>
+            <p>
+                <strong>Available:</strong>
+                <span id="ticketAvailable">
+                    0
+                </span>
+            </p>
 
-        </select>
+        </div>
 
 
         <label for="quantity">
@@ -206,7 +226,9 @@
         <div class="total">
 
             Total: Rs.
-            <span id="total">2,600</span>
+            <span id="total">
+                0
+            </span>
 
         </div>
 
@@ -230,65 +252,172 @@
 </div>
 
 
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-    // GET EVENT FROM URL
+    // SUPABASE
+
+    const SUPABASE_URL =
+        "https://ixjzimaqsgrpcwzidcgx.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_DKTtTNjxkbrsWzQYqm_EEA_2Q6TLzZI";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    // GET TICKET ID FROM URL
 
     const params =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
 
-    const eventId =
-        params.get("event");
+    const ticketId =
+        params.get("ticket_id");
 
 
-    // TEMPORARY EVENT DATA
+    // STORE SELECTED TICKET
 
-    const events = {
+    let selectedTicket = null;
 
-        "echoes-of-siam": {
-            name: "Echoes of Siam 2026"
-        },
 
-        "test-event": {
-            name: "SLFN Test Event"
+    // =========================
+    // LOAD TICKET
+    // =========================
+
+    async function loadTicket() {
+
+        if (!ticketId) {
+
+            document.getElementById("eventName").textContent =
+                "Ticket not found";
+
+            return;
         }
 
-    };
+
+        const { data: ticket, error } =
+            await supabaseClient
+
+                .from("ticket_types")
+
+                .select("*")
+
+                .eq("id", ticketId)
+
+                .single();
 
 
-    // SHOW EVENT NAME
+        if (error) {
 
-    if (eventId && events[eventId]) {
+            console.error(
+                "Error loading ticket:",
+                error
+            );
+
+            document.getElementById("eventName").textContent =
+                "Unable to load ticket";
+
+            return;
+        }
+
+
+        selectedTicket = ticket;
+
+
+        console.log(
+            "Ticket loaded:",
+            ticket
+        );
+
+
+        // Show ticket information
+
+        document.getElementById("ticketName").textContent =
+            ticket.name;
+
+
+        document.getElementById("ticketPrice").textContent =
+            Number(ticket.price).toLocaleString();
+
+
+        document.getElementById("ticketAvailable").textContent =
+            ticket.quantity;
+
+
+        updateTotal();
+
+
+        // =========================
+        // LOAD EVENT
+        // =========================
+
+        const { data: event, error: eventError } =
+            await supabaseClient
+
+                .from("events")
+
+                .select("*")
+
+                .eq("id", ticket.event_id)
+
+                .single();
+
+
+        if (eventError) {
+
+            console.error(
+                "Error loading event:",
+                eventError
+            );
+
+            document.getElementById("eventName").textContent =
+                "Event not found";
+
+            return;
+        }
+
 
         document.getElementById("eventName").textContent =
-            events[eventId].name;
-
-    } else {
-
-        document.getElementById("eventName").textContent =
-            "Event not found";
+            event.title;
 
     }
 
 
-
+    // =========================
     // CALCULATE TOTAL
+    // =========================
 
     function updateTotal() {
 
+        if (!selectedTicket) {
+            return;
+        }
+
+
         const price =
-            Number(
-                document.getElementById("ticketType").value
-            );
+            Number(selectedTicket.price);
+
 
         const quantity =
             Number(
                 document.getElementById("quantity").value
             );
 
+
         const total =
             price * quantity;
+
 
         document.getElementById("total").textContent =
             total.toLocaleString();
@@ -297,36 +426,67 @@
 
 
     document
-        .getElementById("ticketType")
-        .addEventListener("change", updateTotal);
-
-
-    document
         .getElementById("quantity")
-        .addEventListener("input", updateTotal);
+        .addEventListener(
+            "input",
+            updateTotal
+        );
 
 
-
+    // =========================
     // CONTINUE
+    // =========================
 
     function continueCheckout() {
 
         const name =
-            document.getElementById("fullName").value;
+            document.getElementById("fullName").value.trim();
+
 
         const email =
-            document.getElementById("email").value;
+            document.getElementById("email").value.trim();
+
 
         const phone =
-            document.getElementById("phone").value;
+            document.getElementById("phone").value.trim();
+
+
+        const quantity =
+            Number(
+                document.getElementById("quantity").value
+            );
 
 
         if (!name || !email || !phone) {
 
-            alert("Please fill in all customer details.");
+            alert(
+                "Please fill in all customer details."
+            );
 
             return;
+        }
 
+
+        if (!selectedTicket) {
+
+            alert(
+                "Ticket information is not loaded."
+            );
+
+            return;
+        }
+
+
+        if (
+            quantity < 1 ||
+            quantity > selectedTicket.quantity
+        ) {
+
+            alert(
+                "Please enter a valid ticket quantity."
+            );
+
+            return;
         }
 
 
@@ -335,6 +495,11 @@
         );
 
     }
+
+
+    // START
+
+    loadTicket();
 
 </script>
 
