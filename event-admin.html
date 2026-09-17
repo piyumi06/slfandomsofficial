@@ -13,7 +13,6 @@
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
     <style>
 
         * {
@@ -119,7 +118,9 @@
             padding: 13px;
         }
 
-        /* TICKET */
+        /* =========================
+           TICKET TYPES
+        ========================= */
 
         .ticket {
             background: #fff1f7;
@@ -169,8 +170,6 @@
             margin-top: 5px;
         }
 
-        /* ADD TICKET */
-
         #addTicketForm {
             display: none;
             margin-top: 20px;
@@ -182,7 +181,14 @@
             border-radius: 12px;
         }
 
-        /* ORGANIZER */
+        .edit-form {
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* =========================
+           ORGANIZER
+        ========================= */
 
         .organizer-card {
             background: #fff8dc;
@@ -194,7 +200,89 @@
             margin: 7px 0;
         }
 
-        /* MESSAGES */
+        /* =========================
+           ORDERS
+        ========================= */
+
+        .order {
+            background: #fff1f7;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .order-number {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .order-date {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .order-info {
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+
+        .order-info strong {
+            font-weight: bold;
+        }
+
+        .order-ticket {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .order-total {
+            margin-top: 12px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status-paid {
+            background: #dff5e5;
+            color: #176b2c;
+        }
+
+        .status-pending {
+            background: #fff1c7;
+            color: #8a6500;
+        }
+
+        .status-failed {
+            background: #ffe0e0;
+            color: #a30000;
+        }
+
+        .status-other {
+            background: #e9e9e9;
+            color: #555;
+        }
+
+        /* =========================
+           MESSAGES
+        ========================= */
 
         .message {
             margin-top: 15px;
@@ -224,11 +312,6 @@
             padding: 10px 0;
         }
 
-        .edit-form {
-            margin-top: 15px;
-            display: none;
-        }
-
     </style>
 
 </head>
@@ -252,7 +335,9 @@
     </a>
 
 
-    <!-- EVENT HEADER -->
+    <!-- =========================
+         EVENT HEADER
+    ========================== -->
 
     <div class="event-title">
 
@@ -270,19 +355,25 @@
     </div>
 
 
-    <!-- LOADING -->
+    <!-- =========================
+         LOADING
+    ========================== -->
 
     <div id="loading" class="loading">
         Loading event...
     </div>
 
 
-    <!-- MAIN -->
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <div id="mainContent" style="display:none;">
 
 
-        <!-- EVENT INFORMATION -->
+        <!-- =========================
+             EVENT INFORMATION
+        ========================== -->
 
         <div class="box">
 
@@ -368,7 +459,9 @@
 
 
 
-        <!-- ORGANIZER -->
+        <!-- =========================
+             ORGANIZER
+        ========================== -->
 
         <div class="box">
 
@@ -386,7 +479,9 @@
 
 
 
-        <!-- TICKET TYPES -->
+        <!-- =========================
+             TICKET TYPES
+        ========================== -->
 
         <div class="box">
 
@@ -485,7 +580,30 @@
 
 
 
-        <!-- SAVE EVENT -->
+        <!-- =========================
+             ORDERS
+        ========================== -->
+
+        <div class="box">
+
+            <h2>Orders</h2>
+
+
+            <div id="ordersList">
+
+                <div class="empty">
+                    Loading orders...
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             SAVE EVENT
+        ========================== -->
 
         <div class="box">
 
@@ -588,9 +706,11 @@ async function loadEvent() {
 
 
         if (!event) {
+
             throw new Error(
                 "Event not found."
             );
+
         }
 
 
@@ -658,6 +778,11 @@ async function loadEvent() {
         /* TICKET TYPES */
 
         await loadTicketTypes();
+
+
+        /* ORDERS */
+
+        await loadOrders();
 
 
         /* SHOW */
@@ -956,6 +1081,392 @@ async function loadTicketTypes() {
 
 
         ticketList.appendChild(div);
+
+    });
+
+}
+
+
+
+/* =========================================
+   LOAD ORDERS
+========================================= */
+
+
+async function loadOrders() {
+
+    const ordersList =
+        document.getElementById(
+            "ordersList"
+        );
+
+
+    ordersList.innerHTML =
+        "<div class='empty'>Loading orders...</div>";
+
+
+    /* GET ORDERS FOR THIS EVENT */
+
+    const {
+        data: orders,
+        error: ordersError
+    } = await supabaseClient
+        .from("orders")
+        .select("*")
+        .eq("event_id", eventId)
+        .order("id", {
+            ascending: false
+        });
+
+
+    if (ordersError) {
+
+        console.error(ordersError);
+
+        ordersList.innerHTML =
+            "<div class='empty'>Unable to load orders: " +
+            escapeHTML(ordersError.message) +
+            "</div>";
+
+        return;
+    }
+
+
+    if (!orders || orders.length === 0) {
+
+        ordersList.innerHTML =
+            "<div class='empty'>No orders yet.</div>";
+
+        return;
+    }
+
+
+    /*
+       GET ORDER ITEMS
+       FOR THESE ORDERS
+    */
+
+    const orderIds =
+        orders.map(order => order.id);
+
+
+    const {
+        data: orderItems,
+        error: itemsError
+    } = await supabaseClient
+        .from("order_items")
+        .select("*")
+        .in("order_id", orderIds);
+
+
+    if (itemsError) {
+
+        console.error(itemsError);
+
+        ordersList.innerHTML =
+            "<div class='empty'>Unable to load order items: " +
+            escapeHTML(itemsError.message) +
+            "</div>";
+
+        return;
+    }
+
+
+    /*
+       GET TICKET TYPES
+    */
+
+    const ticketTypeIds =
+        [
+            ...new Set(
+                (orderItems || [])
+                    .map(item => item.ticket_type_id)
+                    .filter(id => id !== null)
+            )
+        ];
+
+
+    let ticketTypes = [];
+
+
+    if (ticketTypeIds.length > 0) {
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("ticket_types")
+            .select("*")
+            .in("id", ticketTypeIds);
+
+
+        if (error) {
+
+            console.error(error);
+
+            ordersList.innerHTML =
+                "<div class='empty'>Unable to load ticket information: " +
+                escapeHTML(error.message) +
+                "</div>";
+
+            return;
+        }
+
+
+        ticketTypes = data || [];
+
+    }
+
+
+    /*
+       CREATE LOOKUP
+    */
+
+    const ticketTypeMap = {};
+
+
+    ticketTypes.forEach(ticket => {
+
+        ticketTypeMap[ticket.id] =
+            ticket;
+
+    });
+
+
+    const itemsByOrder = {};
+
+
+    (orderItems || []).forEach(item => {
+
+        if (!itemsByOrder[item.order_id]) {
+
+            itemsByOrder[item.order_id] = [];
+
+        }
+
+
+        itemsByOrder[item.order_id].push(item);
+
+    });
+
+
+    /*
+       DISPLAY ORDERS
+    */
+
+    ordersList.innerHTML = "";
+
+
+    orders.forEach(order => {
+
+        const div =
+            document.createElement("div");
+
+
+        div.className = "order";
+
+
+        const status =
+            String(
+                order.payment_status || "unknown"
+            ).toLowerCase();
+
+
+        let statusClass =
+            "status-other";
+
+
+        if (status === "paid") {
+
+            statusClass =
+                "status-paid";
+
+        }
+
+        else if (status === "pending") {
+
+            statusClass =
+                "status-pending";
+
+        }
+
+        else if (
+            status === "failed" ||
+            status === "cancelled"
+        ) {
+
+            statusClass =
+                "status-failed";
+
+        }
+
+
+        const createdDate =
+            order.created_at
+                ? new Date(
+                    order.created_at
+                ).toLocaleString()
+                : "-";
+
+
+        const items =
+            itemsByOrder[order.id] || [];
+
+
+        let ticketHTML = "";
+
+
+        if (items.length === 0) {
+
+            ticketHTML =
+                "<div class='order-ticket'>No ticket items found.</div>";
+
+        }
+
+        else {
+
+            items.forEach(item => {
+
+                const ticket =
+                    ticketTypeMap[
+                        item.ticket_type_id
+                    ];
+
+
+                const ticketName =
+                    ticket
+                        ? ticket.name
+                        : "Unknown ticket";
+
+
+                ticketHTML += `
+
+                    <div class="order-ticket">
+
+                        <strong>
+                            ${escapeHTML(
+                                ticketName
+                            )}
+                        </strong>
+
+                        × ${Number(
+                            item.quantity || 0
+                        )}
+
+                        <br>
+
+                        <span>
+                            Unit price:
+                            Rs. ${Number(
+                                item.unit_price || 0
+                            ).toLocaleString()}
+                        </span>
+
+                    </div>
+
+                `;
+
+            });
+
+        }
+
+
+        div.innerHTML = `
+
+            <div class="order-header">
+
+                <div class="order-number">
+
+                    Order #${order.id}
+
+                </div>
+
+                <span
+                    class="status ${statusClass}">
+
+                    ${escapeHTML(
+                        order.payment_status || "Unknown"
+                    )}
+
+                </span>
+
+            </div>
+
+
+            <div class="order-date">
+
+                ${escapeHTML(
+                    createdDate
+                )}
+
+            </div>
+
+
+            <div class="order-info">
+
+                <strong>Customer:</strong>
+                ${escapeHTML(
+                    order.customer_name || "-"
+                )}
+
+                <br>
+
+
+                <strong>Email:</strong>
+                ${escapeHTML(
+                    order.customer_email || "-"
+                )}
+
+                <br>
+
+
+                <strong>Phone:</strong>
+                ${escapeHTML(
+                    order.customer_phone || "-"
+                )}
+
+            </div>
+
+
+            <div style="margin-top:15px;">
+
+                <strong>
+                    Tickets
+                </strong>
+
+                ${ticketHTML}
+
+            </div>
+
+
+            <div class="order-total">
+
+                Total:
+                Rs. ${Number(
+                    order.total_amount || 0
+                ).toLocaleString()}
+
+            </div>
+
+
+            <div
+                class="order-info"
+                style="margin-top:10px;">
+
+                <strong>
+                    Payment Reference:
+                </strong>
+
+                ${escapeHTML(
+                    order.payment_ref || "Not available"
+                )}
+
+            </div>
+
+        `;
+
+
+        ordersList.appendChild(div);
 
     });
 
