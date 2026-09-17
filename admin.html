@@ -287,98 +287,94 @@
     // LOAD ORDERS
     // ==========================================
 
-    async function loadOrders() {
+  async function loadStats() {
 
-        const ordersList =
-            document.getElementById("ordersList");
-
-
-        const { data, error } = await supabaseClient
-            .from("orders")
-            .select("*")
-            .order("created_at", {
-                ascending: false
-            });
+    // Get all order items
+    const { data: items, error: itemsError } =
+        await supabaseClient
+            .from("order_items")
+            .select("quantity, order_id");
 
 
-        if (error) {
+    if (itemsError) {
 
-            console.error(error);
+        console.error(itemsError);
 
-            ordersList.innerHTML = `
-                <div class="error">
-                    Unable to load orders.
-                    <br><br>
-                    ${error.message}
-                </div>
-            `;
-
-            return;
-        }
-
-
-        if (!data || data.length === 0) {
-
-            ordersList.innerHTML = `
-                <p class="empty">
-                    No orders yet.
-                </p>
-            `;
-
-            return;
-        }
-
-
-        // Display orders
-
-        ordersList.innerHTML = "";
-
-
-        data.forEach(order => {
-
-            const orderDiv =
-                document.createElement("div");
-
-            orderDiv.className = "order";
-
-
-            orderDiv.innerHTML = `
-
-                <strong>
-                    Order #${order.id}
-                </strong>
-
-                <br>
-
-                Customer:
-                ${order.customer_name}
-
-                <br>
-
-                Amount:
-                Rs. ${Number(order.total_amount).toLocaleString()}
-
-                <br>
-
-                Payment:
-                <span class="status">
-                    ${order.payment_status}
-                </span>
-
-                <br>
-
-                Event ID:
-                ${order.event_id}
-
-            `;
-
-
-            ordersList.appendChild(orderDiv);
-
-        });
-
+        return;
 
     }
+
+
+    // Get all orders
+    const { data: orders, error: ordersError } =
+        await supabaseClient
+            .from("orders")
+            .select("id, total_amount, payment_status");
+
+
+    if (ordersError) {
+
+        console.error(ordersError);
+
+        return;
+
+    }
+
+
+    // ------------------------------------------
+    // TICKETS SOLD
+    // ------------------------------------------
+
+    let ticketsSold = 0;
+
+
+    items.forEach(item => {
+
+        const order =
+            orders.find(o => o.id === item.order_id);
+
+
+        // Only count tickets from paid orders
+        if (order && order.payment_status === "paid") {
+
+            ticketsSold += Number(item.quantity);
+
+        }
+
+    });
+
+
+    // ------------------------------------------
+    // REVENUE
+    // ------------------------------------------
+
+    let revenue = 0;
+
+
+    orders.forEach(order => {
+
+        if (order.payment_status === "paid") {
+
+            revenue += Number(order.total_amount);
+
+        }
+
+    });
+
+
+    // ------------------------------------------
+    // UPDATE DASHBOARD
+    // ------------------------------------------
+
+    document.getElementById("ticketsSold")
+        .textContent = ticketsSold;
+
+
+    document.getElementById("revenue")
+        .textContent =
+        "Rs. " + revenue.toLocaleString();
+
+}
 
 
 
