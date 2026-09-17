@@ -10,6 +10,9 @@
 
     <title>Manage Event | SLFN</title>
 
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
     <style>
 
@@ -95,7 +98,8 @@
 
 
         input,
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -118,6 +122,13 @@
         }
 
 
+        .ticket-info {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+
         button {
             padding: 12px 20px;
             border: none;
@@ -137,10 +148,60 @@
             margin-top: 10px;
         }
 
+
+        .save-button {
+            width: 100%;
+            font-size: 16px;
+        }
+
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+        }
+
+
+        .success {
+            background: #e4f8e9;
+            color: #176b2c;
+        }
+
+
+        .error {
+            background: #ffe5e5;
+            color: #a30000;
+        }
+
+
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+
+        .organizer-card {
+            background: #fff8dc;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+
+        .organizer-card p {
+            margin: 6px 0;
+        }
+
+
+        .empty {
+            color: #777;
+            padding: 10px 0;
+        }
+
     </style>
 
 </head>
-
 
 
 <body>
@@ -153,7 +214,6 @@
 </header>
 
 
-
 <div class="container">
 
 
@@ -162,8 +222,7 @@
     </a>
 
 
-
-    <!-- CURRENT EVENT -->
+    <!-- EVENT HEADER -->
 
     <div class="event-title">
 
@@ -172,143 +231,238 @@
         </h2>
 
         <div class="event-id">
+
             Event ID:
             <span id="eventId">
                 -
             </span>
+
         </div>
 
     </div>
 
 
+    <!-- LOADING -->
 
-    <!-- EVENT INFORMATION -->
-
-    <div class="box">
-
-        <h2>Event Information</h2>
-
-
-        <label>
-            Event Name
-        </label>
-
-        <input
-            type="text"
-            id="eventNameInput"
-            value="Echoes of Siam 2026"
-        >
-
-
-        <label>
-            Date
-        </label>
-
-        <input
-            type="date"
-            id="eventDate"
-        >
-
-
-        <label>
-            Venue
-        </label>
-
-        <input
-            type="text"
-            id="venue"
-            placeholder="Enter venue"
-        >
-
-
-        <label>
-            Description
-        </label>
-
-        <textarea
-            id="description"
-            placeholder="Enter event description"
-        ></textarea>
-
+    <div id="loading" class="loading">
+        Loading event...
     </div>
 
 
+    <!-- MAIN CONTENT -->
 
-    <!-- TICKETS -->
-
-    <div class="box">
-
-        <h2>Ticket Types</h2>
+    <div id="mainContent" style="display:none;">
 
 
-        <div class="ticket">
+        <!-- EVENT INFORMATION -->
+
+        <div class="box">
+
+            <h2>Event Information</h2>
+
 
             <label>
-                Ticket Name
+                Event Name
             </label>
 
             <input
                 type="text"
-                value="Early Bird"
+                id="eventNameInput"
             >
 
 
             <label>
-                Price (Rs.)
+                Date
             </label>
 
             <input
-                type="number"
-                value="2600"
+                type="date"
+                id="eventDate"
             >
 
-        </div>
-
-
-
-        <div class="ticket">
 
             <label>
-                Ticket Name
+                Time
+            </label>
+
+            <input
+                type="time"
+                id="eventTime"
+            >
+
+
+            <label>
+                Venue
             </label>
 
             <input
                 type="text"
-                value="Standard"
+                id="venue"
+                placeholder="Enter venue"
             >
 
 
             <label>
-                Price (Rs.)
+                Description
             </label>
 
-            <input
-                type="number"
-                value="2800"
-            >
+            <textarea
+                id="description"
+                placeholder="Enter event description"
+            ></textarea>
+
+
+            <label>
+                Status
+            </label>
+
+            <select id="eventStatus">
+
+                <option value="active">
+                    Active
+                </option>
+
+                <option value="inactive">
+                    Inactive
+                </option>
+
+                <option value="past">
+                    Past
+                </option>
+
+            </select>
+
+
+            <div
+                id="eventMessage"
+                class="message">
+            </div>
 
         </div>
 
 
-        <button
-            class="add-ticket"
-            onclick="addTicket()">
 
-            + Add Ticket Type
+        <!-- ORGANIZER -->
 
-        </button>
+        <div class="box">
 
-    </div>
+            <h2>Organizer</h2>
+
+            <div
+                id="organizerInfo"
+                class="organizer-card">
+
+                Loading organizer...
+
+            </div>
+
+        </div>
 
 
 
-    <!-- SAVE -->
+        <!-- TICKET TYPES -->
 
-    <div class="box">
+        <div class="box">
 
-        <button onclick="saveEvent()">
-            Save Event
-        </button>
+            <h2>Ticket Types</h2>
+
+
+            <div id="ticketList">
+
+                <div class="empty">
+                    Loading ticket types...
+                </div>
+
+            </div>
+
+
+            <button
+                class="add-ticket"
+                onclick="showAddTicketForm()">
+
+                + Add Ticket Type
+
+            </button>
+
+
+            <!-- ADD TICKET FORM -->
+
+            <div
+                id="addTicketForm"
+                style="display:none; margin-top:20px;">
+
+                <div class="ticket">
+
+                    <label>
+                        Ticket Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newTicketName"
+                        placeholder="Example: VIP"
+                    >
+
+
+                    <label>
+                        Price (Rs.)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="newTicketPrice"
+                        placeholder="5000"
+                        min="0"
+                    >
+
+
+                    <label>
+                        Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="newTicketQuantity"
+                        placeholder="100"
+                        min="1"
+                    >
+
+
+                    <button
+                        onclick="addTicketType()">
+
+                        Save Ticket Type
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SAVE EVENT -->
+
+        <div class="box">
+
+            <button
+                class="save-button"
+                onclick="saveEvent()">
+
+                Save Event Changes
+
+            </button>
+
+
+            <div
+                id="saveMessage"
+                class="message">
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -320,81 +474,726 @@
 <script>
 
 
-    // GET EVENT ID FROM URL
-
-    const params =
-        new URLSearchParams(window.location.search);
-
-
-    const eventId =
-        params.get("event");
+/* =========================================
+   SUPABASE
+========================================= */
 
 
+const SUPABASE_URL =
+    "https://ixjzimaqsgrpcwzidcgx.supabase.co";
 
-    // TEMPORARY EVENT DATABASE
 
-    const events = {
+const SUPABASE_KEY =
+    "sb_publishable_DKTtTNjxkbrsWzQYqm_EEA_2Q6TLzZI";
 
-        "echoes-of-siam": {
-            name: "Echoes of Siam 2026"
-        },
 
-        "test-event": {
-            name: "SLFN Test Event"
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/* =========================================
+   GET EVENT ID
+========================================= */
+
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const eventId =
+    params.get("event");
+
+
+
+if (!eventId) {
+
+    showError(
+        "No event ID was provided."
+    );
+
+}
+
+
+
+/* =========================================
+   LOAD EVERYTHING
+========================================= */
+
+
+async function loadEvent() {
+
+    if (!eventId) return;
+
+
+    try {
+
+
+        /* ================================
+           GET EVENT
+        ================================= */
+
+
+        const {
+            data: event,
+            error: eventError
+        } = await supabaseClient
+            .from("events")
+            .select("*")
+            .eq("id", eventId)
+            .single();
+
+
+        if (eventError) {
+            throw eventError;
         }
 
-    };
+
+        if (!event) {
+            throw new Error(
+                "Event not found."
+            );
+        }
+
+
+        /* ================================
+           DISPLAY EVENT
+        ================================= */
+
+
+        document.getElementById(
+            "eventName"
+        ).textContent = event.title;
+
+
+        document.getElementById(
+            "eventId"
+        ).textContent = event.id;
+
+
+        document.getElementById(
+            "eventNameInput"
+        ).value = event.title || "";
+
+
+        document.getElementById(
+            "eventDate"
+        ).value = event.event_date || "";
+
+
+        document.getElementById(
+            "eventTime"
+        ).value = event.event_time
+            ? event.event_time.substring(0, 5)
+            : "";
+
+
+        document.getElementById(
+            "venue"
+        ).value = event.venue || "";
+
+
+        document.getElementById(
+            "description"
+        ).value = event.description || "";
+
+
+        document.getElementById(
+            "eventStatus"
+        ).value = event.status || "active";
 
 
 
-    // DISPLAY EVENT
+        /* ================================
+           GET ORGANIZER
+        ================================= */
 
-    if (eventId && events[eventId]) {
 
-        document.getElementById("eventName").textContent =
-            events[eventId].name;
+        await loadOrganizer(
+            event.organizer_id
+        );
 
-        document.getElementById("eventId").textContent =
-            eventId;
 
-        document.getElementById("eventNameInput").value =
-            events[eventId].name;
+
+        /* ================================
+           GET TICKET TYPES
+        ================================= */
+
+
+        await loadTicketTypes();
+
+
+
+        /* ================================
+           SHOW PAGE
+        ================================= */
+
+
+        document.getElementById(
+            "loading"
+        ).style.display = "none";
+
+
+        document.getElementById(
+            "mainContent"
+        ).style.display = "block";
+
 
     }
 
-    else {
+    catch (error) {
 
-        document.getElementById("eventName").textContent =
-            "Event not found";
+        console.error(error);
 
-        document.getElementById("eventId").textContent =
-            "Invalid ID";
-
-    }
-
-
-
-    // ADD TICKET
-
-    function addTicket() {
-
-        alert(
-            "Adding ticket types will be connected to the database later."
+        showError(
+            "Unable to load event: " +
+            error.message
         );
 
     }
 
+}
 
 
-    // SAVE EVENT
 
-    function saveEvent() {
+/* =========================================
+   LOAD ORGANIZER
+========================================= */
 
-        alert(
-            "Event changes will be saved to the database later."
+
+async function loadOrganizer(
+    organizerId
+) {
+
+
+    const organizerBox =
+        document.getElementById(
+            "organizerInfo"
         );
 
+
+    if (!organizerId) {
+
+        organizerBox.innerHTML =
+            "<p>No organizer assigned.</p>";
+
+        return;
+
     }
+
+
+    const {
+        data: organizer,
+        error
+    } = await supabaseClient
+        .from("organizers")
+        .select("*")
+        .eq("id", organizerId)
+        .single();
+
+
+    if (error) {
+
+        organizerBox.innerHTML =
+            "<p>Unable to load organizer.</p>";
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    organizerBox.innerHTML = `
+
+        <p>
+            <strong>Name:</strong>
+            ${escapeHTML(
+                organizer.name || "-"
+            )}
+        </p>
+
+        <p>
+            <strong>Organization:</strong>
+            ${escapeHTML(
+                organizer.organization_name || "-"
+            )}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            ${escapeHTML(
+                organizer.email || "-"
+            )}
+        </p>
+
+        <p>
+            <strong>Phone:</strong>
+            ${escapeHTML(
+                organizer.phone || "-"
+            )}
+        </p>
+
+    `;
+
+}
+
+
+
+/* =========================================
+   LOAD TICKET TYPES
+========================================= */
+
+
+async function loadTicketTypes() {
+
+
+    const ticketList =
+        document.getElementById(
+            "ticketList"
+        );
+
+
+    const {
+        data: tickets,
+        error
+    } = await supabaseClient
+        .from("ticket_types")
+        .select("*")
+        .eq("event_id", eventId)
+        .order("id", {
+            ascending: true
+        });
+
+
+    if (error) {
+
+        console.error(error);
+
+        ticketList.innerHTML =
+            "<div class='empty'>Unable to load ticket types.</div>";
+
+        return;
+
+    }
+
+
+    if (!tickets || tickets.length === 0) {
+
+        ticketList.innerHTML =
+            "<div class='empty'>No ticket types yet.</div>";
+
+        return;
+
+    }
+
+
+    ticketList.innerHTML = "";
+
+
+    tickets.forEach(ticket => {
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className = "ticket";
+
+
+        div.innerHTML = `
+
+            <strong>
+                ${escapeHTML(
+                    ticket.name || "Unnamed ticket"
+                )}
+            </strong>
+
+            <div class="ticket-info">
+
+                Price:
+                Rs. ${Number(
+                    ticket.price || 0
+                ).toLocaleString()}
+
+            </div>
+
+            <div class="ticket-info">
+
+                Quantity:
+                ${Number(
+                    ticket.quantity || 0
+                ).toLocaleString()}
+
+            </div>
+
+            <div class="ticket-info">
+
+                Ticket Type ID:
+                ${ticket.id}
+
+            </div>
+
+        `;
+
+
+        ticketList.appendChild(div);
+
+    });
+
+}
+
+
+
+/* =========================================
+   SHOW ADD TICKET FORM
+========================================= */
+
+
+function showAddTicketForm() {
+
+    const form =
+        document.getElementById(
+            "addTicketForm"
+        );
+
+
+    form.style.display =
+        form.style.display === "none"
+            ? "block"
+            : "none";
+
+}
+
+
+
+/* =========================================
+   ADD TICKET TYPE
+========================================= */
+
+
+async function addTicketType() {
+
+
+    const name =
+        document.getElementById(
+            "newTicketName"
+        ).value.trim();
+
+
+    const price =
+        Number(
+            document.getElementById(
+                "newTicketPrice"
+            ).value
+        );
+
+
+    const quantity =
+        Number(
+            document.getElementById(
+                "newTicketQuantity"
+            ).value
+        );
+
+
+    if (!name) {
+
+        alert(
+            "Please enter a ticket name."
+        );
+
+        return;
+
+    }
+
+
+    if (price < 0 || !Number.isFinite(price)) {
+
+        alert(
+            "Please enter a valid price."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        quantity < 1 ||
+        !Number.isInteger(quantity)
+    ) {
+
+        alert(
+            "Please enter a valid quantity."
+        );
+
+        return;
+
+    }
+
+
+
+    const {
+        error
+    } = await supabaseClient
+        .from("ticket_types")
+        .insert({
+
+            event_id: eventId,
+
+            name: name,
+
+            price: price,
+
+            quantity: quantity
+
+        });
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to add ticket type: " +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "newTicketName"
+    ).value = "";
+
+
+    document.getElementById(
+        "newTicketPrice"
+    ).value = "";
+
+
+    document.getElementById(
+        "newTicketQuantity"
+    ).value = "";
+
+
+    document.getElementById(
+        "addTicketForm"
+    ).style.display = "none";
+
+
+    await loadTicketTypes();
+
+
+    alert(
+        "Ticket type added successfully!"
+    );
+
+}
+
+
+
+/* =========================================
+   SAVE EVENT
+========================================= */
+
+
+async function saveEvent() {
+
+
+    const title =
+        document.getElementById(
+            "eventNameInput"
+        ).value.trim();
+
+
+    const eventDate =
+        document.getElementById(
+            "eventDate"
+        ).value;
+
+
+    const eventTime =
+        document.getElementById(
+            "eventTime"
+        ).value;
+
+
+    const venue =
+        document.getElementById(
+            "venue"
+        ).value.trim();
+
+
+    const description =
+        document.getElementById(
+            "description"
+        ).value.trim();
+
+
+    const status =
+        document.getElementById(
+            "eventStatus"
+        ).value;
+
+
+
+    if (!title) {
+
+        showSaveMessage(
+            "Event name is required.",
+            true
+        );
+
+        return;
+
+    }
+
+
+
+    const {
+        error
+    } = await supabaseClient
+        .from("events")
+        .update({
+
+            title: title,
+
+            event_date:
+                eventDate || null,
+
+            event_time:
+                eventTime || null,
+
+            venue:
+                venue || null,
+
+            description:
+                description || null,
+
+            status:
+                status
+
+        })
+        .eq("id", eventId);
+
+
+
+    if (error) {
+
+        console.error(error);
+
+        showSaveMessage(
+            "Unable to save changes: " +
+            error.message,
+            true
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "eventName"
+    ).textContent = title;
+
+
+    showSaveMessage(
+        "Event saved successfully! ✓",
+        false
+    );
+
+}
+
+
+
+/* =========================================
+   MESSAGES
+========================================= */
+
+
+function showSaveMessage(
+    message,
+    isError
+) {
+
+    const box =
+        document.getElementById(
+            "saveMessage"
+        );
+
+
+    box.textContent = message;
+
+
+    box.className =
+        "message " +
+        (isError
+            ? "error"
+            : "success");
+
+
+    box.style.display =
+        "block";
+
+}
+
+
+
+function showError(
+    message
+) {
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    loading.textContent =
+        message;
+
+
+    loading.style.color =
+        "#a30000";
+
+}
+
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =========================================
+   START
+========================================= */
+
+
+loadEvent();
 
 
 </script>
