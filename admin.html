@@ -11,6 +11,7 @@
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
     <style>
 
         * {
@@ -19,31 +20,49 @@
             box-sizing: border-box;
         }
 
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #fff7fb;
             color: #333;
         }
 
+
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
             background: #f4c542;
             padding: 20px;
         }
 
+
         header h1 {
             font-size: 24px;
         }
+
 
         header p {
             margin-top: 5px;
             font-size: 14px;
         }
 
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
         .container {
             max-width: 1100px;
             margin: auto;
             padding: 25px;
         }
+
+
+        /* =========================
+           STATS
+        ========================= */
 
         .stats {
             display: grid;
@@ -52,6 +71,7 @@
             margin-bottom: 30px;
         }
 
+
         .stat-card {
             background: white;
             padding: 20px;
@@ -59,16 +79,23 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
+
         .stat-card h3 {
             font-size: 14px;
             color: #777;
             margin-bottom: 10px;
         }
 
+
         .stat-card p {
             font-size: 25px;
             font-weight: bold;
         }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
 
         section {
             background: white;
@@ -78,23 +105,48 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
+
         section h2 {
             margin-bottom: 20px;
         }
+
+
+        /* =========================
+           EVENTS
+        ========================= */
 
         .event-card {
             background: #fff1f7;
             padding: 20px;
             border-radius: 12px;
+            margin-bottom: 15px;
         }
+
 
         .event-card h3 {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
+
         .event-card p {
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
+
+
+        .event-status {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: #d4edda;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
 
         button {
             margin-top: 15px;
@@ -106,41 +158,87 @@
             font-weight: bold;
         }
 
+
         button:hover {
             opacity: 0.85;
         }
 
+
+        /* =========================
+           ORDERS
+        ========================= */
+
         .order {
             border: 1px solid #eee;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 18px;
+            border-radius: 12px;
             margin-bottom: 12px;
         }
 
-        .order strong {
-            display: inline-block;
-            margin-bottom: 5px;
+
+        .order h3 {
+            margin-bottom: 10px;
         }
+
+
+        .order p {
+            margin-bottom: 6px;
+        }
+
 
         .status {
             display: inline-block;
             padding: 5px 10px;
             border-radius: 20px;
-            background: #fff3cd;
             font-size: 12px;
-            margin-top: 5px;
+            font-weight: bold;
         }
+
+
+        .status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+
+        .status.paid {
+            background: #d4edda;
+            color: #155724;
+        }
+
+
+        .status.failed,
+        .status.cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+
+        /* =========================
+           EMPTY / LOADING / ERROR
+        ========================= */
 
         .empty {
             color: #777;
         }
 
-        .error {
-            color: #c00;
-            background: #ffe5e5;
-            padding: 12px;
-            border-radius: 8px;
+
+        .loading {
+            color: #777;
         }
+
+
+        .error {
+            color: #721c24;
+            background: #f8d7da;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 700px) {
 
@@ -167,60 +265,69 @@
 </header>
 
 
+
 <div class="container">
 
 
-    <!-- DASHBOARD STATS -->
+    <!-- =========================
+         DASHBOARD STATS
+    ========================= -->
 
     <div class="stats">
+
 
         <div class="stat-card">
 
             <h3>Active Events</h3>
 
-            <p id="activeEvents">1</p>
+            <p id="activeEvents">
+                Loading...
+            </p>
 
         </div>
+
 
 
         <div class="stat-card">
 
             <h3>Tickets Sold</h3>
 
-            <p id="ticketsSold">0</p>
+            <p id="ticketsSold">
+                Loading...
+            </p>
 
         </div>
+
 
 
         <div class="stat-card">
 
             <h3>Revenue</h3>
 
-            <p id="revenue">Rs. 0</p>
+            <p id="revenue">
+                Loading...
+            </p>
 
         </div>
+
 
     </div>
 
 
 
-    <!-- EVENTS -->
+    <!-- =========================
+         EVENTS
+    ========================= -->
 
     <section>
 
         <h2>Events</h2>
 
-        <div class="event-card">
+        <div id="eventsList">
 
-            <h3>Echoes of Siam 2026</h3>
-
-            <p>Tickets Sold: 0</p>
-
-            <p>Revenue: Rs. 0</p>
-
-            <button onclick="manageEvent('eos')">
-                Manage Event
-            </button>
+            <p class="loading">
+                Loading events...
+            </p>
 
         </div>
 
@@ -228,7 +335,9 @@
 
 
 
-    <!-- ORDERS -->
+    <!-- =========================
+         ORDERS
+    ========================= -->
 
     <section>
 
@@ -236,7 +345,7 @@
 
         <div id="ordersList">
 
-            <p class="empty">
+            <p class="loading">
                 Loading orders...
             </p>
 
@@ -246,14 +355,16 @@
 
 
 
-    <!-- CHECK-IN -->
+    <!-- =========================
+         CHECK-IN
+    ========================= -->
 
     <section>
 
         <h2>Check-in</h2>
 
         <p class="empty">
-            No tickets checked in yet.
+            Ticket check-in system will appear here.
         </p>
 
     </section>
@@ -266,13 +377,16 @@
 <script>
 
 
-    // ==========================================
-    // SUPABASE CONNECTION
-    // ==========================================
+    // =====================================================
+    // SUPABASE CONFIGURATION
+    // =====================================================
 
-    const SUPABASE_URL = "https://ixjzimaqsgrpcwzidcgx.supabase.co";
+    const SUPABASE_URL =
+        "https://ixjzimaqsgrpcwzidcgx.supabase.co";
 
-    const SUPABASE_KEY = "sb_publishable_DKTtTNjxkbrsWzQYqm_EEA_2Q6TLzZI";
+
+    const SUPABASE_KEY =
+        "sb_publishable_DKTtTNjxkbrsWzQYqm_EEA_2Q6TLzZI";
 
 
     const supabaseClient =
@@ -283,144 +397,671 @@
 
 
 
-    // ==========================================
-    // LOAD ORDERS
-    // ==========================================
+    // =====================================================
+    // LOAD EVENTS
+    // =====================================================
 
-  async function loadStats() {
-
-    // Get all order items
-    const { data: items, error: itemsError } =
-        await supabaseClient
-            .from("order_items")
-            .select("quantity, order_id");
+    async function loadEvents() {
 
 
-    if (itemsError) {
-
-        console.error(itemsError);
-
-        return;
-
-    }
+        const eventsList =
+            document.getElementById("eventsList");
 
 
-    // Get all orders
-    const { data: orders, error: ordersError } =
-        await supabaseClient
-            .from("orders")
-            .select("id, total_amount, payment_status");
-
-
-    if (ordersError) {
-
-        console.error(ordersError);
-
-        return;
-
-    }
-
-
-    // ------------------------------------------
-    // TICKETS SOLD
-    // ------------------------------------------
-
-    let ticketsSold = 0;
-
-
-    items.forEach(item => {
-
-        const order =
-            orders.find(o => o.id === item.order_id);
-
-
-        // Only count tickets from paid orders
-        if (order && order.payment_status === "paid") {
-
-            ticketsSold += Number(item.quantity);
-
-        }
-
-    });
-
-
-    // ------------------------------------------
-    // REVENUE
-    // ------------------------------------------
-
-    let revenue = 0;
-
-
-    orders.forEach(order => {
-
-        if (order.payment_status === "paid") {
-
-            revenue += Number(order.total_amount);
-
-        }
-
-    });
-
-
-    // ------------------------------------------
-    // UPDATE DASHBOARD
-    // ------------------------------------------
-
-    document.getElementById("ticketsSold")
-        .textContent = ticketsSold;
-
-
-    document.getElementById("revenue")
-        .textContent =
-        "Rs. " + revenue.toLocaleString();
-
-}
-
-
-
-    // ==========================================
-    // CALCULATE BASIC ORDER STATS
-    // ==========================================
-
-    async function loadStats() {
-
-        const { data, error } = await supabaseClient
-            .from("orders")
-            .select("total_amount, payment_status");
+        const { data, error } =
+            await supabaseClient
+                .from("events")
+                .select("*")
+                .order("event_date", {
+                    ascending: true
+                });
 
 
         if (error) {
 
-            console.error(error);
+            console.error("Events error:", error);
+
+
+            eventsList.innerHTML = `
+
+                <div class="error">
+
+                    Unable to load events.
+
+                    <br><br>
+
+                    ${error.message}
+
+                </div>
+
+            `;
 
             return;
 
         }
 
 
+        // Active event count
+
+        const activeEvents =
+            data.filter(
+                event => event.status === "active"
+            ).length;
+
+
+        document.getElementById("activeEvents")
+            .textContent = activeEvents;
+
+
+
+        // No events
+
+        if (!data || data.length === 0) {
+
+            eventsList.innerHTML = `
+
+                <p class="empty">
+                    No events found.
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        // Clear loading
+
+        eventsList.innerHTML = "";
+
+
+
+        // Display every event
+
+        data.forEach(event => {
+
+
+            const eventCard =
+                document.createElement("div");
+
+
+            eventCard.className =
+                "event-card";
+
+
+
+            eventCard.innerHTML = `
+
+                <h3>
+                    ${escapeHTML(event.title)}
+                </h3>
+
+                <p>
+                    <strong>Date:</strong>
+                    ${escapeHTML(event.event_date || "Not set")}
+                </p>
+
+                <p>
+                    <strong>Time:</strong>
+                    ${escapeHTML(event.event_time || "Not set")}
+                </p>
+
+                <p>
+                    <strong>Venue:</strong>
+                    ${escapeHTML(event.venue || "Not set")}
+                </p>
+
+                <p>
+                    <strong>Event ID:</strong>
+                    ${event.id}
+                </p>
+
+                <span class="event-status">
+
+                    ${escapeHTML(event.status || "unknown")}
+
+                </span>
+
+                <br>
+
+                <button
+                    onclick="manageEvent(${event.id})">
+
+                    Manage Event
+
+                </button>
+
+            `;
+
+
+            eventsList.appendChild(eventCard);
+
+        });
+
+    }
+
+
+
+    // =====================================================
+    // LOAD ORDERS
+    // =====================================================
+
+    async function loadOrders() {
+
+
+        const ordersList =
+            document.getElementById("ordersList");
+
+
+        // Get orders
+
+        const { data: orders, error: ordersError } =
+            await supabaseClient
+                .from("orders")
+                .select("*")
+                .order("created_at", {
+                    ascending: false
+                });
+
+
+        if (ordersError) {
+
+            console.error(
+                "Orders error:",
+                ordersError
+            );
+
+
+            ordersList.innerHTML = `
+
+                <div class="error">
+
+                    Unable to load orders.
+
+                    <br><br>
+
+                    ${ordersError.message}
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        // No orders
+
+        if (!orders || orders.length === 0) {
+
+            ordersList.innerHTML = `
+
+                <p class="empty">
+                    No orders yet.
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        // Get order items
+
+        const { data: orderItems, error: itemsError } =
+            await supabaseClient
+                .from("order_items")
+                .select("*");
+
+
+        if (itemsError) {
+
+            console.error(
+                "Order items error:",
+                itemsError
+            );
+
+
+            ordersList.innerHTML = `
+
+                <div class="error">
+
+                    Unable to load order items.
+
+                    <br><br>
+
+                    ${itemsError.message}
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        // Get ticket types
+
+        const { data: ticketTypes, error: typesError } =
+            await supabaseClient
+                .from("ticket_types")
+                .select("*");
+
+
+        if (typesError) {
+
+            console.error(
+                "Ticket types error:",
+                typesError
+            );
+
+
+            ordersList.innerHTML = `
+
+                <div class="error">
+
+                    Unable to load ticket types.
+
+                    <br><br>
+
+                    ${typesError.message}
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        // Get events
+
+        const { data: events, error: eventsError } =
+            await supabaseClient
+                .from("events")
+                .select("id, title");
+
+
+        if (eventsError) {
+
+            console.error(
+                "Events error:",
+                eventsError
+            );
+
+        }
+
+
+
+        // Clear loading
+
+        ordersList.innerHTML = "";
+
+
+
+        // Display orders
+
+        orders.forEach(order => {
+
+
+            // Find this order's items
+
+            const items =
+                orderItems.filter(
+                    item =>
+                        item.order_id === order.id
+                );
+
+
+            // Find event
+
+            const event =
+                events
+                    ? events.find(
+                        e =>
+                            e.id === order.event_id
+                    )
+                    : null;
+
+
+
+            // Ticket HTML
+
+            let ticketHTML = "";
+
+
+            if (items.length === 0) {
+
+                ticketHTML = `
+                    <p>
+                        Ticket information unavailable.
+                    </p>
+                `;
+
+            } else {
+
+
+                items.forEach(item => {
+
+
+                    const ticketType =
+                        ticketTypes.find(
+                            type =>
+                                type.id ===
+                                item.ticket_type_id
+                        );
+
+
+                    const ticketName =
+                        ticketType
+                            ? ticketType.name
+                            : "Unknown ticket";
+
+
+                    ticketHTML += `
+
+                        <p>
+
+                            🎫
+
+                            <strong>
+                                ${escapeHTML(ticketName)}
+                            </strong>
+
+                            × ${item.quantity}
+
+                            — Rs.
+                            ${Number(
+                                item.unit_price
+                            ).toLocaleString()}
+
+                        </p>
+
+                    `;
+
+                });
+
+            }
+
+
+
+            // Payment status class
+
+            const status =
+                String(
+                    order.payment_status || "unknown"
+                ).toLowerCase();
+
+
+            const statusClass =
+                ["pending", "paid", "failed", "cancelled"]
+                    .includes(status)
+                    ? status
+                    : "";
+
+
+
+            // Create order card
+
+            const orderDiv =
+                document.createElement("div");
+
+
+            orderDiv.className =
+                "order";
+
+
+            orderDiv.innerHTML = `
+
+                <h3>
+                    Order #${order.id}
+                </h3>
+
+
+                <p>
+
+                    <strong>
+                        Customer:
+                    </strong>
+
+                    ${escapeHTML(
+                        order.customer_name ||
+                        "Not provided"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Email:
+                    </strong>
+
+                    ${escapeHTML(
+                        order.customer_email ||
+                        "Not provided"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Phone:
+                    </strong>
+
+                    ${escapeHTML(
+                        order.customer_phone ||
+                        "Not provided"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Event:
+                    </strong>
+
+                    ${escapeHTML(
+                        event
+                            ? event.title
+                            : "Event #" +
+                              order.event_id
+                    )}
+
+                </p>
+
+
+                ${ticketHTML}
+
+
+                <p>
+
+                    <strong>
+                        Total:
+                    </strong>
+
+                    Rs.
+                    ${Number(
+                        order.total_amount || 0
+                    ).toLocaleString()}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Payment:
+                    </strong>
+
+                    <span class="status ${statusClass}">
+
+                        ${escapeHTML(
+                            order.payment_status ||
+                            "unknown"
+                        )}
+
+                    </span>
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Payment Reference:
+                    </strong>
+
+                    ${escapeHTML(
+                        order.payment_ref ||
+                        "Not available"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Order Created:
+                    </strong>
+
+                    ${formatDate(
+                        order.created_at
+                    )}
+
+                </p>
+
+            `;
+
+
+            ordersList.appendChild(orderDiv);
+
+        });
+
+    }
+
+
+
+    // =====================================================
+    // LOAD DASHBOARD STATS
+    // =====================================================
+
+    async function loadStats() {
+
+
+        // Get orders
+
+        const { data: orders, error: ordersError } =
+            await supabaseClient
+                .from("orders")
+                .select(
+                    "id, total_amount, payment_status"
+                );
+
+
+        if (ordersError) {
+
+            console.error(
+                "Stats orders error:",
+                ordersError
+            );
+
+            return;
+
+        }
+
+
+
+        // Get order items
+
+        const { data: items, error: itemsError } =
+            await supabaseClient
+                .from("order_items")
+                .select(
+                    "quantity, order_id"
+                );
+
+
+        if (itemsError) {
+
+            console.error(
+                "Stats items error:",
+                itemsError
+            );
+
+            return;
+
+        }
+
+
+
+        // Calculate
+
         let ticketsSold = 0;
 
         let revenue = 0;
 
 
-        data.forEach(order => {
 
-            /*
-             * For now each order is counted as one
-             * because ticket quantity is stored in
-             * order_items, which we'll connect next.
-             */
+        items.forEach(item => {
 
-            if (order.payment_status === "paid") {
 
-                ticketsSold++;
+            const order =
+                orders.find(
+                    o =>
+                        o.id === item.order_id
+                );
 
-                revenue += Number(order.total_amount);
+
+            // Only PAID orders count
+
+            if (
+                order &&
+                order.payment_status === "paid"
+            ) {
+
+                ticketsSold +=
+                    Number(item.quantity);
 
             }
 
         });
 
+
+
+        orders.forEach(order => {
+
+
+            if (
+                order.payment_status === "paid"
+            ) {
+
+                revenue +=
+                    Number(order.total_amount || 0);
+
+            }
+
+        });
+
+
+
+        // Update dashboard
 
         document.getElementById("ticketsSold")
             .textContent = ticketsSold;
@@ -428,32 +1069,102 @@
 
         document.getElementById("revenue")
             .textContent =
-            "Rs. " + revenue.toLocaleString();
+            "Rs. " +
+            revenue.toLocaleString();
 
     }
 
 
 
-    // ==========================================
+    // =====================================================
     // MANAGE EVENT
-    // ==========================================
+    // =====================================================
 
     function manageEvent(eventID) {
 
         window.location.href =
-            "event-admin.html?event=" + eventID;
+            "event-admin.html?event=" +
+            eventID;
 
     }
 
 
 
-    // ==========================================
-    // START
-    // ==========================================
+    // =====================================================
+    // SECURITY HELPER
+    // =====================================================
 
-    loadOrders();
+    function escapeHTML(value) {
 
-    loadStats();
+        if (value === null || value === undefined) {
+
+            return "";
+
+        }
+
+
+        return String(value)
+
+            .replace(/&/g, "&amp;")
+
+            .replace(/</g, "&lt;")
+
+            .replace(/>/g, "&gt;")
+
+            .replace(/"/g, "&quot;")
+
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+
+    // =====================================================
+    // DATE FORMAT
+    // =====================================================
+
+    function formatDate(value) {
+
+        if (!value) {
+
+            return "Not available";
+
+        }
+
+
+        const date =
+            new Date(value);
+
+
+        if (isNaN(date.getTime())) {
+
+            return value;
+
+        }
+
+
+        return date.toLocaleString();
+
+    }
+
+
+
+    // =====================================================
+    // START DASHBOARD
+    // =====================================================
+
+    async function startDashboard() {
+
+        await loadEvents();
+
+        await loadOrders();
+
+        await loadStats();
+
+    }
+
+
+    startDashboard();
 
 
 </script>
