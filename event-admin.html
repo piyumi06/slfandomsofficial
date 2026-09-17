@@ -10,7 +10,7 @@
 
     <title>Manage Event | SLFN</title>
 
-    <!-- SUPABASE -->
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
@@ -22,24 +22,20 @@
             box-sizing: border-box;
         }
 
-
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #fff7fb;
             color: #333;
         }
 
-
         header {
             background: #f4c542;
             padding: 20px;
         }
 
-
         header h1 {
             font-size: 24px;
         }
-
 
         .container {
             max-width: 800px;
@@ -47,14 +43,12 @@
             padding: 20px;
         }
 
-
         .back {
             display: inline-block;
             margin-bottom: 20px;
             color: #555;
             text-decoration: none;
         }
-
 
         .box {
             background: white;
@@ -64,7 +58,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
-
         .event-title {
             background: #ffe4ef;
             padding: 18px;
@@ -72,22 +65,18 @@
             margin-bottom: 25px;
         }
 
-
         .event-title h2 {
             margin-bottom: 5px;
         }
-
 
         .event-id {
             font-size: 13px;
             color: #777;
         }
 
-
         h2 {
             margin-bottom: 20px;
         }
-
 
         label {
             display: block;
@@ -95,7 +84,6 @@
             margin-bottom: 7px;
             font-weight: bold;
         }
-
 
         input,
         textarea,
@@ -107,30 +95,13 @@
             font-size: 16px;
         }
 
-
         textarea {
             min-height: 120px;
             resize: vertical;
         }
 
-
-        .ticket {
-            background: #fff1f7;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-        }
-
-
-        .ticket-info {
-            font-size: 14px;
-            color: #666;
-            margin-top: 8px;
-        }
-
-
         button {
-            padding: 12px 20px;
+            padding: 10px 16px;
             border: none;
             border-radius: 8px;
             background: #f4c542;
@@ -138,22 +109,92 @@
             cursor: pointer;
         }
 
-
         button:hover {
             opacity: 0.85;
         }
 
-
-        .add-ticket {
-            margin-top: 10px;
-        }
-
-
         .save-button {
             width: 100%;
             font-size: 16px;
+            padding: 13px;
         }
 
+        /* TICKET */
+
+        .ticket {
+            background: #fff1f7;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ticket-header strong {
+            font-size: 18px;
+        }
+
+        .ticket-id {
+            font-size: 12px;
+            color: #777;
+            margin-top: 8px;
+        }
+
+        .ticket-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .edit-button {
+            background: #f4c542;
+        }
+
+        .delete-button {
+            background: #ffb6c9;
+        }
+
+        .cancel-button {
+            background: #ddd;
+        }
+
+        .add-ticket {
+            margin-top: 5px;
+        }
+
+        /* ADD TICKET */
+
+        #addTicketForm {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-card {
+            background: #fff8dc;
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        /* ORGANIZER */
+
+        .organizer-card {
+            background: #fff8dc;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .organizer-card p {
+            margin: 7px 0;
+        }
+
+        /* MESSAGES */
 
         .message {
             margin-top: 15px;
@@ -162,18 +203,15 @@
             display: none;
         }
 
-
         .success {
             background: #e4f8e9;
             color: #176b2c;
         }
 
-
         .error {
             background: #ffe5e5;
             color: #a30000;
         }
-
 
         .loading {
             text-align: center;
@@ -181,22 +219,14 @@
             color: #777;
         }
 
-
-        .organizer-card {
-            background: #fff8dc;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-
-        .organizer-card p {
-            margin: 6px 0;
-        }
-
-
         .empty {
             color: #777;
             padding: 10px 0;
+        }
+
+        .edit-form {
+            margin-top: 15px;
+            display: none;
         }
 
     </style>
@@ -233,9 +263,7 @@
         <div class="event-id">
 
             Event ID:
-            <span id="eventId">
-                -
-            </span>
+            <span id="eventId">-</span>
 
         </div>
 
@@ -249,7 +277,7 @@
     </div>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
 
     <div id="mainContent" style="display:none;">
 
@@ -298,7 +326,6 @@
             <input
                 type="text"
                 id="venue"
-                placeholder="Enter venue"
             >
 
 
@@ -308,7 +335,6 @@
 
             <textarea
                 id="description"
-                placeholder="Enter event description"
             ></textarea>
 
 
@@ -387,11 +413,14 @@
 
             <!-- ADD TICKET FORM -->
 
-            <div
-                id="addTicketForm"
-                style="display:none; margin-top:20px;">
+            <div id="addTicketForm">
 
-                <div class="ticket">
+                <div class="form-card">
+
+                    <h3>
+                        Add New Ticket Type
+                    </h3>
+
 
                     <label>
                         Ticket Name
@@ -411,8 +440,8 @@
                     <input
                         type="number"
                         id="newTicketPrice"
-                        placeholder="5000"
                         min="0"
+                        placeholder="5000"
                     >
 
 
@@ -423,17 +452,30 @@
                     <input
                         type="number"
                         id="newTicketQuantity"
-                        placeholder="100"
                         min="1"
+                        placeholder="100"
                     >
 
 
-                    <button
-                        onclick="addTicketType()">
+                    <div class="ticket-actions">
 
-                        Save Ticket Type
+                        <button
+                            onclick="addTicketType()">
 
-                    </button>
+                            Save Ticket
+
+                        </button>
+
+
+                        <button
+                            class="cancel-button"
+                            onclick="hideAddTicketForm()">
+
+                            Cancel
+
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -496,7 +538,7 @@ const supabaseClient =
 
 
 /* =========================================
-   GET EVENT ID
+   EVENT ID
 ========================================= */
 
 
@@ -511,37 +553,28 @@ const eventId =
 
 
 
-if (!eventId) {
-
-    showError(
-        "No event ID was provided."
-    );
-
-}
-
-
-
 /* =========================================
-   LOAD EVERYTHING
+   LOAD EVENT
 ========================================= */
 
 
 async function loadEvent() {
 
-    if (!eventId) return;
+    if (!eventId) {
+
+        showError(
+            "No event ID was provided."
+        );
+
+        return;
+    }
 
 
     try {
 
-
-        /* ================================
-           GET EVENT
-        ================================= */
-
-
         const {
             data: event,
-            error: eventError
+            error
         } = await supabaseClient
             .from("events")
             .select("*")
@@ -549,8 +582,8 @@ async function loadEvent() {
             .single();
 
 
-        if (eventError) {
-            throw eventError;
+        if (error) {
+            throw error;
         }
 
 
@@ -561,78 +594,73 @@ async function loadEvent() {
         }
 
 
-        /* ================================
-           DISPLAY EVENT
-        ================================= */
-
+        /* EVENT HEADER */
 
         document.getElementById(
             "eventName"
-        ).textContent = event.title;
+        ).textContent =
+            event.title || "Untitled Event";
 
 
         document.getElementById(
             "eventId"
-        ).textContent = event.id;
+        ).textContent =
+            event.id;
 
+
+        /* EVENT FORM */
 
         document.getElementById(
             "eventNameInput"
-        ).value = event.title || "";
+        ).value =
+            event.title || "";
 
 
         document.getElementById(
             "eventDate"
-        ).value = event.event_date || "";
+        ).value =
+            event.event_date || "";
 
 
         document.getElementById(
             "eventTime"
-        ).value = event.event_time
-            ? event.event_time.substring(0, 5)
-            : "";
+        ).value =
+            event.event_time
+                ? event.event_time.substring(0, 5)
+                : "";
 
 
         document.getElementById(
             "venue"
-        ).value = event.venue || "";
+        ).value =
+            event.venue || "";
 
 
         document.getElementById(
             "description"
-        ).value = event.description || "";
+        ).value =
+            event.description || "";
 
 
         document.getElementById(
             "eventStatus"
-        ).value = event.status || "active";
+        ).value =
+            event.status || "active";
 
 
-
-        /* ================================
-           GET ORGANIZER
-        ================================= */
-
+        /* ORGANIZER */
 
         await loadOrganizer(
             event.organizer_id
         );
 
 
-
-        /* ================================
-           GET TICKET TYPES
-        ================================= */
-
+        /* TICKET TYPES */
 
         await loadTicketTypes();
 
 
-
-        /* ================================
-           SHOW PAGE
-        ================================= */
-
+        /* SHOW */
 
         document.getElementById(
             "loading"
@@ -642,7 +670,6 @@ async function loadEvent() {
         document.getElementById(
             "mainContent"
         ).style.display = "block";
-
 
     }
 
@@ -670,8 +697,7 @@ async function loadOrganizer(
     organizerId
 ) {
 
-
-    const organizerBox =
+    const box =
         document.getElementById(
             "organizerInfo"
         );
@@ -679,11 +705,10 @@ async function loadOrganizer(
 
     if (!organizerId) {
 
-        organizerBox.innerHTML =
+        box.innerHTML =
             "<p>No organizer assigned.</p>";
 
         return;
-
     }
 
 
@@ -699,17 +724,16 @@ async function loadOrganizer(
 
     if (error) {
 
-        organizerBox.innerHTML =
-            "<p>Unable to load organizer.</p>";
-
         console.error(error);
 
-        return;
+        box.innerHTML =
+            "<p>Unable to load organizer.</p>";
 
+        return;
     }
 
 
-    organizerBox.innerHTML = `
+    box.innerHTML = `
 
         <p>
             <strong>Name:</strong>
@@ -752,7 +776,6 @@ async function loadOrganizer(
 
 async function loadTicketTypes() {
 
-
     const ticketList =
         document.getElementById(
             "ticketList"
@@ -779,7 +802,6 @@ async function loadTicketTypes() {
             "<div class='empty'>Unable to load ticket types.</div>";
 
         return;
-
     }
 
 
@@ -789,7 +811,6 @@ async function loadTicketTypes() {
             "<div class='empty'>No ticket types yet.</div>";
 
         return;
-
     }
 
 
@@ -797,7 +818,6 @@ async function loadTicketTypes() {
 
 
     tickets.forEach(ticket => {
-
 
         const div =
             document.createElement("div");
@@ -808,34 +828,127 @@ async function loadTicketTypes() {
 
         div.innerHTML = `
 
-            <strong>
-                ${escapeHTML(
-                    ticket.name || "Unnamed ticket"
-                )}
-            </strong>
+            <div class="ticket-header">
 
-            <div class="ticket-info">
+                <strong>
+                    ${escapeHTML(
+                        ticket.name || "Unnamed ticket"
+                    )}
+                </strong>
 
+            </div>
+
+
+            <div>
                 Price:
-                Rs. ${Number(
-                    ticket.price || 0
-                ).toLocaleString()}
-
+                <strong>
+                    Rs. ${Number(
+                        ticket.price || 0
+                    ).toLocaleString()}
+                </strong>
             </div>
 
-            <div class="ticket-info">
 
+            <div style="margin-top:6px;">
                 Quantity:
-                ${Number(
-                    ticket.quantity || 0
-                ).toLocaleString()}
-
+                <strong>
+                    ${Number(
+                        ticket.quantity || 0
+                    ).toLocaleString()}
+                </strong>
             </div>
 
-            <div class="ticket-info">
+
+            <div class="ticket-id">
 
                 Ticket Type ID:
                 ${ticket.id}
+
+            </div>
+
+
+            <div
+                class="edit-form"
+                id="edit-form-${ticket.id}">
+
+                <label>
+                    Ticket Name
+                </label>
+
+                <input
+                    type="text"
+                    id="edit-name-${ticket.id}"
+                    value="${escapeAttribute(
+                        ticket.name || ""
+                    )}"
+                >
+
+
+                <label>
+                    Price (Rs.)
+                </label>
+
+                <input
+                    type="number"
+                    id="edit-price-${ticket.id}"
+                    value="${ticket.price || 0}"
+                    min="0"
+                >
+
+
+                <label>
+                    Quantity
+                </label>
+
+                <input
+                    type="number"
+                    id="edit-quantity-${ticket.id}"
+                    value="${ticket.quantity || 0}"
+                    min="1"
+                >
+
+
+                <div class="ticket-actions">
+
+                    <button
+                        onclick="updateTicket(${ticket.id})">
+
+                        Save Changes
+
+                    </button>
+
+
+                    <button
+                        class="cancel-button"
+                        onclick="cancelEdit(${ticket.id})">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="ticket-actions">
+
+                <button
+                    class="edit-button"
+                    onclick="editTicket(${ticket.id})">
+
+                    ✏️ Edit
+
+                </button>
+
+
+                <button
+                    class="delete-button"
+                    onclick="deleteTicket(${ticket.id})">
+
+                    🗑️ Delete
+
+                </button>
 
             </div>
 
@@ -851,22 +964,233 @@ async function loadTicketTypes() {
 
 
 /* =========================================
-   SHOW ADD TICKET FORM
+   EDIT TICKET
+========================================= */
+
+
+function editTicket(ticketId) {
+
+    const form =
+        document.getElementById(
+            `edit-form-${ticketId}`
+        );
+
+
+    if (form) {
+
+        form.style.display = "block";
+
+    }
+
+}
+
+
+
+/* =========================================
+   CANCEL EDIT
+========================================= */
+
+
+function cancelEdit(ticketId) {
+
+    const form =
+        document.getElementById(
+            `edit-form-${ticketId}`
+        );
+
+
+    if (form) {
+
+        form.style.display = "none";
+
+    }
+
+}
+
+
+
+/* =========================================
+   UPDATE TICKET
+========================================= */
+
+
+async function updateTicket(ticketId) {
+
+    const name =
+        document.getElementById(
+            `edit-name-${ticketId}`
+        ).value.trim();
+
+
+    const price =
+        Number(
+            document.getElementById(
+                `edit-price-${ticketId}`
+            ).value
+        );
+
+
+    const quantity =
+        Number(
+            document.getElementById(
+                `edit-quantity-${ticketId}`
+            ).value
+        );
+
+
+    if (!name) {
+
+        alert(
+            "Please enter a ticket name."
+        );
+
+        return;
+    }
+
+
+    if (
+        !Number.isFinite(price) ||
+        price < 0
+    ) {
+
+        alert(
+            "Please enter a valid price."
+        );
+
+        return;
+    }
+
+
+    if (
+        !Number.isInteger(quantity) ||
+        quantity < 1
+    ) {
+
+        alert(
+            "Please enter a valid quantity."
+        );
+
+        return;
+    }
+
+
+    const {
+        error
+    } = await supabaseClient
+        .from("ticket_types")
+        .update({
+
+            name: name,
+
+            price: price,
+
+            quantity: quantity
+
+        })
+        .eq("id", ticketId)
+        .eq("event_id", eventId);
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to update ticket: " +
+            error.message
+        );
+
+        return;
+    }
+
+
+    await loadTicketTypes();
+
+
+    alert(
+        "Ticket type updated successfully! ✓"
+    );
+
+}
+
+
+
+/* =========================================
+   DELETE TICKET
+========================================= */
+
+
+async function deleteTicket(ticketId) {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this ticket type?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    const {
+        error
+    } = await supabaseClient
+        .from("ticket_types")
+        .delete()
+        .eq("id", ticketId)
+        .eq("event_id", eventId);
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to delete ticket type: " +
+            error.message
+        );
+
+        return;
+    }
+
+
+    await loadTicketTypes();
+
+
+    alert(
+        "Ticket type deleted successfully."
+    );
+
+}
+
+
+
+/* =========================================
+   SHOW ADD FORM
 ========================================= */
 
 
 function showAddTicketForm() {
 
-    const form =
-        document.getElementById(
-            "addTicketForm"
-        );
+    document.getElementById(
+        "addTicketForm"
+    ).style.display = "block";
+
+}
 
 
-    form.style.display =
-        form.style.display === "none"
-            ? "block"
-            : "none";
+
+/* =========================================
+   HIDE ADD FORM
+========================================= */
+
+
+function hideAddTicketForm() {
+
+    document.getElementById(
+        "addTicketForm"
+    ).style.display = "none";
 
 }
 
@@ -878,7 +1202,6 @@ function showAddTicketForm() {
 
 
 async function addTicketType() {
-
 
     const name =
         document.getElementById(
@@ -909,24 +1232,25 @@ async function addTicketType() {
         );
 
         return;
-
     }
 
 
-    if (price < 0 || !Number.isFinite(price)) {
+    if (
+        !Number.isFinite(price) ||
+        price < 0
+    ) {
 
         alert(
             "Please enter a valid price."
         );
 
         return;
-
     }
 
 
     if (
-        quantity < 1 ||
-        !Number.isInteger(quantity)
+        !Number.isInteger(quantity) ||
+        quantity < 1
     ) {
 
         alert(
@@ -934,9 +1258,7 @@ async function addTicketType() {
         );
 
         return;
-
     }
-
 
 
     const {
@@ -966,7 +1288,6 @@ async function addTicketType() {
         );
 
         return;
-
     }
 
 
@@ -985,16 +1306,14 @@ async function addTicketType() {
     ).value = "";
 
 
-    document.getElementById(
-        "addTicketForm"
-    ).style.display = "none";
+    hideAddTicketForm();
 
 
     await loadTicketTypes();
 
 
     alert(
-        "Ticket type added successfully!"
+        "Ticket type added successfully! ✓"
     );
 
 }
@@ -1007,7 +1326,6 @@ async function addTicketType() {
 
 
 async function saveEvent() {
-
 
     const title =
         document.getElementById(
@@ -1045,7 +1363,6 @@ async function saveEvent() {
         ).value;
 
 
-
     if (!title) {
 
         showSaveMessage(
@@ -1054,9 +1371,7 @@ async function saveEvent() {
         );
 
         return;
-
     }
-
 
 
     const {
@@ -1086,7 +1401,6 @@ async function saveEvent() {
         .eq("id", eventId);
 
 
-
     if (error) {
 
         console.error(error);
@@ -1098,7 +1412,6 @@ async function saveEvent() {
         );
 
         return;
-
     }
 
 
@@ -1117,7 +1430,7 @@ async function saveEvent() {
 
 
 /* =========================================
-   MESSAGES
+   SAVE MESSAGE
 ========================================= */
 
 
@@ -1132,14 +1445,17 @@ function showSaveMessage(
         );
 
 
-    box.textContent = message;
+    box.textContent =
+        message;
 
 
     box.className =
         "message " +
-        (isError
-            ? "error"
-            : "success");
+        (
+            isError
+                ? "error"
+                : "success"
+        );
 
 
     box.style.display =
@@ -1149,9 +1465,12 @@ function showSaveMessage(
 
 
 
-function showError(
-    message
-) {
+/* =========================================
+   ERROR
+========================================= */
+
+
+function showError(message) {
 
     const loading =
         document.getElementById(
@@ -1171,7 +1490,7 @@ function showError(
 
 
 /* =========================================
-   ESCAPE HTML
+   SECURITY HELPERS
 ========================================= */
 
 
@@ -1183,6 +1502,13 @@ function escapeHTML(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
+}
+
+
+function escapeAttribute(value) {
+
+    return escapeHTML(value);
 
 }
 
