@@ -4,12 +4,13 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>SLFN Admin Login</title>
+    <title>SLFN Management Login</title>
 
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -273,7 +274,7 @@
     <div class="logo">
 
         <h1>
-            SLFN <span>Admin</span>
+            SLFN <span>Management</span>
         </h1>
 
         <p>
@@ -422,6 +423,46 @@
 
 
     // =====================================================
+    // REDIRECT BASED ON ROLE
+    // =====================================================
+
+    function redirectByRole(role) {
+
+        if (role === "admin") {
+
+            window.location.href =
+                "admin.html";
+
+            return;
+
+        }
+
+
+        if (role === "organizer") {
+
+            window.location.href =
+                "organizer.html";
+
+            return;
+
+        }
+
+
+        // Unknown / unsupported role
+
+        supabaseClient.auth
+            .signOut();
+
+        showMessage(
+            "This account does not have SLFN management access.",
+            "error"
+        );
+
+    }
+
+
+
+    // =====================================================
     // CHECK EXISTING SESSION
     // =====================================================
 
@@ -444,7 +485,7 @@
 
 
         // User is already logged in.
-        // Check whether they are an admin.
+        // Find their role.
 
         const {
             data: profile,
@@ -453,20 +494,26 @@
             await supabaseClient
                 .from("profiles")
                 .select("role")
-                .eq("id", session.user.id)
+                .eq(
+                    "id",
+                    session.user.id
+                )
                 .single();
 
 
         if (
-            !error &&
-            profile &&
-            profile.role === "admin"
+            error ||
+            !profile
         ) {
 
-            window.location.href =
-                "admin.html";
+            return;
 
         }
+
+
+        redirectByRole(
+            profile.role
+        );
 
     }
 
@@ -510,7 +557,9 @@
 
 
 
-            // Supabase login
+            // =================================================
+            // SUPABASE LOGIN
+            // =================================================
 
             const {
                 data,
@@ -527,7 +576,9 @@
 
 
 
-            // Login failed
+            // =================================================
+            // LOGIN FAILED
+            // =================================================
 
             if (error) {
 
@@ -575,6 +626,8 @@
 
 
 
+            // Profile missing
+
             if (
                 profileError ||
                 !profile
@@ -619,7 +672,7 @@
             ) {
 
                 showMessage(
-                    "Login successful. Opening dashboard...",
+                    "Admin login successful. Opening dashboard...",
                     "success"
                 );
 
@@ -642,7 +695,39 @@
 
 
             // =================================================
-            // NON-ADMIN
+            // ORGANIZER
+            // =================================================
+
+            if (
+                profile.role ===
+                "organizer"
+            ) {
+
+                showMessage(
+                    "Organizer login successful. Opening dashboard...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "organizer.html";
+
+                    },
+                    500
+                );
+
+
+                return;
+
+            }
+
+
+
+            // =================================================
+            // UNKNOWN / UNSUPPORTED ROLE
             // =================================================
 
             await supabaseClient.auth
@@ -650,7 +735,7 @@
 
 
             showMessage(
-                "This account does not have admin access.",
+                "This account does not have SLFN management access.",
                 "error"
             );
 
