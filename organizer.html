@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Organizer Dashboard | SLFN</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff7fb;
+      color: #2d2028;
+    }
+
+    header {
+      background: #f4c542;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .header-left h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .header-left p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      opacity: 0.75;
+    }
+
+    .logout-btn {
+      border: none;
+      background: #2d2028;
+      color: white;
+      padding: 10px 17px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .logout-btn:hover {
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .welcome-box {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+
+    .welcome-box h2 {
+      margin: 0 0 8px;
+    }
+
+    .welcome-box p {
+      margin: 0;
+      color: #75656e;
+    }
+
+    .section-title {
+      margin: 30px 0 15px;
+      font-size: 21px;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .event-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+      border: 1px solid #f0dce5;
+    }
+
+    .event-card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .event-info {
+      margin: 8px 0;
+      color: #665761;
+      font-size: 14px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #f7e7a6;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .manage-btn {
+      display: block;
+      width: 100%;
+      margin-top: 18px;
+      padding: 12px;
+      border: none;
+      border-radius: 9px;
+      background: #f4c542;
+      color: #2d2028;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .manage-btn:hover {
+      background: #e6b72f;
+    }
+
+    .empty {
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      text-align: center;
+      color: #75656e;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 50px 20px;
+      color: #75656e;
+    }
+
+    .error {
+      background: #ffe5e5;
+      color: #a52a2a;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        align-items: flex-start;
+      }
+
+      .header-left h1 {
+        font-size: 20px;
+      }
+
+      .logout-btn {
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>SLFN Organizer Dashboard</h1>
+    <p id="organizationName">Loading...</p>
+  </div>
+
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
+
+<main>
+
+  <div id="message"></div>
+
+  <div class="welcome-box">
+    <h2>Welcome, <span id="organizerName">Organizer</span> 👋</h2>
+    <p>
+      Manage your events, ticket types and orders from here.
+    </p>
+  </div>
+
+  <h2 class="section-title">Your Events</h2>
+
+  <div id="eventsContainer">
+    <div class="loading">
+      Loading your events...
+    </div>
+  </div>
+
+</main>
+
+<script>
+
+  // ==========================================
+  // SUPABASE
+  // ==========================================
+
+  const SUPABASE_URL = "https://ixjzimaqsgrpcwzidcgx.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_DKTtTNjxkbrsWzQYqm_EEA_2Q6TLzZI";
+
+  const supabaseClient =
+    supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  // ==========================================
+  // PAGE START
+  // ==========================================
+
+  window.addEventListener("DOMContentLoaded", loadOrganizerDashboard);
+
+
+  // ==========================================
+  // LOAD ORGANIZER DASHBOARD
+  // ==========================================
+
+  async function loadOrganizerDashboard() {
+
+    const message = document.getElementById("message");
+
+    try {
+
+      // ----------------------------------------
+      // 1. CHECK LOGIN
+      // ----------------------------------------
+
+      const {
+        data: { session },
+        error: sessionError
+      } = await supabaseClient.auth.getSession();
+
+      if (sessionError) {
+        throw sessionError;
+      }
+
+      if (!session) {
+
+        window.location.href = "login.html";
+
+        return;
+      }
+
+
+      const user = session.user;
+
+
+      // ----------------------------------------
+      // 2. CHECK PROFILE ROLE
+      // ----------------------------------------
+
+      const {
+        data: profile,
+        error: profileError
+      } = await supabaseClient
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .single();
+
+      if (profileError) {
+        throw profileError;
+      }
+
+
+      // ----------------------------------------
+      // 3. MAKE SURE USER IS ORGANIZER
+      // ----------------------------------------
+
+      if (!profile || profile.role !== "organizer") {
+
+        await supabaseClient.auth.signOut();
+
+        message.innerHTML = `
+          <div class="error">
+            You do not have permission to access the Organizer Dashboard.
+          </div>
+        `;
+
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1800);
+
+        return;
+      }
+
+
+      // ----------------------------------------
+      // 4. FIND ORGANIZER RECORD
+      // ----------------------------------------
+
+      const {
+        data: organizer,
+        error: organizerError
+      } = await supabaseClient
+        .from("organizers")
+        .select("*")
+        .eq("auth_user_id", user.id)
+        .single();
+
+      if (organizerError) {
+        throw organizerError;
+      }
+
+
+      if (!organizer) {
+
+        message.innerHTML = `
+          <div class="error">
+            Your organizer account has not been linked yet.
+            Please contact SLFN administration.
+          </div>
+        `;
+
+        return;
+      }
+
+
+      // ----------------------------------------
+      // 5. DISPLAY ORGANIZER INFORMATION
+      // ----------------------------------------
+
+      document.getElementById("organizerName").textContent =
+        organizer.name || "Organizer";
+
+      document.getElementById("organizationName").textContent =
+        organizer.organization_name || "SLFN Organizer";
+
+
+      // ----------------------------------------
+      // 6. LOAD ONLY THIS ORGANIZER'S EVENTS
+      // ----------------------------------------
+
+      const {
+        data: events,
+        error: eventsError
+      } = await supabaseClient
+        .from("events")
+        .select("*")
+        .eq("organizer_id", organizer.id)
+        .order("created_at", { ascending: false });
+
+
+      if (eventsError) {
+        throw eventsError;
+      }
+
+
+      displayEvents(events || []);
+
+    } catch (error) {
+
+      console.error("Organizer dashboard error:", error);
+
+      message.innerHTML = `
+        <div class="error">
+          Something went wrong while loading the organizer dashboard.
+          <br><br>
+          ${escapeHtml(error.message || "Unknown error")}
+        </div>
+      `;
+
+      document.getElementById("eventsContainer").innerHTML = "";
+    }
+  }
+
+
+  // ==========================================
+  // DISPLAY EVENTS
+  // ==========================================
+
+  function displayEvents(events) {
+
+    const container =
+      document.getElementById("eventsContainer");
+
+
+    if (!events.length) {
+
+      container.innerHTML = `
+        <div class="empty">
+          <h3>No events yet</h3>
+
+          <p>
+            You don't have any events assigned to your organizer account yet.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    events.forEach(event => {
+
+      const card =
+        document.createElement("div");
+
+      card.className = "event-card";
+
+
+      const eventDate =
+        event.event_date
+          ? formatDate(event.event_date)
+          : "Date not set";
+
+
+      const eventTime =
+        event.event_time
+          ? formatTime(event.event_time)
+          : "Time not set";
+
+
+      card.innerHTML = `
+        <h3>
+          ${escapeHtml(event.title || "Untitled Event")}
+        </h3>
+
+        <div class="event-info">
+          📅 ${escapeHtml(eventDate)}
+        </div>
+
+        <div class="event-info">
+          🕐 ${escapeHtml(eventTime)}
+        </div>
+
+        <div class="event-info">
+          📍 ${escapeHtml(event.venue || "Venue not set")}
+        </div>
+
+        <span class="status">
+          ${escapeHtml(event.status || "unknown")}
+        </span>
+
+        <a
+          class="manage-btn"
+          href="event-admin.html?event=${encodeURIComponent(event.id)}"
+        >
+          Manage Event
+        </a>
+      `;
+
+
+      container.appendChild(card);
+
+    });
+  }
+
+
+  // ==========================================
+  // DATE FORMAT
+  // ==========================================
+
+  function formatDate(dateString) {
+
+    const date =
+      new Date(dateString + "T00:00:00");
+
+    return date.toLocaleDateString(
+      "en-GB",
+      {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }
+    );
+  }
+
+
+  // ==========================================
+  // TIME FORMAT
+  // ==========================================
+
+  function formatTime(timeString) {
+
+    const parts =
+      timeString.split(":");
+
+    if (parts.length < 2) {
+      return timeString;
+    }
+
+    let hour =
+      parseInt(parts[0], 10);
+
+    const minute =
+      parts[1];
+
+    const ampm =
+      hour >= 12 ? "PM" : "AM";
+
+    hour =
+      hour % 12 || 12;
+
+    return `${hour}:${minute} ${ampm}`;
+  }
+
+
+  // ==========================================
+  // LOGOUT
+  // ==========================================
+
+  async function logout() {
+
+    const {
+      error
+    } = await supabaseClient.auth.signOut();
+
+
+    if (error) {
+
+      alert(
+        "Logout failed: " +
+        error.message
+      );
+
+      return;
+    }
+
+
+    window.location.href =
+      "login.html";
+  }
+
+
+  // ==========================================
+  // HTML ESCAPE
+  // ==========================================
+
+  function escapeHtml(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+</script>
+
+</body>
+</html>
