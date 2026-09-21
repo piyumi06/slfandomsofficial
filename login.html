@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SLFN Admin Login</title>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7fb,
+                    #fff0c7
+                );
+
+            color: #333;
+        }
+
+
+        /* =========================
+           LOGIN CARD
+        ========================= */
+
+        .login-card {
+
+            width: 90%;
+            max-width: 420px;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0, 0, 0, 0.10);
+
+        }
+
+
+        /* =========================
+           LOGO / TITLE
+        ========================= */
+
+        .logo {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .logo h1 {
+
+            font-size: 30px;
+
+            color: #333;
+
+        }
+
+
+        .logo span {
+
+            color: #d8a900;
+
+        }
+
+
+        .logo p {
+
+            margin-top: 8px;
+
+            font-size: 14px;
+
+            color: #777;
+
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        input:focus {
+
+            border-color: #f4c542;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(244, 197, 66, 0.15);
+
+        }
+
+
+        /* =========================
+           LOGIN BUTTON
+        ========================= */
+
+        .login-button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #f4c542;
+
+            color: #333;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .login-button:hover {
+
+            opacity: 0.85;
+
+        }
+
+
+        .login-button:disabled {
+
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        .message {
+
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            line-height: 1.4;
+
+        }
+
+
+        .message.error {
+
+            display: block;
+
+            background: #f8d7da;
+
+            color: #721c24;
+
+        }
+
+
+        .message.success {
+
+            display: block;
+
+            background: #d4edda;
+
+            color: #155724;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            font-size: 12px;
+
+            color: #999;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-card">
+
+
+    <!-- =========================
+         TITLE
+    ========================= -->
+
+    <div class="logo">
+
+        <h1>
+            SLFN <span>Admin</span>
+        </h1>
+
+        <p>
+            Sri Lankan Fandom Network
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         MESSAGE
+    ========================= -->
+
+    <div
+        id="message"
+        class="message">
+    </div>
+
+
+
+    <!-- =========================
+         LOGIN FORM
+    ========================= -->
+
+    <form id="loginForm">
+
+
+        <label for="email">
+            Email
+        </label>
+
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required
+        >
+
+
+
+        <label for="password">
+            Password
+        </label>
+
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+        >
+
+
+
+        <button
+            type="submit"
+            class="login-button"
+            id="loginButton">
+
+            Login
+
+        </button>
+
+
+    </form>
+
+
+
+    <div class="footer">
+
+        SLFN Management System
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+    // =====================================================
+    // SUPABASE CONFIGURATION
+    // =====================================================
+
+    const SUPABASE_URL =
+        "https://ixjzimaqsgrpcwzidcgx.supabase.co";
+
+
+    const SUPABASE_KEY =
+        "sb_publishable_DKTtTNjxkbrsWzQYqm_EEA_2Q6TLzZI";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+
+    // =====================================================
+    // ELEMENTS
+    // =====================================================
+
+    const loginForm =
+        document.getElementById(
+            "loginForm"
+        );
+
+
+    const loginButton =
+        document.getElementById(
+            "loginButton"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+
+    // =====================================================
+    // SHOW MESSAGE
+    // =====================================================
+
+    function showMessage(
+        text,
+        type
+    ) {
+
+        message.textContent = text;
+
+        message.className =
+            "message " + type;
+
+    }
+
+
+
+    // =====================================================
+    // CHECK EXISTING SESSION
+    // =====================================================
+
+    async function checkExistingSession() {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth
+                .getSession();
+
+
+        if (!session) {
+
+            return;
+
+        }
+
+
+        // User is already logged in.
+        // Check whether they are an admin.
+
+        const {
+            data: profile,
+            error
+        } =
+            await supabaseClient
+                .from("profiles")
+                .select("role")
+                .eq("id", session.user.id)
+                .single();
+
+
+        if (
+            !error &&
+            profile &&
+            profile.role === "admin"
+        ) {
+
+            window.location.href =
+                "admin.html";
+
+        }
+
+    }
+
+
+
+    // =====================================================
+    // LOGIN
+    // =====================================================
+
+    loginForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+
+            // Disable button
+
+            loginButton.disabled = true;
+
+            loginButton.textContent =
+                "Logging in...";
+
+
+            message.className =
+                "message";
+
+
+
+            // Supabase login
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth
+                    .signInWithPassword({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+
+            // Login failed
+
+            if (error) {
+
+                console.error(
+                    "Login error:",
+                    error
+                );
+
+
+                showMessage(
+                    "Login failed. Please check your email and password.",
+                    "error"
+                );
+
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.textContent =
+                    "Login";
+
+
+                return;
+
+            }
+
+
+
+            // =================================================
+            // CHECK ROLE
+            // =================================================
+
+            const {
+                data: profile,
+                error: profileError
+            } =
+                await supabaseClient
+                    .from("profiles")
+                    .select("role")
+                    .eq(
+                        "id",
+                        data.user.id
+                    )
+                    .single();
+
+
+
+            if (
+                profileError ||
+                !profile
+            ) {
+
+                console.error(
+                    "Profile error:",
+                    profileError
+                );
+
+
+                await supabaseClient.auth
+                    .signOut();
+
+
+                showMessage(
+                    "Your account does not have an SLFN profile.",
+                    "error"
+                );
+
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.textContent =
+                    "Login";
+
+
+                return;
+
+            }
+
+
+
+            // =================================================
+            // ADMIN
+            // =================================================
+
+            if (
+                profile.role ===
+                "admin"
+            ) {
+
+                showMessage(
+                    "Login successful. Opening dashboard...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "admin.html";
+
+                    },
+                    500
+                );
+
+
+                return;
+
+            }
+
+
+
+            // =================================================
+            // NON-ADMIN
+            // =================================================
+
+            await supabaseClient.auth
+                .signOut();
+
+
+            showMessage(
+                "This account does not have admin access.",
+                "error"
+            );
+
+
+            loginButton.disabled =
+                false;
+
+            loginButton.textContent =
+                "Login";
+
+        }
+    );
+
+
+
+    // =====================================================
+    // START
+    // =====================================================
+
+    checkExistingSession();
+
+
+</script>
+
+
+</body>
+
+</html>
